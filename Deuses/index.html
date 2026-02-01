@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Panteão dos Deuses</title>
+<title>NPCs</title>
 
 <style>
 /* ===== BODY ===== */
@@ -105,13 +105,18 @@ h2{
   border:1px solid #2c4c6b;
   border-radius:8px;
   overflow:hidden;
+    display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .icon-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+  width:90%;
+  height:90%;
+  object-fit:contain;
+  background:#162b3f;
 }
+
 
 /* ===== TEXTOS ===== */
 .nome{
@@ -171,9 +176,9 @@ h2{
 
   <div class="header-group">
     <a class="nav-btn" href="../index.html" style="padding-left: 5px;">← Voltar</a>
+	<a class="nav-btn" href="../Deuses/index.html">Deuses</a>
     <a class="nav-btn" href="../Raças/index.html">Raças</a>
     <a class="nav-btn" href="../Regioes/index.html">Regiões</a>
-	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
     <a class="nav-btn" href="../Organizaçoes/index.html">Organizações</a>
   </div>
 
@@ -181,41 +186,80 @@ h2{
 
 <h1>Panteão dos Deuses</h1>
 
-<!-- ===== NOTÁVEIS ===== -->
-<h2>Npc notáveis</h2>
+<!-- ===== DEUSES BONS ===== -->
+<h2>Deuses Bons</h2>
 <div class="grid">
 
-  <a class="card" href="#">
-    <div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div>
+  <a class="card" href="./Bom/Aldebaran - Proteçao/Aldebaran.html">
+    <div class="icon-box"><img src="./zzicones/Aldebaran.png"></div>
+    <div class="nome">Aldebaran</div>
+    <div class="titulo">Deus da Proteção</div>
+  </a>
+  
+   <a class="card" href="./Bom/Baruuk - Justiça/Baruuk.html">
+    <div class="icon-box"><img src="./zzicones/Baruuk.png"></div>
     <div class="nome">Baruuk</div>
     <div class="titulo">Deus da Justiça</div>
   </a>
+  
+  <a class="card" href="./Bom/Eleanor - Vida/Eleanor.html">
+    <div class="icon-box"><img src="./zzicones/Eleanor.png"></div>
+    <div class="nome">Eleanor</div>
+    <div class="titulo">Deusa da Vida</div>
+  </a>
 
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
+ <a class="card" href="./Bom/Ilyana - Cura/Ilyana.html">
+    <div class="icon-box"><img src="./zzicones/Ilyana.png"></div>
+    <div class="nome">Ilyana</div>
+    <div class="titulo">Deusa da Cura</div>
+  </a>
+ 
+  <a class="card" href="./Bom/Ulfred - Coragem/Ulfred.html">
+    <div class="icon-box"><img src="./zzicones/Ulfred.png"></div>
+    <div class="nome">Ûlfred</div>
+    <div class="titulo">Deus da Coragem</div>
+  </a>
 
 </div>
 
-<!-- ===== ESCOLHIDOS ===== -->
-<h2>Escolhidos</h2>
+<!-- ===== DEUSES NEUTROS ===== -->
+<h2>Deuses Neutros</h2>
 <div class="grid">
 
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-
+  <a class="card" href="./Neutro/Alberon - Sabedoria/Alberon.html">
+    <div class="icon-box"><img src="./zzicones/Alberon.png"></div>
+    <div class="nome">Alberon</div>
+    <div class="titulo">Deus da Sabedoria</div>
+  </a>
+  
+  <a class="card" href="./Neutro/Mirella - Trama/Mirella.html">
+    <div class="icon-box"><img src="./zzicones/Mirella.png"></div>
+    <div class="nome">Mirella</div>
+    <div class="titulo">Deusa da Trama e do Destino</div>
+  </a>
+  
+    <a class="card" href="./Neutro/Nyx - Morte/Nyx.html">
+    <div class="icon-box"><img src="./zzicones/Nyx.png"></div>
+    <div class="nome">Nyx</div>
+    <div class="titulo">Deusa da Morte</div>
+  </a>
 </div>
 
-<!-- ===== MERCANTES ===== -->
-<h2>Mercadores</h2>
+<!-- ===== DEUSES MAUS ===== -->
+<h2>Deuses Maus</h2>
 <div class="grid">
 
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div><div class="titulo">Deus da Destruição</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div><div class="titulo">Deus da Destruição</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div><div class="titulo">Deus da Destruição</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div><div class="titulo">Deus da Destruição</div></a>
+    <a class="card" href="./Ruim/Entrati - Tirania/Entrati.html">
+    <div class="icon-box"><img src="./zzicones/Entrati.png"></div>
+    <div class="nome">Entrati</div>
+    <div class="titulo">Deus da Tirania</div>
+  </a>
+  
+      <a class="card" href="./Ruim/Uriel - Destruição/Uriel.html">
+    <div class="icon-box"><img src="./zzicones/Uriel.png"></div>
+    <div class="nome">Uriel</div>
+    <div class="titulo">Deus da Destruição</div>
+  </a>
 
 </div>
 
