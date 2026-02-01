@@ -2,8 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUNDO</title>
-  <style>
+
+<style>
 body {
   margin: 0;
   padding: 20px;
@@ -14,25 +16,26 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  max-width: 1200px;
-  margin: auto;
+  width: 100%;
 }
 
+/* CARD */
 .card {
   text-decoration: none;
   color: white;
   background: #0f1e2e;
   border: 1px solid #2c4c6b;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 14px;
   text-align: center;
+  overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -41,43 +44,48 @@ h1 {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-.card h2 {
-  font-size: 18px;
-  margin: 8px 0;
-}
-
+/* IMAGEM */
 .icon-box {
   width: 100%;
   aspect-ratio: 1 / 1;
   background: #162b3f;
-  border: 1px solid #2c4c6b;
-  border-radius: 8px;
+  border-bottom: 1px solid #2c4c6b;
   overflow: hidden;
-  margin-bottom: 8px;
 }
 
 .icon-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* TÍTULO */
+.card h2 {
+  margin: 10px 0 12px 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+  body {
+    padding: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
 }
 </style>
-
-<!-- cola o STYLE BASE aqui -->
 </head>
+
 <body>
-  <div class="header-nav">
-
-  <div class="header-group"></div>
-
-  <div class="nav-title">
-    MUNDO
-  </div>
-
-  <div class="header-group"></div>
-
-</div>
-
 
 <h1>MUNDO</h1>
 
@@ -85,15 +93,30 @@ h1 {
 
   <a class="card" href="Deuses/index.html">
     <div class="icon-box">
-      <img src="assets/icons/deuses.png">
+      <img src="iconesgeral/iconeDeuses.png" alt="Deuses">
     </div>
     <h2>Deuses</h2>
   </a>
 
-  <!-- futuramente -->
-  <div class="card">
-    <div class="icon-box"></div>
-    <h2>Reinos</h2>
+  <a class="card" href="Regioes/index.html">
+    <div class="icon-box">
+      <img src="iconesgeral/iconeRegioes.png" alt="Regiões">
+    </div>
+    <h2>Regiões</h2>
+  </a>
+
+  <a class="card" href="Raças/index.html">
+    <div class="icon-box">
+      <img src="iconesgeral/iconeRaças.png" alt="Raças">
+    </div>
+    <h2>Raças</h2>
+  </a>
+
+  <div class="card" href="Organizaçoes/index.html">
+    <div class="icon-box">
+      <img src="iconesgeral/iconeOrganizaçoes.png" alt="Organizações">
+    </div>
+    <h2>Organizações</h2>
   </div>
 
 </div>
