@@ -9,7 +9,47 @@
   size: A4;
   margin: 10mm;
 }
+/* ====== HEADER DE NAVEGAÇÃO ====== */
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0f1e2e;
+  border: 1px solid #2c4c6b;
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 24px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
+.header-group {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  text-decoration: none;
+  color: #ffffff;
+  background: #162b3f;
+  border: 1px solid #2c4c6b;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.nav-btn:hover {
+  background: #1f3a56;
+  transform: translateY(-1px);
+}
+
+.nav-title {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  flex: 1;
+}
 body {
   margin: 10mm;
   padding: 0;
@@ -89,6 +129,27 @@ img {
 </head>
 
 <body>
+	<div class="header-nav">
+
+  <!-- VOLTAR -->
+  <div class="header-group">
+    <a class="nav-btn" href="../../index.html">Mundo</a>
+    <a class="nav-btn" href="../index.html">Panteão</a>
+  </div>
+
+  <!-- NOME DO DEUS -->
+  <div class="nav-title">
+    Alberon
+  </div>
+
+  <!-- TROCA DE DEUS -->
+  <div class="header-group">
+    <a class="nav-btn" href="../DeusAnterior/Anterior.html">◀ Anterior</a>
+    <a class="nav-btn" href="../ProximoDeus/Proximo.html">Próximo ▶</a>
+  </div>
+
+</div>
+
 
 <div class="pdf">
 
@@ -248,3 +309,4 @@ img {
 
 </body>
 </html>
+
