@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiefling</title>
+<style>
+body{
+margin:0;
+padding:24px;
+background:#0b1520;
+font-family:serif;
+color:#ffffff;
+}
+
+
+/* TÍTULO */
+.race-title{
+text-align:center;
+font-size:36px;
+margin-bottom:32px;
+  /* CORES */
+  color: #ffffff;
+
+  /* AJUSTE GERAL */
+  margin-bottom: 40px;
+}
+/* SUBLINHADO */
+.race-title::after{
+  content: "";
+  display: block;
+
+  /* CONTROLES PRINCIPAIS */
+  width: 120px;        /* largura da linha */
+  height: 3px;         /* espessura */
+  margin: 3px auto 0; /* distância do texto */
+
+  /* COR DA LINHA */
+  background: #2c4c6b;
+
+  /* ESTILO */
+  border-radius: 2px;
+}
+
+
+
+
+/* BLOCOS PADRÃO */
+.box{
+border:1px solid #2c4c6b;
+border-radius:14px;
+padding:16px 18px;
+background:#0f1e2e;
+}
+
+
+.box h3{
+margin:0 0 10px 0;
+font-size:18px;
+}
+
+
+/* GRID GERAL */
+.main{
+display:flex;
+flex-direction:column;
+gap:20px;
+max-width:1100px;
+margin:auto;
+}
+
+
+/* LINHAS DUPLAS COM TAMANHO IGUAL */
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+
+/* GARANTE MESMA ALTURA */
+.row .box{
+display:flex;
+flex-direction:column;
+}
+
+/* LINHAS DUPLAS COM TAMANHO IGUAL */
+.row2{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:20px;
+}
+
+
+/* GARANTE MESMA ALTURA */
+.row2 .box{
+display:flex;
+flex-direction:column;
+}
+
+/* GALERIA */
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* CAIXA FIXA / RESPONSIVA */
+.img-box{
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* sempre quadrado */
+  background: #162b3f;
+  border: 2px solid #2c4c6b;
+  border-radius: 12px;
+  overflow: hidden;     /* impede a img de estourar */
+}
+
+/* IMAGEM SE ADAPTA À CAIXA */
+.img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* corta, mas não distorce */
+  display: block;
+}
+
+
+.gallery div{
+aspect-ratio:1/1;
+background:#162b3f;
+border:2px solid #2c4c6b; /* fina, mas visível */
+border-radius:12px;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  gap:12px;
+  margin-top:40px;
+  align-items:center;
+}
+
+/* BOTÕES */
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#ffffff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+/* ESPAÇADORES */
+.nav-spacer{
+  height:1px; /* ocupa espaço sem aparecer */
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+/* TABLET */
+@media (max-width: 768px){
+
+  /* GALERIA */
+  .gallery{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* NAV – meio termo */
+  .nav{
+    grid-template-columns: 1fr 0.5fr 2fr 0.5fr 1fr;
+  }
+
+  .nav-btn{
+    padding:8px 6px;
+    font-size:13px;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 480px){
+
+  /* LINHAS VIRAM COLUNA */
+  .row,
+  .row2{
+    grid-template-columns: 1fr;
+  }
+
+  /* GALERIA 1 POR LINHA */
+  .gallery{
+    grid-template-columns: 1fr;
+  }
+
+  /* NAV – 3 BOTÕES IGUAIS */
+  .nav{
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .nav-spacer{
+    display:none;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+
+<div class="race-title">Tiefling</div>
+
+
+<div class="main">
+<div style = "text-align:center;">
+<b>Modificadores:</b> +1 em inteligência, +1 em carisma
+</div>
+<div class="row">
+<div class="box" style = "text-align:center;">
+<h3>Características físicas</h3>
+• Chifres &nbsp • Cauda &nbsp • Traços infernais  
+</div>
+
+
+<div class="box" style = "text-align:center;">
+<h3>Personalidade típica</h3>
+• Sarcástico &nbsp • Desconfiado &nbsp • Resiliente   
+</div>
+</div>
+
+<div class="row">
+<div class="box" style = "text-align:center;">
+<h3>Relação com a magia</h3>
+  • Inata &nbsp • Sombria &nbsp • Muitas vezes involuntária
+</div>
+
+
+<div class="box" style = "text-align:center;">
+<h3>Relação com o corpo</h3>
+• Marca inevitável  
+</div>
+</div>
+
+
+<div class="row2">
+<div class="box" style = "text-align:center;">
+<h3>Sucesso</h3>
+• Autonomia
+</div>
+
+
+<div class="box" style = "text-align:center;">
+<h3>Tabu</h3>
+• Subimissão
+</div>
+
+<div class="box" style = "text-align:center;">
+<h3>Aprendizado</h3>
+•  Estudo solitário
+</div>
+</div>
+<div class="box" style = "text-align:center;">
+<h3>Cultura</h3>
+• Grande estigma por sua linhagem demoníaca <br> • Tendem a ser temidos em regiões sem muito contato com sua raça
+</div>
+
+<div class="gallery">
+  <div class="img-box">
+    <img src="tiefling1.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="tiefling2.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="tiefling3.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="tiefling4.png" alt="">
+  </div>
+
+
+</div>
+
+
+
+<div class="nav">
+
+  <a class="nav-btn prev" href="../Meio-orc/Meio-orc.html">← Anterior</a>
+
+  <div class="nav-spacer"></div>
+
+  <a class="nav-btn back" href="../index.html">Voltar</a>
+
+  <div class="nav-spacer"></div>
+
+  <a class="nav-btn next" href="../Anao/Anao.html">Próximo →</a>
+
+</div>
+
+</div>
+
+
+</body>
+</html>
