@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anão</title>
+<style>
+body{
+margin:0;
+padding:24px;
+background:#0b1520;
+font-family:serif;
+color:#ffffff;
+}
+
+
+/* TÍTULO */
+.race-title{
+text-align:center;
+font-size:36px;
+margin-bottom:32px;
+  /* CORES */
+  color: #ffffff;
+
+  /* AJUSTE GERAL */
+  margin-bottom: 20px;
+}
+/* SUBLINHADO */
+.race-title::after{
+  content: "";
+  display: block;
+
+  /* CONTROLES PRINCIPAIS */
+  width: 120px;        /* largura da linha */
+  height: 3px;         /* espessura */
+  margin: 3px auto 0; /* distância do texto */
+
+  /* COR DA LINHA */
+  background: #2c4c6b;
+
+  /* ESTILO */
+  border-radius: 2px;
+}
+
+
+
+
+/* BLOCOS PADRÃO */
+.box{
+border:1px solid #2c4c6b;
+border-radius:14px;
+padding:16px 18px;
+background:#0f1e2e;
+font-size:22px;
+}
+
+
+.box h3{
+margin:0 0 8px 0;
+font-size:30px;
+}
+
+
+/* GRID GERAL */
+.main{
+display:flex;
+flex-direction:column;
+gap:12px;
+max-width:1100px;
+margin:auto;
+}
+
+
+/* LINHAS DUPLAS COM TAMANHO IGUAL */
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+
+/* GARANTE MESMA ALTURA */
+.row .box{
+display:flex;
+flex-direction:column;
+}
+
+/* LINHAS DUPLAS COM TAMANHO IGUAL */
+.row2{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:12px;
+}
+.row2{
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+gap:12px;
+}
+
+/* GARANTE MESMA ALTURA */
+.row2 .box{
+display:flex;
+flex-direction:column;
+}
+
+
+  .row-special{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap:12px;
+  }
+
+
+/* GALERIA */
+.gallery{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* CAIXA FIXA / RESPONSIVA */
+.img-box{
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* sempre quadrado */
+  background: #162b3f;
+  border: 2px solid #2c4c6b;
+  border-radius: 12px;
+  overflow: hidden;     /* impede a img de estourar */
+}
+
+/* IMAGEM SE ADAPTA À CAIXA */
+.img-box img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;    /* corta, mas não distorce */
+  display: block;
+}
+
+
+.gallery div{
+aspect-ratio:1/1;
+background:#162b3f;
+border:2px solid #2c4c6b; /* fina, mas visível */
+border-radius:12px;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+
+
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+/* BOTÕES */
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#ffffff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:20px 12px;
+  display:block;
+}
+
+/* ESPAÇADORES */
+.nav-spacer{
+  height:1px; /* ocupa espaço sem aparecer */
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+/* TABLET */
+@media (max-width: 768px){
+
+  /* GALERIA */
+  .gallery{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* NAV – meio termo */
+  .nav{
+    grid-template-columns: 1fr 0.5fr 2fr 0.5fr 1fr;
+  }
+
+  .nav-btn{
+    padding:8px 6px;
+    font-size:13px;
+  }
+}
+
+/* CELULAR */
+@media (max-width: 480px){
+
+  /* LINHAS VIRAM COLUNA */
+  .row,
+  .row2,
+  .row-special
+  .race-grid{
+    grid-template-columns: 1fr;gap:12px;
+  }
+
+  /* GALERIA 1 POR LINHA */
+  .gallery{
+    grid-template-columns: 1fr;gap:12px;
+  }
+
+  /* NAV – 3 BOTÕES IGUAIS */
+  .nav{
+    grid-template-columns: repeat(3, 1fr);gap:12px;
+  }
+
+  .nav-spacer{
+    display:none;
+  }
+}
+/* =========================
+   GRID PRINCIPAL – DESKTOP
+========================= */
+@media (min-width: 769px){
+
+.race-grid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto auto auto auto;
+  gap:12px;
+}
+
+  /* =========================
+     POSICIONAMENTO
+  ========================= */
+
+  /* Características físicas
+     2 colunas x 2 linhas */
+  .fisico{
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+
+    /* CONTROLE DE TAMANHO */
+    max-height: 320px; /* <<< AJUSTA AQUI */
+    overflow:auto;
+  }
+
+  /* Personalidade típica
+     2 colunas x 1 linha */
+  .personalidade{
+    grid-column: 3 / 5;
+    grid-row: 1 / 3;
+  }
+
+  /* Bloco corpo + magia (mesma borda) */
+  .corpo-magia{
+    grid-column: 1 / 5;
+    grid-row: 3;
+
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0;
+
+    border:1px solid #2c4c6b;
+    border-radius:14px;
+    overflow:hidden;
+    background:#0f1e2e;
+  }
+
+  .corpo-magia .box{
+    border:none;
+    border-radius:0;
+    background:transparent;
+  }
+
+  /* divisória central */
+  .corpo-magia .box + .box{
+    border-left:1px solid #2c4c6b;
+  }
+
+  /* Coluna da direita */
+  .sucesso{
+    grid-column:5;
+    grid-row:1;
+  }
+
+  .tabu{
+    grid-column:5;
+    grid-row:2;
+  }
+
+  .aprendizado{
+    grid-column:5;
+    grid-row:3;
+  }
+    .cultura{
+    grid-column:1/ -1;
+    grid-row:4;
+	margin-bottom:12px;
+  }
+}
+
+
+
+</style>
+</head>
+<body>
+
+
+<div class="race-title">ANÃO</div>
+
+
+<div class="main">
+<div style = "text-align:center;">
+<b>Modificadores:</b> +2 Constituição 
+</div>
+<div class="race-grid">
+
+<div class="box fisico" style = "text-align:center;">
+<h3>Características físicas</h3>
+• Baixo <br> 
+• Largo/Robusto <br>
+• Barba marcante
+</div>
+
+<div class="box sucesso" style = "text-align:center;">
+<h3>Sucesso</h3>
+• Honrar o clã
+</div>
+
+<div class="box tabu" style = "text-align:center;">
+<h3>Tabu</h3>
+• Esquecer um juramento
+</div>
+
+<div class="box aprendizado" style = "text-align:center;">
+<h3>Aprendizado</h3>
+• Mestre-aprendiz
+</div>
+
+<div class="box personalidade" style = "text-align:center;">
+<h3>Personalidade típica</h3>
+• Teimoso <br>
+• Honrado <br>
+• Rancoroso <br>
+• Leal ao clã
+</div>
+
+
+<div class="corpo-magia">
+<div class="box magia" style = "text-align:center;">
+<h3>Relação com a magia</h3>
+• Respeitam, mas preferem o aço <br> 
+</div>
+
+
+<div class="box corpo" style = "text-align:center;">
+<h3>Relação com o corpo</h3>
+• Cicatrizes e barba são status
+</div>
+</div>
+
+<div class="box cultura" style = "text-align:center;">
+<h3>Cultura</h3>
+• Especialistas na obra da forja <br>
+• Possuem um senso único de lealdade
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="gallery">
+  <div class="img-box">
+    <img src="anao1.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="anao2.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="anao3.png" alt="">
+  </div>
+
+  <div class="img-box">
+    <img src="anao4.png" alt="">
+  </div>
+</div>
+
+
+
+<div class="nav">
+
+  <a class="nav-btn prev" href="../Tiefling/Tiefling.html">← Anterior</a>
+
+  <div class="nav-spacer"></div>
+
+  <a class="nav-btn back" href="../index.html">Voltar</a>
+
+  <div class="nav-spacer"></div>
+
+  <a class="nav-btn next" href="../Draconato/Draconato.html">Próximo →</a>
+
+</div>
+
+
+</div>
+
+
+</body>
+</html>
