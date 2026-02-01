@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REGIÕES</title>
+<style>
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+
+
+
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1520;
+  font-family:serif;
+  color:#fff;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+/* ================= TÍTULO ================= */
+
+h1{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr); /* mantém desktop */
+  gap:24px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* ================= REGIÃO ================= */
+
+.region{
+  text-align:center;
+}
+
+/* FOTO */
+.region .photo{
+  aspect-ratio:1/1;
+  background:#162b3f;
+  border:2px solid #2c4c6b; /* borda de 2px */
+  border-radius:16px;
+  overflow:hidden;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.region .photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.region .photo a{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.region .photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* NOME DA REGIÃO */
+.region h2{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:normal;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px){
+
+  .grid{
+    grid-template-columns:1fr; /* uma por linha */
+    gap:20px;
+  }
+
+  .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
+  }
+
+  .region h2{
+    font-size:22px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a href="../Deuses/index.html">Deuses</a>
+    <a href="../Raças/index.html">Raças</a>
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
+    <a href="../Organizaçoes/index.html">Organizações</a>
+  </div>
+</div>
+
+<div class="grid">
+
+  <div class="region">
+    <div class="photo">
+      <a href="#">
+        <img src="regiao1.png" alt="Região I">
+      </a>
+    </div>
+    <h2>Região I</h2>
+  </div>
+
+  <div class="region">
+    <div class="photo">
+      <a href="#">
+        <img src="regiao2.png" alt="Região II">
+      </a>
+    </div>
+    <h2>Região II</h2>
+  </div>
+
+  <div class="region">
+    <div class="photo">
+      <a href="#">
+        <img src="regiao3.png" alt="Região III">
+      </a>
+    </div>
+    <h2>Região III</h2>
+  </div>
+
+  <div class="region">
+    <div class="photo">
+      <a href="#">
+        <img src="regiao4.png" alt="Região IV">
+      </a>
+    </div>
+    <h2>Região IV</h2>
+  </div>
+
+  <div class="region">
+    <div class="photo">
+      <a href="#">
+        <img src="regiao5.png" alt="Região V">
+      </a>
+    </div>
+    <h2>Região V</h2>
+  </div>
+
+</div>
+
+
+
+</body>
+</html>
+
