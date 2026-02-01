@@ -2,128 +2,257 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ÛLFRED</title>
 
 <style>
-@page {
-  size: A4;
-  margin: 10mm;
-}
-.header-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0f1e2e;
-  border: 1px solid #2c4c6b;
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 24px;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+/* =========================
+   BASE
+========================= */
+* { box-sizing: border-box; }
 
-.header-group {
-  display: flex;
-  gap: 10px;
-}
-
-.nav-btn {
-  text-decoration: none;
-  color: #ffffff;
-  background: #162b3f;
-  border: 1px solid #2c4c6b;
-  border-radius: 8px;
-  padding: 6px 12px;
-  font-size: 14px;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.nav-btn:hover {
-  background: #1f3a56;
-  transform: translateY(-1px);
-}
-
-.nav-title {
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
-  flex: 1;
-}
-body {
-  margin: 10mm;
-  padding: 0;
-  background: #0b1520;
+body{
+  margin:0;
+  padding:16px;
   font-family: serif;
-  color: #ffffff;
+  background:#0b1520;
+  color:#fff;
+  line-height:1.4;
 }
 
-/* CONTROLE GERAL DO PDF */
-.pdf {
-  width: 190mm;
-  display: flex;
-  gap: 6mm;
-  align-items: flex-start;
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
 }
 
-/* EVITA QUEBRAS FEIAS */
-.box {
-  break-inside: avoid;
-  page-break-inside: avoid;
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
 }
 
-/* COLUNAS */
-.left {
-  width: 45mm;
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.pdf{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.center {
+/* =========================
+   COLUNAS
+========================= */
+.left, .center{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+}
+
+.left{
+  flex:0 0 200px;
+  text-align:center;
+}
+
+.center{
   flex:1;
+  min-width:250px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
 }
 
-.right {
-  width: 45mm;
+/* =========================
+   BOXES
+========================= */
+.box{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
 }
 
-/* ZERA DESLOCAMENTO GLOBAL */
-* {
-  box-sizing: border-box;
+.box h1, .box h2, .box h3{
+  margin:4px 0;
 }
 
-/* REMOVE EMPURRÃO DOS TÍTULOS */
-.box h1,
-.box h2,
-.box h3,
-.box h4 {
-  margin-top: 0;
-  margin-bottom: 2mm;
+/* =========================
+   IMAGENS GRANDES
+========================= */
+.img-frame{
+  width:100%;
+  height:100%;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#000;
+  border-radius:8px;
+  border:1px solid #2c4c6b;
 }
 
-/* AJUSTE FINO DO TEXTO */
-.box {
-  padding-top: 2mm;
+.img-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
-/* IMAGENS NÃO CRIAM ESPAÇO FANTASMA */
-img {
-  display: block;
+
+/* =========================
+   ÍCONE / SÍMBOLO QUADRADO
+========================= */
+.icon-frame{
+  width:100%;
+  aspect-ratio:1 / 1;
+  padding:8px;
+  background:#2c4c6b;
+  border-radius:8px;
+  border:1px solid #2c4c6b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.img-frame {
-  width: 100%;
-  height: 65mm;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 8px;
-  background: #000;
-  border: 1px solid #2c4c6b;   /* 👈 linha clara */
+.icon-frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:4px;
 }
 
-.img-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  transform: scale(1.05);
+
+/* =========================
+   GRID ESPECIAL
+========================= */
+.row-special{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+  align-items:stretch;
+}
+
+/* =========================
+   POSICIONAMENTO MANUAL
+========================= */
+
+/* Imagem central */
+.img-central{
+  grid-column: 2;
+  grid-row: 1 / 5;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+/* História */
+.historia{
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+
+/* Poderes */
+.poderes{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Conhecido por */
+.conhecido{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* Exige */
+.exige{
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Não tolera */
+.tolera{
+  grid-column: 4;
+  grid-row: 1;
+}
+
+/* Classes */
+.classes{
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Cultuado por */
+.cultuado{
+  grid-column: 4;
+  grid-row: 3;
+}
+
+
+/* =========================
+   BOX DE ÍCONE
+========================= */
+.icon-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.icon-frame{
+  max-width:auto;   /* controle do tamanho */
+  background:#2c4c6b;
+}
+
+/* =========================
+   RESPONSIVO — CELULAR
+========================= */
+@media (max-width: 768px){
+
+  .row-special{
+    grid-template-columns: 1fr;
+    gap:10px;
+  }
+
+  .img-central{
+    grid-column: 1;
+    grid-row: 1;
+    justify-self:center;
+  }
+
+  .historia{ grid-row:2; }
+  .poderes{ grid-row:3; }
+  .conhecido{ grid-row:4; }
+  .exige{ grid-row:5; }
+  .tolera{ grid-row:6; }
+  .classes{ grid-row:7; }
+  .cultuado{ grid-row:8; }
+
+  .left,
+  .center{
+    flex:1;
+    width:100%;
+    padding:10px;
+  }
+
+  .box{
+    padding:10px;
+    border-radius:8px;
+  }
+
+  .box h1{ font-size:1.4rem; }
+  .box h2{ font-size:1.2rem; }
+  .box h3{ font-size:1.05rem; }
 }
 </style>
 </head>
@@ -133,17 +262,20 @@ img {
 <div class="pdf">
 
   <!-- ESQUERDA -->
-  <div class="left box" style="display:flex; flex-direction:column; gap:4mm; background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:4mm; text-align:center;">
-    <div style="background:#1f3a56; border:1px solid #2c4c6b; border-radius:8px; padding:2mm; font-size:18px; font-weight:bold;">ÛLFRED</div>
+  <div class="left">
 
-    <div style="background:#162b3f; border:1px solid #2c4c6b; border-radius:8px; padding:3mm;">
-      <img src="150px-Tempus_Icon.png" style="width:100%; height:auto;">
-    </div>
-  <div style="background:#1f3a56; border:1px solid #2c4c6b; border-radius:8px; padding:2mm; font-size:18px; font-weight:bold;">
-    O BRAVO
+    <div class="box" style="font-size:22px;font-weight:bold; margin-bottom:8px; background:#2c4c6b">ÛLFRED</div>
+
+<div class="box icon-box" style="margin-bottom: 8px; background:#2c4c6b">
+  <div class="icon-frame">
+    <img src="coragemicon.png" alt="Leão">
   </div>
+</div>
 
-    <div style="background:#162b3f; border:1px solid #2c4c6b; border-radius:8px; padding:4mm; font-size:14px; line-height:1.4;">
+
+    <div class="box" style="font-size:20px;font-weight:bold ;margin-bottom: 8px; ">O BRAVO</div>
+
+    <div class="box" style="font-size:14px;margin-bottom: 8px;">
       <strong>Símbolo:</strong><br>
       Leão
       <hr>
@@ -153,150 +285,87 @@ img {
       <strong>Tendência:</strong><br>
       Caótica e Boa
     </div>
-<div class="img-frame">
 
-    <img src="coragem.png" alt="O Bravo">
-  </div>
-  <span style="
-  position:relative;
-  display:inline-block;
-  font-weight:bold;
-  color:#ffffff;
-">
-  Outros nomes
-  <span style="
-    position:absolute;
-    left:50%;
-	transform:translateX(-50%);
-    bottom:-4px;      /* ↕ distância do texto */
-    width:75%;        /* 📏 largura da linha */
-    height:1px;       /* ─ grossura */
-    background:#2c4c6b;
-  "></span>
-</span>
-      <div style="background:#162b3f; border:1px solid #2c4c6b; border-radius:8px; padding:1.5mm; font-size:14px; line-height:1.4;">
-	 
+    <div class="box">
+      <strong>Outros nomes</strong><br>
       • Rugido Valente<br>
 	  • Cavaleiro da Juba Dourada<br>
-	  </div>
+    </div>
+
   </div>
 
   <!-- CENTRO -->
-  <div class="center" style="display:flex; flex-direction:column; gap:4mm;">
+  <div class="center">
 
-    <div class="box" style="background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:6mm; text-align:center;">
+    <div class="box">
       <i>Dogma Central</i>
-      <h1 style="font-size:28px; margin:4mm 0;">Não existe medo que não possa ser domado</h1>
-      <i style="font-size:16px; line-height:1.4;">
+      <h1>Não existe medo que não possa ser domado</h1>
+      <i>
         “Não permita que o medo tomar conta do seu espírito - Dome-o com a bravura de mil leões e mostre o coração valente que jaz em seu peito.”
       </i>
     </div>
 
-    <div class="box" style="background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:3mm; text-align:center; line-height:1.4;">
-      <h2>História / Mitos</h2>
+    <div class="row-special">
+
+      <div class="img-frame img-central">
+        <img src="coragem.png" alt="O Bravo">
+      </div>
+
+      <div class="box historia">
+        <h2>História / Mitos</h2>
       • Mobilizou a linha de frente para enfrentar os arcanjos de Kalymos, sua bravura foi peça chave para a vitória do panteão 
-	  <br>•H2
-      <h3 style="margin-top:4mm;">Conhecido por:</h3>
-      • Enfrentar seus medos&nbsp; • Proteger os que precisam<br> • Agir apesar do risco
-    </div>
+      </div>
 
-    <div class="box" style="background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:3mm; text-align:center; line-height:1.4;">
-      <h2>Poderes / Influência</h2>
-      • Bravura sobrenatural&nbsp; • Inspiração heroica&nbsp; • Resistência ao terror
-    </div>
+      <div class="box poderes">
+        <h2>Poderes</h2>
+      • Bravura sobrenatural<br> • Inspiração heroica<br> • Resistência ao terror
+      </div>
 
-<div class="box" style="background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:2.5mm;">
+      <div class="box conhecido">
+        <h3>Conhecido por</h3>
+      • Enfrentar seus medos<br> • Proteger os que precisam<br> • Agir apesar do risco
+      </div>
 
-<div style="
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  text-align: center;
-">
-
-  <!-- LINHA VERTICAL CENTRAL -->
-  <div style="
-    position: absolute;
-    top: 2mm;
-    bottom: 2mm;
-    left: 50%;
-    width: 1px;
-    background: #2c4c6b;
-  "></div>
-
-    <!-- EXIGE -->
-   <div style= "line-height:1.4;">
-      <h2>Exige</h2>
+      <div class="box exige">
+        <h3>Exige</h3>
       • Enfrentar seus medos<br>
       • Proteger os que precisam<br>
       • Agir mesmo com risco
-    </div>
+      </div>
 
-    <!-- NÃO TOLERA -->
-    <div style= "line-height:1.4;">
-      <h2>Não tolera</h2>
+      <div class="box tolera">
+        <h3>Não tolera</h3>
       • Covardia egoísta<br>
       • Sucumbir ao medo<br>
       • Abuso de poder
-    </div>
+      </div>
 
-  </div>
-</div>
-
-<div class="box" style="background:#0f1e2e; border:1px solid #2c4c6b; border-radius:10px; padding:2.5mm;">
-
-<div style="
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4mm;
-  text-align: center;
-">
-
-  <!-- LINHA VERTICAL CENTRAL -->
-  <div style="
-    position: absolute;
-    top: 2mm;
-    bottom: 2mm;
-    left: 50%;
-    width: 1px;
-    background: #2c4c6b;
-  "></div>
-
-    <!-- CULTUADO POR -->
-   <div style= "line-height:1.4;">
-      <h3>Cultuado por</h3>
-      • Humanos 
-      • Orcs honrados<br>
-      • Draconatos 
-      • Anões
-    </div>
-
-    <!-- CLASSES ASSOCIADAS -->
- <div style= "line-height:1.4;">
-      <h3>Classes associadas</h3>
+      <div class="box classes">
+        <h3>Classes</h3>
       • Bárbaro<br>
-      • Ranger
+      • Ranger <br>
       • Guerreiro<br>
+      </div>
+
+      <div class="box cultuado">
+        <h3>Cultuado por</h3>
+        • Humanos <br>
+      • Orcs honrados<br>
+      • Draconatos <br> 
+      • Anões <br>
+      </div>
+
     </div>
-
   </div>
-  
 </div>
-<div class="header-nav">
-		  <div class="header-group">
-    <a class="nav-btn" href="../DeusAnterior/Anterior.html">◀ Anterior</a>
-  </div>
-		  <div class="header-group">
-	  <a class="nav-btn" href="../../index.html">Panteão</a>
-  </div>
-  <div class="header-group">
-    <a class="nav-btn" href="../Ulfred - Coragem/ulfred.html">Ulfred ▶</a>
-  </div>
 
-  </div>
-
+<div class="nav">
+  <a class="nav-btn" href="#">← Anterior</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="../../index.html">Voltar</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="#">Próximo →</a>
+</div>
 
 </body>
 </html>
