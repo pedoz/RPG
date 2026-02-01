@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baruuk</title>
+
+<style>
+/* =========================
+   BASE
+========================= */
+* { box-sizing: border-box; }
+
+body{
+  margin:0;
+  padding:16px;
+  font-family: serif;
+  background:#0b1520;
+  color:#fff;
+  line-height:1.4;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.pdf{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* =========================
+   COLUNAS
+========================= */
+.left, .center{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+}
+
+.left{
+  flex:0 0 200px;
+  text-align:center;
+}
+
+.center{
+  flex:1;
+  min-width:250px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* =========================
+   BOXES
+========================= */
+.box{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+}
+
+.box h1, .box h2, .box h3{
+  margin:4px 0;
+}
+
+/* =========================
+   IMAGENS
+========================= */
+.img-frame{
+  width:100%;
+  height:100%;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#1f3a56;
+  border-radius:8px;
+  border:1px solid #2c4c6b;
+}
+
+.img-frame img{
+  width:100%;
+  height:100%;
+  background:#1f3a56;
+  object-fit:cover;
+}
+
+/* =========================
+   GRID ESPECIAL
+========================= */
+.row-special{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+  align-items:stretch;
+}
+
+/* =========================
+   POSICIONAMENTO MANUAL
+========================= */
+
+/* Imagem central */
+.img-central{
+  grid-column: 2 ;
+  grid-row: 1 / 5;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+/* História */
+.historia{
+  grid-column: 1;
+  grid-row: 1 / 4;
+}
+
+/* Poderes */
+.poderes{
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Conhecido por */
+.conhecido{
+  grid-column: 3;
+  grid-row: 3;
+}
+
+/* Exige */
+.exige{
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Não tolera */
+.tolera{
+  grid-column: 4;
+  grid-row: 1;
+}
+
+/* Classes */
+.classes{
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Cultuado por */
+.cultuado{
+  grid-column: 4;
+  grid-row: 3;
+}
+
+/* =========================
+   RESPONSIVO — CELULAR
+========================= */
+@media (max-width: 768px){
+
+  .row-special{
+    grid-template-columns: 1fr;
+    gap:10px;
+  }
+
+  .img-central{
+    grid-column: 1;
+    grid-row: 1;
+    justify-self:center;
+  }
+
+  .historia{ grid-row:2; }
+  .poderes{ grid-row:3; }
+  .conhecido{ grid-row:4; }
+  .exige{ grid-row:5; }
+  .tolera{ grid-row:6; }
+  .classes{ grid-row:7; }
+  .cultuado{ grid-row:8; }
+
+  .left,
+  .center{
+    flex:1;
+    width:100%;
+    padding:10px;
+  }
+
+  .box{
+    padding:10px;
+    border-radius:8px;
+  }
+
+  .box h1{ font-size:1.4rem; }
+  .box h2{ font-size:1.2rem; }
+  .box h3{ font-size:1.05rem; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="pdf">
+
+  <!-- ESQUERDA -->
+  <div class="left">
+
+    <div class="box" style="font-size:22px;font-weight:bold;  margin-bottom: 8px;background:#1f3a56">BARUUK</div>
+
+    <div class="box" style = " margin-bottom: 8px;background:#1f3a56">
+      <img src="150px-Kelemvor_Icon.png" style="width:100%;">
+    </div>
+
+    <div class="box" style="font-size:20px;font-weight:bold;  margin-bottom: 8px; background:#1f3a56">O JUIZ</div>
+
+    <div class="box" style="font-size:14px;  margin-bottom: 8px;background:#1f3a56">
+      <strong>Símbolo:</strong><br>
+      Balança Ancestral
+      <hr>
+      <strong>Domínio:</strong><br>
+      • Leis <br>• Juramentos <br>• Verdade
+      <hr>
+      <strong>Tendência:</strong><br>
+      Ordem e Bom
+    </div>
+
+    <div class="box" style= "background:#1f3a56">
+      <strong>Outros nomes</strong><br>
+      • Guardião da Balança<br>
+      • A Lâmina Cega
+    </div>
+
+  </div>
+
+  <!-- CENTRO -->
+  <div class="center">
+
+    <div class="box">
+      <i>Dogma Central</i>
+      <h1>Justiça e Honra acima de tudo</h1>
+      <i>
+        “A verdadeira justiça reside não na força de punir, mas no ímpeto de ser justo quando ninguém observa.”
+      </i>
+    </div>
+
+    <div class="row-special">
+
+      <div class="img-frame img-central">
+        <img src="justiça.png" alt="O Justo">
+      </div>
+
+      <div class="box historia">
+        <h2>História / Mitos</h2>
+        • Foi quem baniu Kalymos, junto com sua irmã mais velha, Mirella, para o plano além
+      </div>
+
+      <div class="box poderes">
+        <h2>Poderes</h2>
+        • Revelar a culpa<br>
+        • A Balança Divina<br>
+        • Forçar juramentos sagrados
+      </div>
+
+      <div class="box conhecido">
+        <h3>Conhecido por</h3>
+        • Porta-voz do Panteão<br>
+        • Impiedoso contra o mal
+      </div>
+
+      <div class="box exige">
+        <h3>Exige</h3>
+        • Cumprir promessas<br>
+        • Julgamento imparcial<br>
+        • Ordem social
+      </div>
+
+      <div class="box tolera">
+        <h3>Não tolera</h3>
+        • Corrupção<br>
+        • Abuso de poder<br>
+        • Punição injusta
+      </div>
+
+      <div class="box classes">
+        <h3>Classes</h3>
+        • Paladino<br>
+        • Clérigo<br>
+        • Guerreiro
+      </div>
+
+      <div class="box cultuado">
+        <h3>Cultuado por</h3>
+        • Humanos
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <a class="nav-btn" href="#">← Anterior</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="../../index.html">Voltar</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="#">Próximo →</a>
+</div>
+
+</body>
+</html>
