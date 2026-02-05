@@ -135,69 +135,76 @@ body{
 }
 
 
+
 /* =========================
    GRID ESPECIAL
 ========================= */
 .row-special{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:12px;
-  align-items:stretch;
+display: grid;
+  /* Define larguras fixas para as colunas das pontas e flexível para a imagem */
+  grid-template-columns: 280px 1.2fr 280px 250px; 
+  gap: 12px;
+  align-items: stretch;
 }
 
 /* =========================
-   POSICIONAMENTO MANUAL
+   POSICIONAMENTO MANUAL - AJUSTADO
 ========================= */
 
-/* Imagem central */
-.img-central{
+/* História (Coluna 1) - Agora compactada e justificada */
+.historia {
+  grid-column: 1;
+  grid-row: 1 / 4; /* Aumentado para 5 para alinhar com a altura da imagem */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem central (Coluna 2) */
+.img-central {
   grid-column: 2;
   grid-row: 1 / 5;
   justify-self: stretch;
   align-self: stretch;
 }
 
-/* História */
-.historia{
+/* Exige (Coluna 3, Linha 1) */
+.exige {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Poderes (Coluna 3, Linha 2 em diante) */
+.poderes {
+  grid-column: 3 / 5;
+  grid-row: 3 / 5;
+}
+
+/* Não tolera (Coluna 4, Linha 1) */
+.tolera {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+/* Classes (Coluna 4, Linha 2) */
+.classes {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Cultuado por (Coluna 4, Linha 3) */
+.cultuado {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Conhecido por (Coluna 4, Linha 4) */
+.conhecido {
   grid-column: 1;
-  grid-row: 1 / 4;
+  grid-row: 4;
 }
 
-/* Poderes */
-.poderes{
-  grid-column: 3;
-  grid-row: 2;
-}
-
-/* Conhecido por */
-.conhecido{
-  grid-column: 3;
-  grid-row: 3;
-}
-
-/* Exige */
-.exige{
-  grid-column: 3;
-  grid-row: 1;
-}
-
-/* Não tolera */
-.tolera{
-  grid-column: 4;
-  grid-row: 1;
-}
-
-/* Classes */
-.classes{
-  grid-column: 4;
-  grid-row: 2;
-}
-
-/* Cultuado por */
-.cultuado{
-  grid-column: 4;
-  grid-row: 3;
-}
 
 
 /* =========================
@@ -388,14 +395,17 @@ body{
 
       <div class="box poderes">
         <h2>Poderes</h2>
-        • Ruína<br>
-        • Deturpação da razão<br>
-        • Fúria impiedosa
+        <h3>• Ruína</h3>
+		Causa dano dobrado em objetos. Pode reduzir permanentemente a CA de armaduras não-mágicas em -1<br>
+        <h3>• Deturpação da razão</h3>
+		Alvo entra em delírio e deve atacar a criatura mais próxima (amiga ou inimiga) por 1 min<br>
+        <h3>• Fúria impiedosa</h3>
+		Por 1 min: +Dano (CAR ou FOR), ignora resistências, mas perde -2 na CA e não pode ser curado por outros<br>
       </div>
 
       <div class="box conhecido">
         <h3>Conhecido por</h3>
-		Ser Impiedoso
+		• Ser Impiedoso
       </div>
 
       <div class="box exige">
