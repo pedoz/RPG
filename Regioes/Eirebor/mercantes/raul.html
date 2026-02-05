@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORGANIZAÇÔES</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1520;
+  font-family:serif;
+  color:#fff;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+/* ================= TÍTULO ================= */
+
+h1{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:26px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.guilda{
+  text-align:center;
+}
+
+.guilda h2{
+  margin:0 0 4px 0;
+  font-size:18px;
+}
+
+
+.photo{
+  aspect-ratio:1/1;
+  background:#162b3f;
+  border:2px solid #2c4c6b;
+  border-radius:12px;
+  overflow:hidden;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+
+.photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.photo a{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px){
+  .grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
+  }
+
+  .race h2{
+    font-size:20px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a href="../Deuses/index.html">Deuses</a>
+    <a href="../Regioes/index.html">Regiões</a>
+    <a href="../Raças/index.html">Raças</a>
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
+  </div>
+</div>
+
+<h1>Organizações & Guildas</h1>
+
+<!-- GRID -->
+<div class="grid">
+
+<div class="guilda">
+  <h2>Guilda dos Aventureiros</h2>
+  <div class="separator"></div>
+  <div class="photo">
+    <a href="Aventureiros/Aventureiros.html">
+      <img src="zzicons/avent.jpg" alt="Aventureiros">
+    </a>
+  </div>
+</div>
+
+
+<!---
+<div class="guilda">
+  <h2>GUILDA 2</h2>
+  <div class="separator"></div>
+  <div class="photo">
+    <a href="Draconato/Draconato.html">
+      <img src=".png" alt="Ícone Draconato">
+    </a>
+  </div>
+</div>
+
+<div class="guilda">
+  <h2>GUILDA 3</h2>
+  <div class="separator"></div>
+  <div class="photo">
+    <a href="Drow/Drow.html">
+      <img src=".png" alt="Ícone Drow">
+    </a>
+  </div>
+</div>
+
+<div class="guilda">
+  <h2>GUILDA 4</h2>
+  <div class="separator"></div>
+  <div class="photo">
+    <a href="Elfo/Elfo.html">
+      <img src=".png" alt="Ícone Elfo">
+    </a>
+  </div>
+</div>
+
+--->
+
+
+</div>
+
+</body>
+</html>
