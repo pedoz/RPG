@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NPCs</title>
+<title>Deuses</title>
 
 <style>
 /* ===== BODY ===== */
@@ -72,9 +72,10 @@ h2{
 
 /* ===== GRID ===== */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
-  gap:20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 180px);
+  gap: 20px;
+  justify-content: center;
 }
 
 /* ===== CARD ===== */
@@ -176,7 +177,7 @@ h2{
 
   <div class="header-group">
     <a class="nav-btn" href="../index.html" style="padding-left: 5px;">← Voltar</a>
-	<a class="nav-btn" href="../Deuses/index.html">Deuses</a>
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
     <a class="nav-btn" href="../Raças/index.html">Raças</a>
     <a class="nav-btn" href="../Regioes/index.html">Regiões</a>
     <a class="nav-btn" href="../Organizaçoes/index.html">Organizações</a>
@@ -187,7 +188,7 @@ h2{
 <h1>Panteão dos Deuses</h1>
 
 <!-- ===== DEUSES BONS ===== -->
-<h2>Deuses Bons</h2>
+<h2  style="text-align: center;">Deuses Bons</h2>
 <div class="grid">
 
   <a class="card" href="./Bom/Aldebaran - Proteçao/Aldebaran.html">
@@ -219,11 +220,17 @@ h2{
     <div class="nome">Ûlfred</div>
     <div class="titulo">Deus da Coragem</div>
   </a>
+  
+    <a class="card" href="./Bom/Jimin - Amor/Jimin.html">
+    <div class="icon-box"><img src="./zzicones/amoricon.png"></div>
+    <div class="nome">Jimin</div>
+    <div class="titulo">Deus do Amor</div>
+  </a>
 
 </div>
 
 <!-- ===== DEUSES NEUTROS ===== -->
-<h2>Deuses Neutros</h2>
+<h2  style="text-align: center;">Deuses Neutros</h2>
 <div class="grid">
 
   <a class="card" href="./Neutro/Alberon - Sabedoria/Alberon.html">
@@ -243,10 +250,17 @@ h2{
     <div class="nome">Nyx</div>
     <div class="titulo">Deusa da Morte</div>
   </a>
+  
+     <a class="card" href="./Neutro/Minerva - Natureza Selvagem/Minerva.html">
+    <div class="icon-box"><img src="./zzicones/natureza.png"></div>
+    <div class="nome">Minerva</div>
+    <div class="titulo">Deusa da Natureza Selvagem</div>
+  </a>
+  
 </div>
 
 <!-- ===== DEUSES MAUS ===== -->
-<h2>Deuses Maus</h2>
+<h2  style="text-align: center;">Deuses Maus</h2>
 <div class="grid">
 
     <a class="card" href="./Ruim/Entrati - Tirania/Entrati.html">
@@ -261,6 +275,12 @@ h2{
     <div class="titulo">Deus da Destruição</div>
   </a>
 
+      <a class="card" href="./Ruim/Nira - Sangue e sacrificio/Nira.html">
+    <div class="icon-box"><img src="./zzicones/sacrificio.png"></div>
+    <div class="nome">Nira</div>
+    <div class="titulo">Deusa do Sangue e do Sacrifício</div>
+  </a>
+  
 </div>
 
 </body>
