@@ -1,245 +1,357 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Personagens da aventura</title>
 
 <style>
-/* ===== BODY ===== */
+*{box-sizing:border-box;}
+
+:root{
+  --page-bg:#0b1520;
+  --card-bg:#0f1e2e;
+  --stroke:#2c4c6b;
+  --text:#e9f0ff;
+  --muted:#b9c7de;
+  --radius:14px;
+  --gap:20px;
+
+  /* avatar */
+  --avatar:150px;
+}
+
 body{
   margin:0;
   padding:20px;
-  background:#0b1520;
+  background:var(--page-bg);
   font-family:serif;
-  color:#ffffff;
+  color:var(--text);
 }
 
-/* ===== HEADER ===== */
-.header-nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:10px 14px;
-  margin-bottom:24px;
-  gap:12px;
-}
-
-.header-group{
-  display:flex;
-  gap:10px;
-  flex:1;               
-}
-
-.nav-btn{
-  flex:1;              
-  text-align:center;
-  text-decoration:none;
-  color:#ffffff;
-  background:#162b3f;
-  border:1px solid #2c4c6b;
-  border-radius:8px;
-  padding:6px 12px;
-  font-size:14px;
-  transition:background 0.2s, transform 0.2s;
-}
-
-
-.nav-btn:hover{
-  background:#1f3a56;
-  transform:translateY(-1px);
-}
-
-.nav-title{
-  font-weight:bold;
-  font-size:16px;
-  text-align:center;
-}
-
-/* ===== TITULOS ===== */
-h1{
-  text-align:center;
+/* ===== HEADER (igual o teu) ===== */
+.header{
   margin-bottom:32px;
 }
 
-h2{
-  margin:40px 0 16px;
-  border-bottom:1px solid #2c4c6b;
-  padding-bottom:6px;
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+h1{
+  text-align:center;
+  margin:0 0 18px 0;
+}
+
+/* ===== SEÇÕES RECOLHÍVEIS ===== */
+.section{
+  max-width:1200px;
+  margin:0 auto 18px auto;
+}
+
+details{
+  border:2px solid var(--stroke);
+  border-radius:12px;
+  background:rgba(0,0,0,.10);
+  overflow:hidden;
+}
+
+summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  user-select:none;
+}
+
+summary::-webkit-details-marker{ display:none; }
+
+.sec-title{
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:.2px;
+  width:100%;
+  text-align:center;
+}
+
+
+/* setinha */
+.chev{
+  width:34px;
+  height:34px;
+  border:1px solid var(--stroke);
+  border-radius:10px;
+  display:grid;
+  place-items:center;
+  background:#162b3f;
+  flex:0 0 auto;
+  transition:transform .2s ease;
+}
+details[open] .chev{ transform:rotate(180deg); }
+
+.chev svg{
+  width:18px; height:18px;
+  fill:#ffffff;
+}
+
+.section-body{
+  padding:14px;
+  border-top:1px solid rgba(44,76,107,.6);
 }
 
 /* ===== GRID ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(160px, 1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fill, minmax(170px, 1fr));
+  gap:var(--gap);
 }
 
-/* ===== CARD ===== */
-.card{
+/* ===== NPC CARD ===== */
+.npc{
   text-decoration:none;
-  color:white;
-  background:#0f1e2e;
-  border:1px solid #2c4c6b;
-  border-radius:10px;
-  padding:10px;
-  text-align:center;
+  color:inherit;
   display:flex;
   flex-direction:column;
-  gap:6px;
-  transition:transform 0.2s ease, box-shadow 0.2s ease;
+  align-items:center;
+  gap:10px;
 }
 
-.card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 8px 18px rgba(0,0,0,0.35);
-}
-
-/* ===== ICON ===== */
-.icon-box{
-  width:100%;
-  aspect-ratio:1/1;
-  background:#162b3f;
-  border:1px solid #2c4c6b;
-  border-radius:8px;
+/* avatar circular */
+.avatar{
+  width:var(--avatar);
+  height:var(--avatar);
+  border-radius:50%;
   overflow:hidden;
+  border:2px solid var(--stroke);
+  box-shadow:0 12px 26px rgba(0,0,0,.45);
+  background:#000;
 }
 
-.icon-box img{
+.avatar img{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
-/* ===== TEXTOS ===== */
-.nome{
-  font-size:16px;
+/* caixinha embaixo */
+.info{
+  width:100%;
+  background:var(--card-bg);
+  border:2px solid var(--stroke);
+  border-radius:12px;
+  padding:10px 12px;
+  text-align:center;
+}
+
+.info .name{
   font-weight:bold;
+  font-size:16px;
+  margin:0;
 }
 
-.titulo{
+.info .role{
+  margin:6px 0 0 0;
   font-size:14px;
-  opacity:0.85;
+  color:#ffffff;
+  opacity:.9;
 }
+
+/* hover */
+.npc:hover .avatar{ transform:translateY(-2px); }
+.npc:hover .info{ background:#132a41; }
+
+.avatar, .info{ transition:transform .2s ease, background .2s ease; }
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px){
+  body{ padding:12px; }
+  .header-nav{ flex-wrap:wrap; justify-content:center; gap:10px; }
+  .header-group{ width:100%; justify-content:center; }
+  .nav-btn{ font-size:13px; padding:6px 10px; }
 
-  body{
-    padding:12px;
-  }
-
-  .grid{
-    grid-template-columns:repeat(2, 1fr);
-    gap:16px;
-  }
-
-  .header-nav{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-  }
-
-  .header-group{
-    width:100%;
-    justify-content:center;
-  }
-
-  .nav-btn{
-    font-size:13px;
-    padding:6px 10px;
-  }
-
-  .nome{
-    font-size:14px;
-  }
-
-  .titulo{
-    font-size:12px;
-  }
+  :root{ --avatar: 36vw; }
+  .grid{ grid-template-columns:repeat(2, 1fr); gap:16px; }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<div class="header-nav">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a class="nav-btn"  href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a class="nav-btn"  href="../Deuses/index.html">Deuses</a>
+    	<a class="nav-btn" href="../Raças/index.html">Raças</a>
+	    <a class="nav-btn"  href="../Lore/index.html">Lore</a>
+		<!--
+	<a class="nav-btn"  href="../Regioes/index.html">Regiões</a>
 
-  <div class="header-group">
-    <a class="nav-btn" href="../index.html" style="padding-left: 5px;">← Voltar</a>
-    <a class="nav-btn" href="../Raças/index.html">Raças</a>
-    <a class="nav-btn" href="../Regioes/index.html">Regiões</a>
-	<a class="nav-btn" href="../Deuses/index.html">Deuses</a>
-    <a class="nav-btn" href="../Organizaçoes/index.html">Organizações</a>
+    <a class="nav-btn"  href="../Organizaçoes/index.html">Organizações</a>
+  -->
   </div>
-
 </div>
 
 <h1>Personagens da aventura</h1>
 
-<!-- ===== NOTÁVEIS ===== -->
-<h2  style="text-align: center;">Npc notáveis</h2>
-<div class="grid">
+<!-- =======================
+     EXEMPLO: VILA TIEFLING
+======================= -->
+<div class="section">
+  <details open>
+    <summary>
+      <div class="sec-title">Pescatório dos Tieflings</div>
+      <div class="chev" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </summary>
 
-  <a class="card" href="#">
-    <div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div>
-    <div class="nome">Baruuk</div>
-    <div class="titulo">Deus da Justiça</div>
-  </a>
+    <div class="section-body">
+      <div class="grid">
 
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Bom/Baruuk - Justiça/150px-Kelemvor_Icon.png"></div><div class="nome">Baruuk</div><div class="titulo">Deus da Justiça</div></a>
+        <a class="npc">
+          <div class="avatar"><img src="icons/aya.png" alt="Aya"></div>
+          <div class="info">
+            <p class="name">Aya</p>
+            <p class="role">Protetora da vila</p>
+          </div>
+        </a>
+
+        <a class="npc">
+          <div class="avatar"><img src="icons/zack.png" alt="Zack"></div>
+          <div class="info">
+            <p class="name">Zack</p>
+            <p class="role">O Revoltado</p>
+          </div>
+        </a>
+
+        <a class="npc">
+          <div class="avatar"><img src="icons/eshra.png" alt="Eshra"></div>
+          <div class="info">
+            <p class="name">Eshra</p>
+            <p class="role">Herbalista</p>
+          </div>
+        </a>
+		
+		        <a class="npc">
+          <div class="avatar"><img src="icons/malrik.png" alt="Malrik"></div>
+          <div class="info">
+            <p class="name">Malrik</p>
+            <p class="role">Dirigente do Pescatório</p>
+          </div>
+        </a>
+		
+		        <a class="npc">
+          <div class="avatar"><img src="icons/tikka.png" alt="Tikka"></div>
+          <div class="info">
+            <p class="name">Tikka</p>
+            <p class="role">A Criança</p>
+          </div>
+        </a>
+		
+		        <a class="npc">
+          <div class="avatar"><img src="icons/ravel.png" alt="Ravel"></div>
+          <div class="info">
+            <p class="name">Ravel</p>
+            <p class="role">O Guarda da Capital</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </details>
+</div>
+
+<div class="section">
+<!-- OBS AQUI EMBAIXO -->
+  <details open>
+    <summary>
+      <div class="sec-title">A Guilda dos Aventureiros</div>
+      <div class="chev" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </summary>
+
+    <div class="section-body">
+      <div class="grid">
+
+        <a class="npc">
+          <div class="avatar"><img src="icons/uruk.png" alt="Uruk"></div>
+          <div class="info">
+            <p class="name">Uruk</p>
+            <p class="role">Líder fundador da Guilda</p>
+          </div>
+        </a>
+
+
+
+      </div>
+    </div>
+  </details>
 
 </div>
 
-<!-- ===== ESCOLHIDOS ===== -->
-<h2  style="text-align: center;">Escolhidos</h2>
-<div class="grid">
+<!-- =======================
+     EXEMPLO: ESCOLHIDOS
+======================= 
+<div class="section">
+  <details>
+    <summary>
+      <div class="sec-title">Escolhidos</div>
+      <div class="chev" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      </div>
+    </summary>
 
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Neutro/Alberon - Sabedoria/150px-Oghma_Icon.png"></div><div class="nome">Alberon</div><div class="titulo">Deus da Sabedoria</div></a>
+    <div class="section-body">
+      <div class="grid">
+
+        <a class="npc" href="../Escolhidos/clea.html">
+          <div class="avatar"><img src="eicons/clea.png" alt="Clea"></div>
+          <div class="info">
+            <p class="name">Clea</p>
+            <p class="role">Escolhida de Baruuk</p>
+          </div>
+        </a>
+
+        <a class="npc" href="../Escolhidos/lara.html">
+          <div class="avatar"><img src="eicons/lara.png" alt="Lara"></div>
+          <div class="info">
+            <p class="name">Lara</p>
+            <p class="role">Escolhida de Nira</p>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </details>
 
 </div>
-
-<!-- ===== MERCANTES ===== -->
-<h2  style="text-align: center;">Mercadores</h2>
-<div class="grid">
-
-
-  <a class="card" href="../Regioes/Eiredor/mercantes/raul.html">
-  <div class="nome">Raul</div>
-  <div class="icon-box"><img src="../Regioes/Eiredor/mercantes/raul.jpg"></div>
-  <div class="titulo">⚔️ Ferreiro - Eiredor</div></a>
-<!---
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">⚔️ Ferreiro</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🌿 Herbalista</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🎒 Loja Geral</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🍞 Estalagem</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">✨ Mercador Arcano</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">📿 Mercador Religioso</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🐎 Estábulo / Mercador de Viagem</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🧪 Alquimista</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🧿 Talismaneiro</div></a>
-  <a class="card" href="#"><div class="icon-box"><img src="./Ruim/Uriel - Destruição/IconUnairuUltimate.png"></div><div class="nome">Uriel</div>
-  <div class="titulo">🕶️ Mercador Discreto</div></a>
---->
-</div>
-
+  -->
 </body>
 </html>
