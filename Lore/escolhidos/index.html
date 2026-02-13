@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<title>Escolhidos</title>
+
 <style>
 *{ box-sizing:border-box; }
 
@@ -43,11 +45,9 @@ body{
    NAVEGAÇÃO
 ========================= */
 .nav{
-  display:grid;
-  grid-template-columns: 1fr 6fr;
-  gap:12px;
-  margin-top:20px;
-  align-items:center;
+  display:flex;
+  justify-content:center; /* centraliza no desktop */
+  margin-top:4px;
 }
 
 .nav-btn{
@@ -55,11 +55,14 @@ body{
   text-decoration:none;
   color:#fff;
   background:#162b3f;
-  border:1px solid #2c4c6b;
+  border:2px solid #2c4c6b;
   border-radius:8px;
-  padding:10px 12px;
+  padding:18px 12px; /* mesma altura */
   display:block;
+  width:100%; /* desktop normal */
+  font-size:16px;
 }
+
 
 .nav-btn:hover{ background:#1f3a56; }
 .nav-spacer{ height:1px; }
@@ -215,6 +218,14 @@ body{
     /* mantém o “respiro” do topo e o estilo livro */
     padding: 34px var(--pad) 22px var(--pad);
   }
+.nav{
+  width:100%;
+}
+
+.nav-btn{
+  width:100%;   /* ocupa toda largura */
+}
+
 
   .title{
     font-size:36x;
@@ -255,13 +266,13 @@ body{
       </p>
 
       <div class="blocks">
-		  <!--
+	  <!--
         <div class="block">
           <h3>Marca</h3>
           <p>Descrição rápida.</p>
         </div>
+		-->
 		<h2 style = "margin-bottom: 6px;text-align:center;">Escrituras do Tomo de Trudd:</h2>
--->
         <div class="block">
           <p>
             Kalymos cresceu sob a proteção direta de Valerius, afastado do povo para preservar sua segurança.
@@ -286,6 +297,14 @@ body{
     <a class="nav-btn" href="../index.html">Voltar</a>
     <div class="nav-spacer"></div>
   </div>
+
+</div>
+
+</body>
+</html>
+
+  
+  <!--
   <section class="chosen">
       <div class="avatar">
         <a href="">
@@ -329,16 +348,6 @@ body{
     </section>
 
 
-	
-</div>
-
-</body>
-</html>
-
-  
-  <!--
-
-
 
 
 /* ======================
@@ -373,6 +382,4 @@ body{
 
 
 -->
-
-
 
