@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+*{ box-sizing:border-box; }
+
+:root{
+  --page-bg:#0b1520;
+  --card-bg:#0f1e2e;
+  --stroke:#2c4c6b;
+  --text:#ffffff;
+  --muted:#b9c7de;
+
+  --radius:14px;
+  --pad:26px;
+}
+
+/* ================= BASE ================= */
+
+body{
+  margin:0;
+  padding:24px;
+  background:var(--page-bg);
+  font-family:serif;
+  color:var(--text);
+}
+
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* ================= TRECHO ================= */
+
+.found{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* TÍTULO FORA DA CAIXA */
+.found-title{
+  font-size:34px;
+  margin:0;
+  text-align:center;
+}
+
+/* LINHA (IMAGEM + CARD) */
+.found-row{
+  display:flex;
+  flex-direction:column; /* mobile: imagem acima */
+  gap:16px;
+}
+
+/* Opção: sem imagem */
+.found-row.no-media .found-media{ display:none; }
+
+/* ================= IMAGEM ================= */
+/* Mobile: quadrada e cheia (via 100vw abaixo) */
+.found-media{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  overflow:hidden;
+  border-radius:var(--radius);
+  border:1px solid var(--stroke);
+  background:#000;
+  border: 2px solid #2c4c6b;
+}
+
+.found-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+hr{
+  border: none;
+  height: 2px;
+  background: #2c4c6b;
+  margin: 20px 0;
+}
+
+/* ================= CARD TEXTO ================= */
+
+.found-card{
+  width:100%;
+  background:var(--card-bg);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:var(--pad);
+  border: 2px solid #2c4c6b;
+}
+
+.ilegivel{
+  font-style: italic;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+
+/* TEXTO ESTILO LIVRO */
+.lore{
+  font-size:19px;
+  line-height:1.75;
+  color:#ffffff;
+
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:none; /* impede sabe- doria */
+  margin:0;
+}
+
+.lore p{
+  margin:0 0 16px 0;
+}
+
+.lore p:last-child{ margin-bottom:0; }
+
+/* ================= DESKTOP ================= */
+@media (min-width: 721px){
+
+  /* Se tiver imagem, fica ao lado */
+  .found-row.has-media{
+    flex-direction:row;
+    align-items:stretch;
+  }
+
+  .found-row.has-media .found-media{
+    flex:0 0 auto;
+    width: min(320px, 35%);
+    aspect-ratio:auto;    /* tira o quadrado fixo no desktop */
+    height: 20vh;         /* no máximo 20% da tela */
+    max-height: 40vh;
+  }
+
+  .found-row.has-media .found-media img{
+    height:100%;
+  }
+
+  .found-row.has-media .found-card{
+    flex:1;
+  }
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 720px){
+
+  body{ padding:16px; }
+
+  .found-title{
+    font-size:32px;
+    text-align:center;
+  }
+
+  /* Imagem com largura total do dispositivo */
+  .found-media{
+    width:auto;
+    border-left:0;
+    border-right:0;
+	margin: 0 auto;
+	border: 2px solid #2c4c6b;
+  }
+
+  .lore{
+    font-size:17px;
+    line-height:1.8;
+	
+	
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <!-- TRECHO 1 (COM IMAGEM) -->
+  <section class="found">
+
+    <h1 class="found-title">Fragmento de Influência Angelical</h1>
+
+    <div class="found-row has-media">
+      <div class="found-media">
+        <img src="raphael.png" alt="Fragmento">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+          <p>Algo incompleto, instável e perigoso.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <br>
+
+
+  <!-- TRECHO 2 (SEM IMAGEM) -->
+  <section class="found">
+
+    <h1 class="found-title">O Eco</h1>
+
+      <!-- sem imagem aqui -->
+	      <div class="found-row has-media">
+      <div class="found-media">
+        <img src="t2.png" alt="Fragmento">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+          <p>
+            Todas as crianças na vila tiefling desenharam o mesmo símbolo antes de desaparecerem.
+			<hr>
+			<h3 style = "margin-bottom: 6px; text-align:center;;">Aya:</h3><i> “Um texto no templo de Alberon chamava isso de <b>alinhamento forçado</b> com esse mesmo símbolo”
+			<br>“Não era um ritual. Era uma… condição” </i>
+			<hr>
+			<h3 style = "margin-bottom: 6px; text-align:center;">Templo de Alberon, na parede:</h3>
+			<p style = "text-align:center;">"O Eco revelará a verdade a todos nós"</p>
+			<hr>
+			<h4 style = "margin-bottom: 6px; text-align:center;">Abaixo, num tomo antigo:</h4>
+			<i>"Onde <span class="ilegivel"><b>RABISCADO - ECO POR CIMA</b></span>&nbsp; passou,
+				não houve ruína imediata.
+				Houve clareza excessiva.
+				Homens deixaram de duvidar 
+				- 
+				e nisso selaram seu fim"</i>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+  
+  <section class="found">
+
+    <h1 class="found-title">Diários do primeiro contrato</h1>
+
+    <div class="found-row no-media">
+	  
+	  
+
+      <div class="found-card">
+        <div class="lore">
+          <p style= "text-align:center;">
+            “Vi”<br>“Mas interromper seria destruir o símbolo”<br>“<span class="ilegivel"><b>Ilegível</b></span>&nbsp; não falhou - eu falhei”
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+</body>
+</html>
+
+
+<!--
+/* ======================
+   BASE
+====================== */
+
+
+<div class="wrap">
+
+  <!-- TRECHO 1 (COM IMAGEM) --
+  
+  
+  <section class="found">
+
+    <h1 class="found-title">Fragmento de Influência Angelical</h1>
+
+    <div class="found-row has-media">
+      <div class="found-media">
+        <img src="eco.png" alt="Trecho encontrado">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+          <p>Algo incompleto, instável e perigoso.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- TRECHO 2 (SEM IMAGEM) --
+  
+  
+  <section class="found">
+
+    <h1 class="found-title">Sacerdote de Ûlfred dando aula</h1>
+
+    <div class="found-row no-media">
+	
+	
+      <!-- sem imagem aqui --
+	  
+	  
+
+      <div class="found-card">
+        <div class="lore">
+          <p>
+            “Para garantir a paz, Kalymos apresentou os Anjos: seres de luz destinados a proteger os justos.
+            Contudo, a revelação de um plano oculto levou o panteão à guerra. Com grande sacrifício, Kalymos foi
+            derrotado e banido por Baruuk, passando a ser lembrado como o Deus da Manipulação. Um pacto foi selado,
+            e campeões divinos passaram a ser escolhidos para erradicar seus remanescentes.”
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+	  
+	  -->

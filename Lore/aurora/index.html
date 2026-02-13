@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+*{ box-sizing:border-box; }
+
+:root{
+  --page-bg:#0b1520;
+  --card-bg:#0f1e2e;
+  --stroke:#2c4c6b;
+  --text:#e9f0ff;
+  --muted:#b9c7de;
+
+  --radius:14px;
+  --pad:26px;
+}
+
+/* ================= BASE ================= */
+
+body{
+  margin:0;
+  padding:24px;
+  background:var(--page-bg);
+  font-family:serif;
+  color:var(--text);
+}
+
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+/* ================= TRECHO ================= */
+
+.found{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+/* IMAGEM QUADRADA */
+.found-media{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  overflow:hidden;
+  border-radius:14px;
+  border:1px solid var(--stroke);
+  background:#000;
+  border: 2px solid #2c4c6b;
+}
+
+.found-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  
+}
+
+/* ================= CARD TEXTO ================= */
+
+.found-card{
+  width:100%;                 /* SEMPRE largura máxima */
+  background:var(--card-bg);
+  border:1px solid var(--stroke);
+  border-radius:14px;
+  padding:var(--pad);
+  border: 2px solid #2c4c6b;
+}
+
+/* Título */
+.title{
+  font-size:34px;
+  margin:0 0 18px 0;
+}
+
+/* TEXTO ESTILO LIVRO */
+.lore{
+  font-size:19px;
+  line-height:1.75;
+  color:var(--muted);
+
+  text-align:justify;         /* 🔥 efeito livro */
+  text-justify:inter-word;
+}
+
+/* Parágrafos estilo livro */
+.lore p{
+  margin:0 0 16px 0;
+  text-indent:32px;           /* 🔥 indentação inicial */
+}
+
+/* BLOQUINHOS */
+.blocks{
+  margin-top:24px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+.block{
+  border: 2px solid #2c4c6b;
+  border-radius:12px;
+  padding:16px;
+  background:rgba(0,0,0,.18);
+}
+
+.block h3{
+  margin:0 0 8px 0;
+  font-size:18px;
+}
+
+.block p{
+  margin:0;
+  font-size:16px;
+  color:var(--muted);
+  text-align:justify;
+}
+
+/* ================= DESKTOP ================= */
+
+@media (min-width: 721px){
+
+  .found-media{
+    height: 30vh;
+    max-height: 420px;
+    aspect-ratio: 1 / 1;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .found-card{
+    width:100%;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 720px){
+
+  body{ padding:16px; }
+
+  .title{
+    font-size:24px;
+    text-align:center;
+  }
+
+  .lore{
+    font-size:17px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <section class="found">
+
+    <div class="found-media">
+      <img src="busto.png" alt="Aurora">
+    </div>
+
+    <div class="found-card">
+      <h2 class="title" style = "text-align:center;">Escrito na Estátua de Aurora na entrada do templo de Alberon</h2>
+
+      <div class="lore">
+        <p>
+"O nascimento de Kalymos é lembrado como um dos maiores sinais já concedidos por Alberon. Aurora, escolhida entre todas as donzelas, tinha sua pureza prometida ao sumo sacerdote Valerius, voz viva do Deus da Sabedoria. Tal escolha era considerada a maior honra possível, e seu destino parecia selado pela vontade divina. Quando Aurora surgiu grávida, não houve escândalo, mas reverência: pois somente um milagre poderia explicar tal acontecimento. Assim, ela foi elevada ao posto de Prometida, símbolo vivo da pureza e da graça dos deuses entre os mortais"
+        </p>
+
+      </div>
+
+  
+
+    </div>
+	
+	<div class="found-card">
+      <h2 class="title" style = "text-align:center;"> Escrito no pergaminho encontrado após derrotar a Dama de Ferro</h2>
+
+      <div class="lore">
+        <p>
+"Aurora não foi escolhida pelos deuses, mas empurrada para um altar que jamais desejou. Diante da promessa feita a Valerius, viu-se encurralada entre a perda do amor que escolhera e uma submissão que não aceitava. Optou pelo primeiro, acreditando que o ato não teria consequências. Quando a gravidez veio, não foi milagre algum que a salvou, mas palavras bem colocadas, mentiras ditas com doçura e a fé cega de homens que preferiam acreditar."</p><p2 style = "text-align:center;">"Foi ali que a manipulação mostrou, pela primeira vez, o poder que teria naquele mundo"
+        </p2>
+
+      </div>
+
+     
+
+    </div>
+
+  </section>
+    <div class="nav">
+    <div class="nav-spacer"></div>
+    <a class="nav-btn" href="../index.html">Voltar</a>
+    <div class="nav-spacer"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<!--
+/* ======================
+   BASE
+====================== */
+
+
+<div class="found-card">
+      <h2 class="title">Trecho encontrado</h2>
+
+      <div class="lore">
+        <p>
+        Este é um trecho encontrado pelos aventureiros. 
+        O texto agora se comporta como um livro real: ocupa toda a largura,
+        fica justificado, e apenas a última linha permanece menor.
+        </p>
+
+        <p>
+        Você pode escrever longos relatos aqui. Quanto maior o texto,
+        mais forte fica o efeito de manuscrito antigo ou registro histórico.
+        </p>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>Margem Anotada</h3>
+          <p>Pequena observação escrita ao lado do texto principal.</p>
+        </div>
+      </div>
+	  
+	  -->
