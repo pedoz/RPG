@@ -19,10 +19,30 @@ h1 {
   margin-bottom: 32px;
 }
 
+.banner{
+  width:100%;
+  margin: 0 0 24px 0;      /* espaço antes dos cards */
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #2c4c6b;
+  background:#162b3f;
+  
+  /* controla a “altura” mantendo responsivo */
+  aspect-ratio: 16 / 5;    /* ajusta: 16/6 fica mais alto */
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 20%;
+}
+
 /* GRID - DESKTOP */
 .grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   width: 100%;
 }
@@ -88,13 +108,23 @@ h1 {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
+    .banner{
+    aspect-ratio: 16 / 7;  /* ajusta se quiser */
+    margin-bottom: 20px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<h1>Faerûn</h1>
+<h1>RPGZÃO</h1>
+
+
+<div class="banner">
+  <img src="iconesgeral/aventureiros.png" alt="Chuparinos">
+</div>
+
 
 <div class="grid">
 
@@ -126,15 +156,16 @@ h1 {
       <img src="iconesgeral/iconeOrganizaçoes.png" alt="Organizações">
     </div>
     <h2>Organizações</h2>
-  </a>
+  </a> 
+  -->
 
   <a class="card" href="Npc/index.html">
     <div class="icon-box">
       <img src="iconesgeral/iconenpc.png" alt="Npc">
     </div>
-    <h2>Npcs</h2>
+    <h2>NPCs</h2>
   </a>
-  -->
+
     <a class="card" href="Lore/index.html">
     <div class="icon-box">
       <img src="iconesgeral/iconelore.jpg" alt="Lore">
