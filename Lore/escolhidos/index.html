@@ -39,6 +39,31 @@ body{
   gap:24px;
 }
 
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 6fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
 /* ======================
    ITEM DESKTOP
 ====================== */
@@ -59,6 +84,7 @@ body{
   box-shadow:0 15px 30px rgba(0,0,0,.4);
   z-index:3;
   position:relative;
+  border: 2px solid #2c4c6b;
 }
 
 .avatar a{
@@ -77,51 +103,85 @@ body{
   background:var(--card-bg);
   border:1px solid var(--stroke);
   border-radius:var(--radius);
-  padding:var(--pad);
+
+  /* mais “respiro” no topo (pra não encostar no título) */
+  padding: 28px var(--pad) var(--pad) var(--pad);
 
   /* efeito de passar por baixo da imagem */
   margin-left:calc(-1 * var(--overlap));
   padding-left:calc(var(--pad) + var(--overlap));
 
   min-height:calc(var(--avatar-size) * 0.8);
+  border: 2px solid #2c4c6b;
 }
 
 .title{
   font-size:32px;
-  margin:0 0 12px 0;
+  margin:0 0 16px 0;
 }
 
+/* ======= TEXTO ESTILO LIVRO (DESKTOP + MOBILE) ======= */
 .lore{
   font-size:18px;
   color:var(--muted);
-  line-height:1.5;
+  line-height:1.75;
   margin:0;
+
+  text-align: center;
+  text-justify: inter-word;
+  hyphens: auto;
+  color: #ffffff;
+}
+
+/* Para quando você quiser quebrar em parágrafos de verdade */
+.lore p{
+  margin: 0 0 16px 0;
+  text-indent: 30px;
 }
 
 /* BLOQUINHOS OPCIONAIS */
 .blocks{
-  margin-top:14px;
+  margin-top:18px;
   display:flex;
   flex-direction:column;
   gap:12px;
+  
 }
 
 .block{
   border:1px solid rgba(255,255,255,.08);
   border-radius:12px;
-  padding:12px;
+  padding:14px;
   background:rgba(0,0,0,.15);
+  border: 2px solid #2c4c6b;
 }
 
 .block h3{
-  margin:0 0 6px 0;
+  margin:0 0 10px 0;
   font-size:18px;
+  color: #ffffff:
 }
 
+/* Texto dentro dos blocos também estilo livro */
 .block p{
-  margin:0;
+  margin:0 0 12px 0;
   font-size:16px;
   color:var(--muted);
+
+  line-height: 1.75;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
+  
+}
+
+/* remove o último espaçamento extra do último parágrafo */
+.block p:last-child{ margin-bottom:0; }
+
+.ilegivel{
+  font-style: italic;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
 }
 
 /* ======================
@@ -138,31 +198,40 @@ body{
     gap:16px;
   }
 
-.avatar{
-  width: 85vw;        /* 80–90% da tela */
-  height: 85vw;
-  max-width: 420px;
-  max-height: 420px;
-  margin-bottom: -30px;  /* faz encostar no card */
-}
+  .avatar{
+    width: 85vw;
+    height: 85vw;
+    max-width: 420px;
+    max-height: 420px;
+    margin-bottom: -30px;
+  }
 
   .card{
-    margin-left:0;          /* remove overlap */
-	padding: 38px var(--pad) var(--pad) var(--pad);
-    min-height:auto;
+    margin-left:0;                /* remove overlap */
     width:100%;
+    min-height:auto;
 	
+
+    /* mantém o “respiro” do topo e o estilo livro */
+    padding: 34px var(--pad) 22px var(--pad);
   }
 
   .title{
-    font-size:24px;
+    font-size:36x;
     text-align:center;
   }
 
+  /* livro no mobile: um pouco menor */
   .lore{
-    font-size:16px;
+    font-size:20px;
+    line-height:1.8;
   }
 
+  .block p{
+    font-size:20px;
+    line-height:1.8;
+	
+  }
 }
 </style>
 </head>
@@ -174,12 +243,114 @@ body{
   <section class="chosen">
     <div class="avatar">
       <a href="">
-        <img src="eicons/nyx.png" alt="Clea">
+        <img src="eicons/trudd.png" alt="Trudd">
       </a>
     </div>
 
     <div class="card">
-      <h2 class="title">Clea — A escolhida de Baruuk</h2>
+      <h2 class="title" style = "text-align:center;">Trudd - O Escolhido de Mirella</h2>
+
+      <p class="lore">
+        “Então não era acaso. <br>Nunca é quando escolhem a gente”
+      </p>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>Marca</h3>
+          <p>Descrição rápida.</p>
+        </div>
+		<h2 style = "margin-bottom: 6px;text-align:center;">Escrituras do Tomo de Trudd:</h2>
+
+        <div class="block">
+          <p>
+            Kalymos cresceu sob a proteção direta de Valerius, afastado do povo para preservar sua segurança.
+            Desde cedo demonstrava inteligência incomum e presença marcante, sinais claros de que os deuses
+            o observavam com atenção. Sua educação foi cuidadosamente guiada dentro dos templos, longe das
+            distrações do mundo.
+          </p><br>
+
+          <h3 style = "text-align:center;"><i><u>Anotação de Trudd no Tomo:</u></i></h3>
+          <p>
+            <span class="ilegivel">ilegível</span>&nbsp;não herdou o cargo - tomou-o e, sem oposição, moldou a fé ao próprio redor.
+            Alberon tornou-se distante, quase abstrato, enquanto o olhar de Kalymos passou a ser o verdadeiro objeto
+            de devoção. O culto à sabedoria foi substituído pelo culto à presença.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nav">
+    <div class="nav-spacer"></div>
+    <a class="nav-btn" href="../index.html">Voltar</a>
+    <div class="nav-spacer"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+  
+  <!--
+  <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/clea.png" alt="Clea" />
+        </a>
+      </div>
+	        <div class="card">
+        <h2 class="title">Clea - A Escolhida de Baruuk</h2>
+        <p class="lore">
+		</p>
+      </div>
+    </section>
+
+    <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/lara.png" alt="Lara" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h2 class="title">Lara - A Escolhida de Nira</h2>
+        <p class="lore"> 
+		</p>
+      </div>
+    </section>
+
+   
+	
+	   <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/vondriss.png" alt="Vondriss" />
+        </a>
+      </div>
+	        <div class="card">
+        <h2 class="title">Vondriss - O Escolhido de Aldebaran</h2>
+        <p class="lore">
+		</p>
+      </div>
+    </section>
+
+
+
+
+/* ======================
+   BASE
+====================== */
+
+  <section class="chosen">
+    <div class="avatar">
+      <a href="">
+        <img src="eicons/trudd.png" alt="Trudd">
+      </a>
+    </div>
+
+    <div class="card">
+      <h2 class="title">Trudd - O Escolhido de Mirella</h2>
       <p class="lore">
         Lore aqui. O texto cresce automaticamente conforme necessário.
       </p>
@@ -197,32 +368,6 @@ body{
     </div>
   </section>
 
-    <section class="chosen">
-      <div class="avatar">
-        <a href="">
-          <img src="eicons/lira.png" alt="Lirian" />
-        </a>
-      </div>
 
-      <div class="card">
-        <h2 class="title">Lirian — A escolhida de Nira</h2>
-        <p class="lore">Lore aqui.</p>
-      </div>
-    </section>
+-->
 
-    <section class="chosen">
-      <div class="avatar">
-        <a href="">
-          <img src="eicons/trudd.png" alt="Trudd" />
-        </a>
-      </div>
-
-      <div class="card">
-        <h2 class="title">Trudd — O escolhido de Mirella</h2>
-        <p class="lore">Lore aqui.</p>
-      </div>
-    </section>
-</div>
-
-</body>
-</html>
