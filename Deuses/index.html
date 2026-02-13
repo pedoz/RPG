@@ -17,45 +17,33 @@ body{
 }
 
 /* ===== HEADER ===== */
+.header{
+  margin-bottom:32px;
+}
+
 .header-nav{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  padding:10px 14px;
-  margin-bottom:24px;
-  gap:12px;
-}
-
-.header-group{
-  display:flex;
   gap:10px;
-  flex:1;               
+  width:100%;
 }
 
-.nav-btn{
-  flex:1;              
+.header-nav a{
+  flex:1;
   text-align:center;
-  text-decoration:none;
-  color:#ffffff;
-  background:#162b3f;
+  padding:10px 8px;
+  background:#0f2a44;
   border:1px solid #2c4c6b;
   border-radius:8px;
-  padding:6px 12px;
+  color:#fff;
+  text-decoration:none;
   font-size:14px;
+  white-space:nowrap;
   transition:background 0.2s, transform 0.2s;
 }
 
-
-.nav-btn:hover{
-  background:#1f3a56;
-  transform:translateY(-1px);
-}
-
-.nav-title{
-  font-weight:bold;
-  font-size:16px;
-  text-align:center;
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
 }
 
 /* ===== TITULOS ===== */
@@ -97,13 +85,43 @@ h2{
   transform:translateY(-4px);
   box-shadow:0 8px 18px rgba(0,0,0,0.35);
 }
+<!--
+.card2{
+  text-decoration:none;
+  color:white;
+  background:#846044;
+  border:2px solid #d4b48d;
+  border-radius:10px;
+  padding:10px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
 
+.card:hover2{
+  transform:translateY(-4px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.35);
+}
+-->
 /* ===== ICON ===== */
 .icon-box{
   width:100%;
   aspect-ratio:1/1;
   background:#162b3f;
   border:1px solid #2c4c6b;
+  border-radius:8px;
+  overflow:hidden;
+    display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.icon-box2{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#9b6646;
+  border:2px solid #d4b48d;
   border-radius:8px;
   overflow:hidden;
     display:flex;
@@ -118,6 +136,12 @@ h2{
   background:#162b3f;
 }
 
+.icon-box2 img{
+  width:90%;
+  height:90%;
+  object-fit:contain;
+  background:#9a6546;
+}
 
 /* ===== TEXTOS ===== */
 .nome{
@@ -142,21 +166,11 @@ h2{
     gap:16px;
   }
 
-  .header-nav{
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
+  .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
   }
 
-  .header-group{
-    width:100%;
-    justify-content:center;
-  }
-
-  .nav-btn{
-    font-size:13px;
-    padding:6px 10px;
-  }
 
   .nome{
     font-size:14px;
@@ -172,19 +186,19 @@ h2{
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<div class="header-nav">
-
-  <div class="header-group">
-    <a class="nav-btn" href="../index.html" style="padding-left: 5px;">← Voltar</a>
-	<a class="nav-btn" href="../Lore/index.html">Lore</a>
-    <a class="nav-btn" href="../Raças/index.html">Raças</a>
-	  <!--
-    <a class="nav-btn" href="../Regioes/index.html">Regiões</a>
-    <a class="nav-btn" href="../Organizaçoes/index.html">Organizações</a>
-	  -->
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a href="../Lore/index.html">Lore</a>
+    <a href="../Raças/index.html">Raças</a>
+	
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
+    
+	<!--
+	<a href="../Organizaçoes/index.html">Organizações</a>
+  -->
   </div>
-
 </div>
 
 <h1>Panteão dos Deuses</h1>
