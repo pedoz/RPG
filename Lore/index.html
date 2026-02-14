@@ -1,385 +1,243 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Escolhidos</title>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lore</title>
 <style>
-*{ box-sizing:border-box; }
+/* ================= HEADER ================= */
 
-:root{
-  --page-bg:#0b1520;
-  --card-bg:#0f1e2e;
-  --stroke:#2c4c6b;
-  --text:#e9f0ff;
-  --muted:#b9c7de;
-
-  /* Desktop */
-  --avatar-size: 180px;
-  --overlap: 40px;
-
-  --radius:14px;
-  --pad:18px;
-  --gap:22px;
+.header{
+  margin-bottom:32px;
 }
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+
+
 
 body{
   margin:0;
-  padding:24px;
-  background:var(--page-bg);
+  padding:20px;
+  background:#0b1520;
   font-family:serif;
-  color:var(--text);
-}
-
-.wrap{
-  max-width:1000px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
-.nav{
-  display:flex;
-  justify-content:center; /* centraliza no desktop */
-  margin-top:4px;
-}
-
-.nav-btn{
-  text-align:center;
-  text-decoration:none;
   color:#fff;
-  background:#162b3f;
-  border:2px solid #2c4c6b;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
   border-radius:8px;
-  padding:18px 12px; /* mesma altura */
-  display:block;
-  width:100%; /* desktop normal */
-  font-size:16px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
 }
 
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
 
-.nav-btn:hover{ background:#1f3a56; }
-.nav-spacer{ height:1px; }
+/* ================= TÍTULO ================= */
 
-/* ======================
-   ITEM DESKTOP
-====================== */
-.chosen{
+h1{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+/* ================= GRID ================= */
+
+.grid{
   display:grid;
-  grid-template-columns: var(--avatar-size) 1fr;
-  gap:var(--gap);
-  align-items:start;
-  position:relative;
+  grid-template-columns:repeat(3, 1fr); /* mantém desktop */
+  gap:24px;
+  max-width:1100px;
+  margin:auto;
 }
 
-.avatar{
-  width:var(--avatar-size);
-  height:var(--avatar-size);
-  border-radius:50%;
+/* ================= REGIÃO ================= */
+
+.region{
+  text-align:center;
+}
+
+/* FOTO */
+.region .photo{
+  aspect-ratio:1/1;
+  background:#162b3f;
+  border:2px solid #2c4c6b; /* borda de 2px */
+  border-radius:16px;
   overflow:hidden;
-  border:2px solid rgba(255,255,255,.1);
-  box-shadow:0 15px 30px rgba(0,0,0,.4);
-  z-index:3;
-  position:relative;
-  border: 2px solid #2c4c6b;
+  transition:transform 0.2s, box-shadow 0.2s;
 }
 
-.avatar a{
+.region .photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+}
+
+.region .photo a{
   display:block;
   width:100%;
   height:100%;
 }
 
-.avatar img{
+.region .photo img{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
-.card{
-  background:var(--card-bg);
-  border:1px solid var(--stroke);
-  border-radius:var(--radius);
-
-  /* mais “respiro” no topo (pra não encostar no título) */
-  padding: 28px var(--pad) var(--pad) var(--pad);
-
-  /* efeito de passar por baixo da imagem */
-  margin-left:calc(-1 * var(--overlap));
-  padding-left:calc(var(--pad) + var(--overlap));
-
-  min-height:calc(var(--avatar-size) * 0.8);
-  border: 2px solid #2c4c6b;
+/* NOME DA REGIÃO */
+.region h2{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:normal;
 }
 
-.title{
-  font-size:32px;
-  margin:0 0 16px 0;
-}
+/* ================= MOBILE ================= */
 
-/* ======= TEXTO ESTILO LIVRO (DESKTOP + MOBILE) ======= */
-.lore{
-  font-size:18px;
-  color:var(--muted);
-  line-height:1.75;
-  margin:0;
+@media (max-width: 768px){
 
-  text-align: center;
-  text-justify: inter-word;
-  hyphens: auto;
-  color: #ffffff;
-}
-
-/* Para quando você quiser quebrar em parágrafos de verdade */
-.lore p{
-  margin: 0 0 16px 0;
-  text-indent: 30px;
-}
-
-/* BLOQUINHOS OPCIONAIS */
-.blocks{
-  margin-top:18px;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  
-}
-
-.block{
-  border:1px solid rgba(255,255,255,.08);
-  border-radius:12px;
-  padding:14px;
-  background:rgba(0,0,0,.15);
-  border: 2px solid #2c4c6b;
-}
-
-.block h3{
-  margin:0 0 10px 0;
-  font-size:18px;
-  color: #ffffff:
-}
-
-/* Texto dentro dos blocos também estilo livro */
-.block p{
-  margin:0 0 12px 0;
-  font-size:16px;
-  color:var(--muted);
-
-  line-height: 1.75;
-  text-align: justify;
-  text-justify: inter-word;
-  hyphens: none;
-  
-}
-
-/* remove o último espaçamento extra do último parágrafo */
-.block p:last-child{ margin-bottom:0; }
-
-.ilegivel{
-  font-style: italic;
-  text-decoration: line-through;
-  text-decoration-thickness: 1px;
-}
-
-/* ======================
-   MOBILE
-====================== */
-@media (max-width: 720px){
-
-  body{ padding:16px; }
-
-  .chosen{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:16px;
+  .grid{
+    grid-template-columns:1fr; /* uma por linha */
+    gap:20px;
   }
 
-  .avatar{
-    width: 85vw;
-    height: 85vw;
-    max-width: 420px;
-    max-height: 420px;
-    margin-bottom: -30px;
+  .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
   }
 
-  .card{
-    margin-left:0;                /* remove overlap */
-    width:100%;
-    min-height:auto;
-	
-
-    /* mantém o “respiro” do topo e o estilo livro */
-    padding: 34px var(--pad) 22px var(--pad);
-  }
-.nav{
-  width:100%;
-}
-
-.nav-btn{
-  width:100%;   /* ocupa toda largura */
-}
-
-
-  .title{
-    font-size:36x;
-    text-align:center;
-  }
-
-  /* livro no mobile: um pouco menor */
-  .lore{
-    font-size:20px;
-    line-height:1.8;
-  }
-
-  .block p{
-    font-size:20px;
-    line-height:1.8;
-	
+  .region h2{
+    font-size:22px;
   }
 }
+
 </style>
 </head>
-
 <body>
 
-<div class="wrap">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a href="../Deuses/index.html">Deuses</a>
+    <a href="../Raças/index.html">Raças</a>
+	
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
+    
+	<!--
+	<a href="../Organizaçoes/index.html">Organizações</a>
+  -->
+  </div>
+</div>
 
-  <section class="chosen">
-    <div class="avatar">
-      <a href="">
-        <img src="eicons/trudd.png" alt="Trudd">
+<h1>Lore</h1>
+
+<div class="grid">
+
+  <div class="region">
+    <div class="photo">
+      <a href="eco/index.html">
+        <img src="zzicones/eco.png" alt="O Eco">
       </a>
     </div>
-
-    <div class="card">
-      <h2 class="title" style = "text-align:center;">Trudd - O Escolhido de Mirella</h2>
-
-      <p class="lore">
-        “Então não era acaso. <br>Nunca é quando escolhem a gente”
-      </p>
-
-      <div class="blocks">
-	  <!--
-        <div class="block">
-          <h3>Marca</h3>
-          <p>Descrição rápida.</p>
-        </div>
-		-->
-		<h2 style = "margin-bottom: 6px;text-align:center;">Escrituras do Tomo de Trudd:</h2>
-        <div class="block">
-          <p>
-            Kalymos cresceu sob a proteção direta de Valerius, afastado do povo para preservar sua segurança.
-            Desde cedo demonstrava inteligência incomum e presença marcante, sinais claros de que os deuses
-            o observavam com atenção. Sua educação foi cuidadosamente guiada dentro dos templos, longe das
-            distrações do mundo.
-          </p><br>
-
-          <h3 style = "text-align:center;"><i><u>Anotação de Trudd no Tomo:</u></i></h3>
-          <p>
-            <span class="ilegivel">ilegível</span>&nbsp;não herdou o cargo - tomou-o e, sem oposição, moldou a fé ao próprio redor.
-            Alberon tornou-se distante, quase abstrato, enquanto o olhar de Kalymos passou a ser o verdadeiro objeto
-            de devoção. O culto à sabedoria foi substituído pelo culto à presença.
-          </p>
-        </div>
-      </div>
+    <h2><b>O Eco</b></h2>
+  </div>
+    
+    <div class="region">
+    <div class="photo">
+      <a href="escolhidos/index.html">
+        <img src="zzicones/escolhidos.png" alt="Escolhidos">
+      </a>
     </div>
-  </section>
-
-  <div class="nav">
-    <div class="nav-spacer"></div>
-    <a class="nav-btn" href="../index.html">Voltar</a>
-    <div class="nav-spacer"></div>
+    <h2><b>Os Escolhidos</b></h2>
   </div>
 
+    <div class="region">
+    <div class="photo">
+      <a href="kalymos/index.html">
+        <img src="zzicones/kalymos.jpg" alt="kalymos">
+      </a>
+    </div>
+    <h2><b>Kalymos</b></h2>
+  </div>
+
+  
+    <div class="region">
+    <div class="photo">
+      <a href="aurora/index.html">
+        <img src="zzicones/auroraestatua.png" alt="Aurora">
+      </a>
+    </div>
+    <h2><b>Aurora</b></h2>
+  </div>
+  
+      <div class="region">
+    <div class="photo">
+      <a href="raphael/index.html">
+        <img src="zzicones/raphael.png" alt="Raphael">
+      </a>
+    </div>
+    <h2><b>Raphael</b></h2>
+  </div>
+
+<!--
+      <div class="region">
+    <div class="photo">
+      <a href="Arcanjos/arcanjos.html">
+        <img src="zzicones/Arcanjos.png" alt="Arcanjos">
+      </a>
+    </div>
+    <h2><b>Arcanjos</b></h2>
+  </div>
+-->
 </div>
+
+
 
 </body>
 </html>
-
-  
-  <!--
-  <section class="chosen">
-      <div class="avatar">
-        <a href="">
-          <img src="eicons/clea.png" alt="Clea" />
-        </a>
-      </div>
-	        <div class="card">
-        <h2 class="title">Clea - A Escolhida de Baruuk</h2>
-        <p class="lore">
-		</p>
-      </div>
-    </section>
-
-    <section class="chosen">
-      <div class="avatar">
-        <a href="">
-          <img src="eicons/lara.png" alt="Lara" />
-        </a>
-      </div>
-
-      <div class="card">
-        <h2 class="title">Lara - A Escolhida de Nira</h2>
-        <p class="lore"> 
-		</p>
-      </div>
-    </section>
-
-   
-	
-	   <section class="chosen">
-      <div class="avatar">
-        <a href="">
-          <img src="eicons/vondriss.png" alt="Vondriss" />
-        </a>
-      </div>
-	        <div class="card">
-        <h2 class="title">Vondriss - O Escolhido de Aldebaran</h2>
-        <p class="lore">
-		</p>
-      </div>
-    </section>
-
-
-
-
-/* ======================
-   BASE
-====================== */
-
-  <section class="chosen">
-    <div class="avatar">
-      <a href="">
-        <img src="eicons/trudd.png" alt="Trudd">
-      </a>
-    </div>
-
-    <div class="card">
-      <h2 class="title">Trudd - O Escolhido de Mirella</h2>
-      <p class="lore">
-        Lore aqui. O texto cresce automaticamente conforme necessário.
-      </p>
-
-      <div class="blocks">
-        <div class="block">
-          <h3>Marca</h3>
-          <p>Descrição rápida.</p>
-        </div>
-        <div class="block">
-          <h3>Rumor</h3>
-          <p>Outro bloco opcional.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
--->
 
