@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna</title>
+
+<style>
+/* =========================
+   BASE
+========================= */
+* { box-sizing: border-box; }
+
+body{
+  margin:0;
+  padding:16px;
+  font-family: serif;
+  background:#0b1520;
+  color:#fff;
+  line-height:1.4;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.pdf{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* =========================
+   COLUNAS
+========================= */
+.left, .center{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+}
+
+.left{
+  flex:0 0 200px;
+  text-align:center;
+}
+
+.center{
+  flex:1;
+  min-width:250px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* =========================
+   BOXES
+========================= */
+.box{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+}
+
+.box h1, .box h2, .box h3{
+  margin:4px 0;
+}
+
+/* =========================
+   IMAGENS GRANDES
+========================= */
+.img-frame{
+  width:100%;
+  height:100%;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#000;
+  border-radius:8px;
+  border:1px solid #2c4c6b;
+}
+
+.img-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+
+/* =========================
+   ÍCONE / SÍMBOLO QUADRADO
+========================= */
+.icon-frame{
+  width:100%;
+  aspect-ratio:1 / 1;
+  padding:8px;
+  background:#2c4c6b;
+  border-radius:8px;
+  border:1px solid #2c4c6b;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icon-frame img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:4px;
+}
+
+
+/* =========================
+   GRID ESPECIAL
+========================= */
+.row-special{
+display: grid;
+  /* Define larguras fixas para as colunas das pontas e flexível para a imagem */
+  grid-template-columns: 280px 1.2fr 280px 250px; 
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* =========================
+   POSICIONAMENTO MANUAL - AJUSTADO
+========================= */
+
+/* História (Coluna 1) - Agora compactada e justificada */
+.historia {
+  grid-column: 1;
+  grid-row: 1 / 4; /* Aumentado para 5 para alinhar com a altura da imagem */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagem central (Coluna 2) */
+.img-central {
+  grid-column: 2;
+  grid-row: 1 / 5;
+  justify-self: stretch;
+  align-self: stretch;
+}
+
+/* Exige (Coluna 3, Linha 1) */
+.exige {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+/* Poderes (Coluna 3, Linha 2 em diante) */
+.poderes {
+  grid-column: 3 / 5;
+  grid-row: 3 / 5;
+}
+
+/* Não tolera (Coluna 4, Linha 1) */
+.tolera {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+/* Classes (Coluna 4, Linha 2) */
+.classes {
+  grid-column: 4;
+  grid-row: 2;
+}
+
+/* Cultuado por (Coluna 4, Linha 3) */
+.cultuado {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+/* Conhecido por (Coluna 4, Linha 4) */
+.conhecido {
+  grid-column: 1;
+  grid-row: 4;
+}
+
+
+/* =========================
+   BOX DE ÍCONE
+========================= */
+.icon-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.icon-frame{
+  max-width:auto;   /* controle do tamanho */
+  background:#2c4c6b;
+}
+
+/* =========================
+   RESPONSIVO — CELULAR
+========================= */
+@media (max-width: 768px){
+
+  .row-special{
+    grid-template-columns: 1fr;
+    gap:10px;
+  }
+
+  .img-central{
+    grid-column: 1;
+    grid-row: 1;
+    justify-self:center;
+  }
+
+  .historia{ grid-row:2; }
+  .poderes{ grid-row:3; }
+  .conhecido{ grid-row:4; }
+  .exige{ grid-row:5; }
+  .tolera{ grid-row:6; }
+  .classes{ grid-row:7; }
+  .cultuado{ grid-row:8; }
+
+  .left,
+  .center{
+    flex:1;
+    width:100%;
+    padding:10px;
+  }
+
+  .box{
+    padding:10px;
+    border-radius:8px;
+  }
+
+  .box h1{ font-size:1.4rem; }
+  .box h2{ font-size:1.2rem; }
+  .box h3{ font-size:1.05rem; }
+}
+
+/* =========================
+   RESPONSIVO — TABLET
+========================= */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .pdf {
+    flex-direction: column;
+  }
+
+  .left, .center {
+    flex: 1;
+    width: 100%;
+  }
+
+  .row-special {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .img-central {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    justify-self: center;
+  }
+
+  .historia, .poderes, .conhecido, .exige, .tolera, .classes, .cultuado {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
+
+/* =========================
+   RESPONSIVO — CELULAR
+========================= */
+@media (max-width: 768px) {
+  .pdf {
+    flex-direction: column;
+  }
+
+  .left, .center {
+    flex: 1;
+    width: 100%;
+  }
+
+  .row-special {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .img-central {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    justify-self: center;
+    width: 100%;
+  }
+
+  .historia, .poderes, .conhecido, .exige, .tolera, .classes, .cultuado {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .box {
+    padding: 10px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="pdf">
+
+  <!-- ESQUERDA -->
+  <div class="left">
+
+    <div class="box" style="font-size:22px;font-weight:bold; margin-bottom:8px; background:#2c4c6b">LUNA</div>
+
+<div class="box icon-box" style="margin-bottom: 8px; background:#2c4c6b">
+  <div class="icon-frame">
+    <img src="noiteicon.png" alt="Lua">
+  </div>
+</div>
+
+
+    <div class="box" style="font-size:20px;font-weight:bold ;margin-bottom: 8px; ">A Guardiã do Silêncio</div>
+
+    <div class="box" style="font-size:14px;margin-bottom: 8px;">
+      <strong>Símbolo:</strong><br>
+      A Lua Crescente
+      <hr>
+      <strong>Domínio:</strong><br>
+      • Noite <br>• Descanso <br>• Refúgio
+      <hr>
+      <strong>Tendência:</strong><br>
+      Neutra e Boa
+    </div>
+
+    <div class="box">
+      <strong>Outros nomes</strong><br>
+      • A Luz que Não Queima<br>
+	  • A Sombra Serena<br>
+	  • A Mãe dos Caminhos Invisíveis<br>
+    </div>
+
+  </div>
+
+  <!-- CENTRO -->
+  <div class="center">
+
+    <div class="box">
+      <i>Dogma Central</i>
+      <h1>Acolher não é esconder. É permitir continuar</h1>
+      <i>
+        “Respire, a escuridão não está contra você. Quando estiver pronto para enfrentar o dia, eu recuo."
+      </i>
+    </div>
+
+    <div class="row-special">
+
+      <div class="img-frame img-central">
+        <img src="noite.webp" alt="A TECELA">
+      </div>
+
+      <div class="box historia">
+        <h2>História / Mitos</h2>
+      • Ele e Baruuk nasceram da mesma centelha<br>
+      • O que Baruuk julga, Mordekaiser executa <br>
+      • O banimento de Kalymos só tefe efeito graças a ele
+      </div>
+
+      <div class="box poderes">
+        <h2>Poderes</h2>
+      <h3>• Véu da Lua</h3>Em luz fraca, ataques contra você têm dificuldade aumentada<br> <br>
+	  <h3>• Descanso Sereno</h3>Aliados que descansam sob sua proteção recuperam-se melhor<br><br>
+	  <h3>• Caminho Iluminado</h3>Você sempre sabe a direção segura sob o céu noturno
+      </div>
+
+      <div class="box conhecido">
+        <h3>Conhecido por</h3>
+      • A Protetora dos Errantes<br>
+	  • A Guardiã do Descanso<br>
+	  • Aquela que Permite Recomeços
+      </div>
+
+      <div class="box exige">
+        <h3>Exige</h3>
+      • Honre o abrigo que recebe<br>
+	  • Proteja quem confiou em você<br>
+      • Não exponha o vulnerável
+      </div>
+
+      <div class="box tolera">
+        <h3>Não tolera</h3>
+      • Trair quem buscou refúgio<br>
+      • Caçar os indefesos na noite<br>
+      • Usar sua sombra para crueldade
+      </div>
+
+      <div class="box classes">
+        <h3>Classes</h3>
+        • Ladinos<br>
+        • Rangers
+      </div>
+
+      <div class="box cultuado">
+        <h3>Cultuado por</h3>
+        • Humanos<br>
+        • Elfos<br>
+		• Tieflings<br>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="nav">
+  <a class="nav-btn" href="#">← Anterior</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="../../index.html">Voltar</a>
+  <div class="nav-spacer"></div>
+  <a class="nav-btn" href="#">Próximo →</a>
+</div>
+
+</body>
+</html>
