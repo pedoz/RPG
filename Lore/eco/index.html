@@ -149,30 +149,82 @@ hr{
 .lore p:last-child{ margin-bottom:0; }
 
 /* ================= DESKTOP ================= */
+/* ================= DESKTOP ================= */
 @media (min-width: 721px){
 
-  /* Se tiver imagem, fica ao lado */
+  /* imagem + card lado a lado */
   .found-row.has-media{
     flex-direction:row;
     align-items:stretch;
   }
 
+  /* imagem acompanha altura do card */
   .found-row.has-media .found-media{
     flex:0 0 auto;
     width: min(320px, 35%);
-    aspect-ratio:auto;    /* tira o quadrado fixo no desktop */
-    height: 20vh;         /* no máximo 20% da tela */
-    max-height: 40vh;
-  }
-
-  .found-row.has-media .found-media img{
-    height:100%;
+    min-height: 220px;
+    align-self:stretch;
   }
 
   .found-row.has-media .found-card{
     flex:1;
+    min-height: 220px;
+  }
+
+  .found-row.has-media .found-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* Variante: quadro grande (metade da tela) */
+  .found-row.has-media.big-media .found-media{
+    width: 50%;
+    min-height: 55vh;
+  }
+
+  .found-row.has-media.big-media .found-card{
+    width: 50%;
+    min-height: 55vh;
+  }
+
+  /* Cards SEM imagem: centraliza e limita largura */
+  .found-row.no-media{
+    display:flex;
+    justify-content:center;
+  }
+
+  .found-row.no-media .found-card{
+    flex: 1;
+	margin:0 auto;
+    max-width: calc(100% - min(320px, 35%) - 16px);
+  }
+  .found-row.has-media.horizontal{
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .found-row.has-media.horizontal .found-media{
+    width: 45% !important;      /* 42% se quiser “+20%” exato em cima de 35% */
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .found-row.has-media.horizontal .found-card{
+    width: 55% !important;
+  }
+
+  .found-row.has-media.horizontal .found-media img{
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2); /* 1.05 = leve | 1.1 = médio */
+    display: block;
   }
 }
+
 
 /* ================= MOBILE ================= */
 @media (max-width: 720px){
@@ -184,21 +236,31 @@ hr{
     text-align:center;
   }
 
-  /* Imagem com largura total do dispositivo */
   .found-media{
     width:auto;
     border-left:0;
     border-right:0;
-	margin: 0 auto;
-	border: 2px solid #2c4c6b;
+    margin:0 auto;
+    border:2px solid #2c4c6b;
+  }
+
+  /* 🔥 REMOVE O QUADRADO PARA HORIZONTAL */
+  .found-row.horizontal .found-media{
+    aspect-ratio: auto;
+  }
+
+  .found-row.horizontal .found-media img{
+    width:100%;
+    height:auto;
+    object-fit: cover;
   }
 
   .lore{
     font-size:17px;
     line-height:1.8;
-	
-	
+    text-align:center;
   }
+
 }
 </style>
 </head>
@@ -219,7 +281,7 @@ hr{
 
       <div class="found-card">
         <div class="lore">
-          <p>Algo incompleto, instável e perigoso.</p>
+          <p style = "text-align:center;">Algo incompleto, instável e perigoso.</p>
         </div>
       </div>
     </div>
@@ -247,6 +309,10 @@ hr{
 			<h3 style = "margin-bottom: 6px; text-align:center;;">Aya:</h3><i> “Um texto no templo de Alberon chamava isso de <b>alinhamento forçado</b> com esse mesmo símbolo”
 			<br >“Não era um ritual. Era uma… condição” </i>
 			</p></div></div></div>
+				      <div class="found-row has-media horizontal">
+      <div class="found-media">
+        <img src="parede.png" alt="Fragmento">
+      </div>
 			      <div class="found-card">
         <div class="lore">
 			<h3 style = "margin-bottom: 6px; margin-top: 2px; text-align:center;">Templo de Alberon, na parede:</h3>
@@ -260,6 +326,7 @@ hr{
 					- 
 					e nisso selaram seu fim"</i>
 
+</div>
         </div>
       </div>
 
@@ -269,7 +336,8 @@ hr{
   
   <section class="found">
 
-    <h1 class="found-title" style = "margin-top: 16px;">Diários do primeiro contrato</h1>
+    <h1 class="found-title" style = "margin-top: 60px;">Diários dos Saqueadores</h1>
+	<h4 style= "text-align:center; margin-top: 2px; margin-bottom: 4px;"> Contrato Templo de Ûlfred</h4>
 
     <div class="found-row no-media">
 	  
@@ -292,8 +360,8 @@ hr{
     </div>
 
   </section>
-    <div class="nav">
-    <div class="nav-spacer"></div>
+    <div class="nav" style = "margin-top: 30px;">
+    <div class="nav-spacer" ></div>
     <a class="nav-btn" href="../index.html">Voltar</a>
     <div class="nav-spacer"></div>
   </div>
