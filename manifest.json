@@ -1,0 +1,23 @@
+{
+  "name": "O Chamado de Raphael",
+  "short_name": "Raphael RPG",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b1520",
+  "theme_color": "#0b1520",
+  "orientation": "portrait",
+"icons": [
+  {
+    "src": "img/icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png",
+    "purpose": "any maskable"
+  },
+  {
+    "src": "img/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "any maskable"
+  }
+]
+}
