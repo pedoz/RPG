@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Escolhidos</title>
+
+<style>
+*{ box-sizing:border-box; }
+
+:root{
+  --page-bg:#0b1520;
+  --card-bg:#0f1e2e;
+  --stroke:#2c4c6b;
+  --text:#e9f0ff;
+  --muted:#b9c7de;
+
+  /* Desktop */
+  --avatar-size: 180px;
+  --overlap: 40px;
+
+  --radius:14px;
+  --pad:18px;
+  --gap:22px;
+}
+
+body{
+  margin:0;
+  padding:24px;
+  background:var(--page-bg);
+  font-family:serif;
+  color:var(--text);
+}
+
+.wrap{
+  max-width:1000px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:flex;
+  justify-content:center; /* centraliza no desktop */
+  margin-top:4px;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:2px solid #2c4c6b;
+  border-radius:8px;
+  padding:18px 12px; /* mesma altura */
+  display:block;
+  width:100%; /* desktop normal */
+  font-size:16px;
+}
+
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+/* ======================
+   ITEM DESKTOP
+====================== */
+.chosen{
+  display:grid;
+  grid-template-columns: var(--avatar-size) 1fr;
+  gap:var(--gap);
+  align-items:start;
+  position:relative;
+}
+
+.avatar{
+  width:var(--avatar-size);
+  height:var(--avatar-size);
+  border-radius:50%;
+  overflow:hidden;
+  border:2px solid rgba(255,255,255,.1);
+  box-shadow:0 15px 30px rgba(0,0,0,.4);
+  z-index:3;
+  position:relative;
+  border: 2px solid #2c4c6b;
+}
+
+.avatar a{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.card{
+  background:var(--card-bg);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+
+  /* mais “respiro” no topo (pra não encostar no título) */
+  padding: 28px var(--pad) var(--pad) var(--pad);
+
+  /* efeito de passar por baixo da imagem */
+  margin-left:calc(-1 * var(--overlap));
+  padding-left:calc(var(--pad) + var(--overlap));
+
+  min-height:calc(var(--avatar-size) * 0.8);
+  border: 2px solid #2c4c6b;
+}
+
+.title{
+  font-size:32px;
+  margin:0 0 16px 0;
+  margin-bottom: 6px;
+  text-align:center;
+}
+
+/* ======= TEXTO ESTILO LIVRO (DESKTOP + MOBILE) ======= */
+.lore{
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.75;
+  margin:0;
+
+  text-align: center;
+  text-justify: inter-word;
+  hyphens: auto;
+  color: #ffffff;
+}
+
+/* Para quando você quiser quebrar em parágrafos de verdade */
+.lore p{
+  margin: 0 0 16px 0;
+  text-indent: 30px;
+}
+
+/* BLOQUINHOS OPCIONAIS */
+.blocks{
+  margin-top:2px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  
+}
+
+.block{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  padding:14px;
+  background:rgba(0,0,0,.15);
+  border: 2px solid #2c4c6b;
+}
+
+.blocks h2{
+margin-bottom: 6px; 
+margin-top:6px;  
+text-align:center;
+}
+
+.block h3{
+  margin:0 0 10px 0;
+  font-size:18px;
+  color: #ffffff:
+}
+
+/* Texto dentro dos blocos também estilo livro */
+.block p{
+  margin:0 0 12px 0;
+  font-size:16px;
+  color:var(--muted);
+
+  line-height: 1.75;
+  text-align: justify;
+  text-justify: inter-word;
+  text-indent:18px;
+  hyphens: none;
+  
+}
+
+/* remove o último espaçamento extra do último parágrafo */
+.block p:last-child{ margin-bottom:0; }
+
+.ilegivel{
+  font-style: italic;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+/* ===== STATUS (tag custom) ===== */
+status{
+  display:block;
+  margin-top:10px;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.35;
+}
+
+/* ===== CAIXA RETRÁTIL ===== */
+.fold{
+  margin-top:6px;
+}
+
+.fold > summary{
+  list-style:none;
+  cursor:pointer;
+  user-select:none;
+
+  /* aparência */	
+  padding:2px 14px;
+
+  background: #0f1e2e;
+font-size:18px;
+  text-align:center;
+}
+
+/* remove marcador padrão */
+.fold > summary::-webkit-details-marker{ display:none; }
+
+/* indicador (setinha) simples */
+.fold > summary::after{
+  content:"▾";
+  display:block;
+  margin-top:2px;
+  margin-bottom: 2px;
+  opacity:.8;
+  font-size:14px;
+}
+
+.fold[open] > summary::after{
+  content:"▴";
+}
+
+.fold-body{
+  margin-top:2px;
+}
+
+/* ======================
+   MOBILE
+====================== */
+@media (max-width: 720px){
+
+  body{ padding:16px; }
+
+  .chosen{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:16px;
+  }
+
+  .avatar{
+    width: 85vw;
+    height: 85vw;
+    max-width: 420px;
+    max-height: 420px;
+    margin-bottom: -30px;
+  }
+
+  .card{
+    margin-left:0;                /* remove overlap */
+    width:100%;
+    min-height:auto;
+	
+
+    /* mantém o “respiro” do topo e o estilo livro */
+    padding: 34px var(--pad) 22px var(--pad);
+  }
+.nav{
+  width:100%;
+}
+
+.nav-btn{
+  width:100%;   /* ocupa toda largura */
+}
+
+
+  .title{
+    font-size:36x;
+    text-align:center;
+  }
+
+  /* livro no mobile: um pouco menor */
+  .lore{
+    font-size:20px;
+    line-height:1.8;
+  }
+
+  .block p{
+    font-size:18px;
+    line-height:1.8;
+	text-indent:18px;
+	
+  }
+  
+  
+    status{ font-size:16px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <section class="chosen">
+    <div class="avatar">
+      <a href="">
+        <img src="eicons/trudd.png" alt="Trudd">
+      </a>
+    </div>
+
+    <div class="card">
+<h2 class="title" style="text-align:center;">Trudd - O Escolhido de Mirella</h2>
+
+<details class="fold">
+  <summary>
+    <i>“Então não era acaso... Nunca é quando escolhem a gente”</i>
+    <status>
+      Primeira aparição: S01<br>
+      Status: Morto (S01)
+    </status>
+  </summary>
+
+  <div class="fold-body">
+
+    <!-- Se tu quiser um texto “geral” fora dos blocos, bota aqui -->
+    <!--
+    <p class="lore">Alguma lore curta aqui...</p>
+    -->
+
+    <div class="blocks">
+      <h2>Escrituras do Tomo de Trudd:</h2>
+
+      <div class="block">
+        <p>
+          Kalymos cresceu sob a proteção direta de Valerius, afastado do povo para preservar sua segurança.
+          Desde cedo demonstrava inteligência incomum e presença marcante, sinais claros de que os deuses
+          o observavam com atenção. Sua educação foi cuidadosamente guiada dentro dos templos, longe das
+          distrações do mundo.
+        </p><br>
+
+        <h3 style="text-align:center;"><i><u>Anotação de Trudd no Tomo:</u></i></h3>
+        <p>
+          <span class="ilegivel">ilegível</span>&nbsp;não herdou o cargo - tomou-o e, sem oposição, moldou a fé ao próprio redor.
+          Alberon tornou-se distante, quase abstrato, enquanto o olhar de Kalymos passou a ser o verdadeiro objeto
+          de devoção. O culto à sabedoria foi substituído pelo culto à presença.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</details>
+    </div>
+  </section>
+    <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/clea.png" alt="Clea" />
+        </a>
+      </div>
+	        <div class="card">
+        <h2 class="title">Clea - A Escolhida de Baruuk</h2>
+        <p class="lore">
+		</p>
+      </div>
+    </section>
+
+    <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/lara.png" alt="Lara" />
+        </a>
+      </div>
+
+      <div class="card">
+        <h2 class="title">Lara - A Escolhida de Nira</h2>
+        <p class="lore"> 
+		</p>
+      </div>
+    </section>
+
+   
+	
+	   <section class="chosen">
+      <div class="avatar">
+        <a href="">
+          <img src="eicons/vondriss.png" alt="Vondriss" />
+        </a>
+      </div>
+	        <div class="card">
+        <h2 class="title">Vondriss - O Escolhido de Aldebaran</h2>
+        <p class="lore">
+		</p>
+      </div>
+    </section>
+
+  <div class="nav">
+    <div class="nav-spacer"></div>
+    <a class="nav-btn" href="../index.html">Voltar</a>
+    <div class="nav-spacer"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+  
+  <!--
+
+
+
+
+
+/* ======================
+   BASE
+====================== */
+
+  <section class="chosen">
+    <div class="avatar">
+      <a href="">
+        <img src="eicons/trudd.png" alt="Trudd">
+      </a>
+    </div>
+
+    <div class="card">
+      <h2 class="title">Trudd - O Escolhido de Mirella</h2>
+      <p class="lore">
+        Lore aqui. O texto cresce automaticamente conforme necessário.
+      </p>
+
+      <div class="blocks">
+        <div class="block">
+          <h3>Marca</h3>
+          <p>Descrição rápida.</p>
+        </div>
+        <div class="block">
+          <h3>Rumor</h3>
+          <p>Outro bloco opcional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+-->
+
