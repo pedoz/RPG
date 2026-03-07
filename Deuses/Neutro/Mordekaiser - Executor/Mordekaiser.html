@@ -88,6 +88,14 @@ body{
   text-align:center;
 }
 
+.boxd{
+  background:#2c4c6b;
+  border:1px solid #0f1e2e;
+  border-radius:10px;
+  padding:12px;
+  text-align:center;
+}
+
 .box h1, .box h2, .box h3{
   margin:4px 0;
 }
@@ -224,40 +232,60 @@ display: grid;
 ========================= */
 @media (max-width: 768px){
 
-  .row-special{
-    grid-template-columns: 1fr;
-    gap:10px;
+  .left{
+    display:grid;
+    grid-template-columns: 90px 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "name name name name name"
+      "icon title title title title"
+      "simb simb simb dom dom"
+	  "tend  tend tend dom dom"
+	  "final final final final final";
+    gap:6px;
+    align-items:start;
   }
 
-  .img-central{
-    grid-column: 1;
-    grid-row: 1;
-    justify-self:center;
+  /* 1️⃣ Nome ocupa largura total */
+  .left > .boxd:nth-child(1){
+    grid-area:name;
   }
 
-  .historia{ grid-row:2; }
-  .poderes{ grid-row:3; }
-  .conhecido{ grid-row:4; }
-  .exige{ grid-row:5; }
-  .tolera{ grid-row:6; }
-  .classes{ grid-row:7; }
-  .cultuado{ grid-row:8; }
-
-  .left,
-  .center{
-    flex:1;
-    width:100%;
-    padding:10px;
+  /* 2️⃣ Ícone */
+  .left > .icon-box{
+    grid-area:icon;
+    padding:8px;
   }
 
-  .box{
-    padding:10px;
-    border-radius:8px;
+  .left .icon-frame{
+    max-width:80px;
+    padding:6px;
   }
 
-  .box h1{ font-size:1.4rem; }
-  .box h2{ font-size:1.2rem; }
-  .box h3{ font-size:1.05rem; }
+  /* 3️⃣ Título ao lado do ícone */
+  .left > .box:nth-child(3){
+    grid-area:title;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:90px;
+  }
+
+  /* 4️⃣ Símbolo / Domínio / Tendência */
+  .left > .box:nth-child(4){
+    grid-area:simb;
+  }
+
+  /* 5️⃣ Outros nomes */
+  .left > .box:nth-child(5){
+    grid-area:dom;
+  }
+    .left > .box:nth-child(6){
+    grid-area:final;
+  }
+      .left > .box:nth-child(7){
+    grid-area:final;
+  }
+
 }
 
 /* =========================
@@ -337,27 +365,29 @@ display: grid;
   <!-- ESQUERDA -->
   <div class="left">
 
-    <div class="box" style="font-size:22px;font-weight:bold; margin-bottom:8px; background:#2c4c6b">MORDEKAISER</div>
+    <div class="boxd" style="font-size:22px;font-weight:bold; margin-bottom:2px;">MORDEKAISER</div>
 
-<div class="box icon-box" style="margin-bottom: 8px; background:#2c4c6b">
+<div class="box icon-box" style="margin-bottom: 2px; background:#2c4c6b">
   <div class="icon-frame">
-    <img src="mordicon.png" alt="Fios da Trama">
+    <img src="corrente.png" alt="Fios da Trama">
   </div>
 </div>
 
 
-    <div class="box" style="font-size:20px;font-weight:bold ;margin-bottom: 8px; ">O CARCEREIRO</div>
+    <div class="box" style="font-size:20px;font-weight:bold ;margin-bottom: 2px; ">O CARCEREIRO</div>
 
-    <div class="box" style="font-size:14px;margin-bottom: 8px;">
+    <div class="box" style="font-size:14px;margin-bottom: 2px;">
       <strong>Símbolo:</strong><br>
-      A Moeda de Dois Lados
-      <hr>
-      <strong>Domínio:</strong><br>
-      • Execução <br>• Consequência <br>• Vínculo
-      <hr>
-      <strong>Tendência:</strong><br>
+      Corrente Perpétua
+	  <hr>
+	      <strong>Tendência:</strong><br>
       Leal e Neutro
     </div>
+      <div class="box" style="font-size:14px;margin-bottom: 2px;">
+      <strong>Domínio:</strong><br>
+      • Execução <br>• Consequência <br>• Vínculo
+      </div>
+  
 
     <div class="box">
       <strong>Outros nomes</strong><br>
@@ -381,7 +411,7 @@ display: grid;
     <div class="row-special">
 
       <div class="img-frame img-central">
-        <img src="mordekaiser.png" alt="A TECELA">
+        <img src="mord.png" alt="A TECELA">
       </div>
 
       <div class="box historia">
@@ -445,5 +475,3 @@ display: grid;
 
 </body>
 </html>
-
-
