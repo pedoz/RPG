@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0b1520">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registros</title>
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+<style>
+
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+
+
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+body {
+  margin: 0;
+  padding: 20px;
+  background: #0b1520;
+  font-family: serif;
+  color: #ffffff;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.banner{
+  width:100%;
+  margin: 0 0 24px 0;      /* espaço antes dos cards */
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid #2c4c6b;
+  background:#162b3f;
+  
+  /* controla a “altura” mantendo responsivo */
+  aspect-ratio: 6 / 1;    /* ajusta: 16/6 fica mais alto */
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 12%;
+}
+
+/* GRID - DESKTOP */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+}
+
+/* CARD */
+.card {
+  text-decoration: none;
+  color: white;
+  background: #0f1e2e;
+  border: 1px solid #2c4c6b;
+  border-radius: 14px;
+  text-align: center;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* IMAGEM */
+.icon-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #162b3f;
+  border-bottom: 1px solid #2c4c6b;
+  overflow: hidden;
+}
+
+.icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TÍTULO */
+.card h2 {
+  margin: 12px 0 14px 0;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+
+  body {
+    padding: 16px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+
+  .card h2 {
+    font-size: 20px;
+  }
+
+hr{
+  border: none;
+  height: 2px;
+  margin: 24px 0;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #2c4c6b,
+    transparent
+  )}
+
+/* 📲 TABLET (2 POR LINHA) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+    .banner{
+    aspect-ratio: 16 / 7;  /* ajusta se quiser */
+    margin-bottom: 20px;
+  }
+    .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align: center;">REGISTROS DE VALTHRIC</h1>
+<h3 style="text-align: center;">“Nem tudo em Valthric pode ser compreendido.
+Mas algumas coisas foram… registradas”</h3><br>
+<!--
+<h2 style="text-align: center;">Valthric</h2>
+
+<h2 style="text-align: center;">Questinar é a única defesa contra a tirania das certezas</h2></br>
+-->
+
+
+
+
+<div class="grid">
+
+  <a class="card" href="natureza/index.html">
+    <div class="icon-box">
+      <img src="img/nature.png" alt="natureza">
+    </div>
+    <h2>O Mundo Vivo</h2>
+  </a>
+<!---
+  <a class="card" href="Regioes/index.html">
+    <div class="icon-box">
+      <img src="iconesgeral/iconeRegioes.png" alt="Regiões">
+    </div>
+    <h2>Regiões</h2>
+  </a>
+-->
+
+    <a class="card" href="artefatos/index.html">
+    <div class="icon-box">
+      <img src="img/equip.png" alt="Lore">
+    </div>
+    <h2>Artefatos e Relíquias</h2>
+  </a>
+  
+
+
+  <a class="card" href="locais/index.html">
+    <div class="icon-box">
+      <img src="img/locais.png" alt="Npc">
+    </div>
+    <h2>Locais e Monumentos</h2>
+  </a>
+
+
+  <a class="card" href="curious/index.html">
+    <div class="icon-box">
+      <img src="img/curious.png" alt="Curiosidades">
+    </div>
+    <h2>Curiosidades</h2>
+  </a>
+
+ 
+<!---
+  <a class="card" href="Organizaçoes/index.html">
+    <div class="icon-box">
+      <img src="iconesgeral/iconeOrganizaçoes.png" alt="Organizações">
+    </div>
+    <h2>Organizações</h2>
+  </a> 
+  -->
+
+
+
+</div>
+
+<hr>
+<div class="banner">
+  <img src="img/fundo.jpg" alt="Chuparinos">
+</div>
+<hr>
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+
+
+    <a href="../Deuses/index.html">Deuses</a>
+    <a href="../Npc/index.html">NPCs</a>
+	
+	<a class="nav-btn" href="../Lore/index.html">Lore</a>
+    
+	<!--
+	<a href="../Organizaçoes/index.html">Organizações</a>
+  -->
+  </div>
+</div>
+  </div>
+</div>
+
+</body>
+</html>

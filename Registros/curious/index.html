@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curiosidades</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1520;
+  font-family:serif;
+  color:#fff;
+}
+
+h1,h2,h3,h4,p,ul{
+  margin-top:0;
+}
+
+.page-title{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#cfd8e3;
+  margin-bottom:26px;
+  font-style:italic;
+}
+
+/* topo opcional */
+.curious-intro{
+  max-width:900px;
+  margin:0 auto 26px auto;
+  padding:18px 20px;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  background:#102235;
+  color:#dce4ec;
+  line-height:1.6;
+}
+.header{
+  margin-top:36px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+/* grid principal */
+.curious-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  align-items:start;
+}
+
+/* card */
+.curious-card{
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  overflow:hidden;
+  background:#0f1e2e;
+}
+
+.curious-card summary{
+  list-style:none;
+  cursor:pointer;
+  display:block;
+  background:#102235;
+  transition:background 0.2s;
+}
+
+.curious-card summary:hover{
+  background:#13283d;
+}
+
+.curious-card summary::-webkit-details-marker{
+  display:none;
+}
+
+/* capa */
+.curious-cover{
+  position:relative;
+}
+
+.curious-media{
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#162b3f;
+  border-bottom:1px solid #2c4c6b;
+}
+
+.curious-media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.curious-header{
+  padding:12px 14px;
+  background:#102235;
+  position:relative;
+}
+
+.curious-title{
+  margin:0;
+  font-size:19px;
+  text-align:center;
+  padding:0 26px;
+}
+
+.curious-header::after{
+  content:"+";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:20px;
+  color:#c8d3df;
+}
+
+.curious-card[open] .curious-header::after{
+  content:"–";
+}
+
+/* selo opcional */
+.curious-badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:2;
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  background:rgba(8,18,28,0.78);
+  border:1px solid rgba(200,211,223,0.3);
+  color:#e1e8ef;
+  font-size:12px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* conteúdo */
+.curious-body{
+  padding:20px 18px;
+  border-top:1px solid #2c4c6b;
+}
+
+.curious-body p{
+  margin:0 auto 14px auto;
+  max-width:95%;
+  line-height:1.62;
+  color:#e4ebf3;
+}
+
+.curious-body p:last-child{
+  margin-bottom:0;
+}
+
+/* bloco destaque */
+.curious-highlight{
+  margin:14px auto 0 auto;
+  max-width:95%;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid #2c4c6b;
+  background:#11263a;
+  color:#dbe6f2;
+  line-height:1.55;
+}
+
+/* nota/citação */
+.curious-note{
+  margin:16px auto 0 auto;
+  max-width:95%;
+  padding-left:12px;
+  border-left:2px solid #2c4c6b;
+  font-style:italic;
+  font-size:16px;
+  line-height:1.58;
+  color:#c8d3df;
+}
+
+.curious-note-author{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  color:#8fa3b8;
+}
+
+/* mini lista */
+.curious-list{
+  max-width:95%;
+  margin:14px auto 0 auto;
+  padding-left:20px;
+  color:#dfe7ef;
+  line-height:1.55;
+}
+
+.curious-list li{
+  margin-bottom:8px;
+}
+
+/* tags */
+.curious-meta{
+  margin:16px auto 0 auto;
+  max-width:95%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.curious-tag{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid #2c4c6b;
+  background:#11263a;
+  font-size:13px;
+  color:#d7e1eb;
+}
+
+/* mini rodapé do card */
+.curious-footer{
+  margin:16px auto 0 auto;
+  max-width:95%;
+  font-size:13px;
+  color:#91a5ba;
+  text-align:right;
+  font-style:italic;
+}
+
+/* versão sem imagem */
+.curious-card.no-image .curious-header{
+  border-top:none;
+}
+
+.curious-card.no-image summary{
+  padding-top:0;
+}
+
+/* bloco tipo “sabia que” */
+.curious-quick{
+  margin:0 auto 14px auto;
+  max-width:95%;
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(44,76,107,0.18);
+  border:1px dashed rgba(200,211,223,0.25);
+  color:#d9e4ef;
+  font-size:15px;
+  line-height:1.55;
+}
+
+/* responsivo */
+@media (max-width: 950px){
+  .curious-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px){
+  body{
+    padding:16px;
+  }
+
+  .curious-grid{
+    grid-template-columns:1fr;
+  }
+
+  .curious-media{
+    aspect-ratio:1 / 1;
+  }
+
+  .curious-title{
+    font-size:18px;
+  }
+
+  .curious-body{
+    padding:20px 18px;
+  }
+
+  .curious-intro{
+    padding:16px 16px;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">CURIOSIDADES</h1>
+<h3 class="page-subtitle">“Nem tudo muda a campanha. Algumas coisas apenas fazem o mundo respirar.”</h3>
+
+<div class="curious-intro">
+  Esta seção reúne detalhes soltos, hábitos, registros, superstições, observações e pequenas
+  estranhezas que ajudam a dar textura ao mundo. Nem tudo aqui precisa aparecer em sessão;
+  às vezes, basta existir para que o resto pareça mais real.
+</div>
+
+
+<!---
+
+
+
+<div class="curious-grid">
+
+  <!-- CARD COMPLETO --
+  <details class="curious-card">
+    <summary>
+      <div class="curious-cover">
+        <div class="curious-media">
+          <img src="img/teste.png" alt="Os sinos que não tocam" style="object-position: 50% 45%;">
+        </div>
+        <span class="curious-badge">Superstição</span>
+        <div class="curious-header">
+          <h4 class="curious-title">Os sinos que não tocam</h4>
+        </div>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <div class="curious-quick">
+        Em alguns povoados, sinos antigos continuam pendurados não para serem usados, mas para lembrarem que um dia precisaram ser.
+      </div>
+
+      <p>
+        Em certas regiões, há sinos mantidos em praças, torres ou portões que não devem mais ser tocados.
+        O motivo muda de cidade para cidade: alguns dizem que é respeito, outros dizem que é medo, e alguns
+        simplesmente não sabem mais explicar.
+      </p>
+
+      <p>
+        O fato curioso é que, mesmo esquecendo o motivo original, os moradores costumam preservar a regra
+        com um zelo quase automático — como se certas proibições sobrevivessem melhor do que suas razões.
+      </p>
+
+      <div class="curious-highlight">
+        Não é incomum que crianças locais conheçam a regra antes mesmo de saberem o nome da praça onde o sino está.
+      </div>
+
+      <div class="curious-note">
+        “Tem coisa que o povo para de entender, mas não para de obedecer.”
+        <span class="curious-note-author">— comentário comum entre viajantes velhos</span>
+      </div>
+
+      <div class="curious-meta">
+        <span class="curious-tag">Costume</span>
+        <span class="curious-tag">Tradição residual</span>
+        <span class="curious-tag">Atmosfera</span>
+      </div>
+
+      <div class="curious-footer">Registro oral</div>
+    </div>
+  </details>
+
+  <!-- CARD COM LISTA --
+  <details class="curious-card">
+    <summary>
+      <div class="curious-cover">
+        <div class="curious-media">
+          <img src="img/teste.png" alt="Três formas de reconhecer um lugar importante" style="object-position: 50% 50%;">
+        </div>
+        <span class="curious-badge">Observação</span>
+        <div class="curious-header">
+          <h4 class="curious-title">Três formas de reconhecer um lugar importante</h4>
+        </div>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <p>
+        Em Valthric, um lugar raramente é importante só porque alguém diz que é. Lugares importantes costumam
+        denunciar a si mesmos por pequenos excessos de comportamento.
+      </p>
+
+      <ul class="curious-list">
+        <li>As pessoas abaixam a voz sem perceber.</li>
+        <li>Animais evitam o centro, mas não a borda.</li>
+        <li>Mesmo quem nunca esteve ali sente vontade de olhar duas vezes.</li>
+      </ul>
+
+      <div class="curious-note">
+        “Lugares com história nunca estão quietos de verdade.”
+        <span class="curious-note-author">— caderno de um explorador</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- CARD SEM IMAGEM --
+  <details class="curious-card no-image">
+    <summary>
+      <div class="curious-header">
+        <h4 class="curious-title">Por que alguns anões evitam espelhos antigos</h4>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <p>
+        Entre alguns clãs mais conservadores, existe a ideia de que espelhos muito antigos não mostram apenas
+        o rosto atual, mas também algo da posição que o indivíduo ocupa diante dos seus mortos.
+      </p>
+
+      <p>
+        Isso não significa necessariamente magia no sentido formal. Muitas vezes é apenas um desconforto cultural,
+        uma forma simbólica de não encarar aquilo que se herdou sem escolher.
+      </p>
+
+      <div class="curious-meta">
+        <span class="curious-tag">Costume anão</span>
+        <span class="curious-tag">Herança</span>
+      </div>
+    </div>
+  </details>
+
+  <!-- CARD BEM CURTO --
+  <details class="curious-card">
+    <summary>
+      <div class="curious-cover">
+        <div class="curious-media">
+          <img src="img/teste.png" alt="Cheiro de chuva em Aelindor" style="object-position: 50% 35%;">
+        </div>
+        <span class="curious-badge">Detalhe</span>
+        <div class="curious-header">
+          <h4 class="curious-title">Cheiro de chuva em Aelindor</h4>
+        </div>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <p>
+        Alguns estrangeiros dizem que a chuva em Aelindor não cheira a terra molhada, mas a folha aberta.
+      </p>
+
+      <div class="curious-note">
+        “É o tipo de detalhe que só parece poesia até tu sentir por conta própria.”
+      </div>
+    </div>
+  </details>
+
+  <!-- CARD COM BLOCO DESTACADO --
+  <details class="curious-card">
+    <summary>
+      <div class="curious-cover">
+        <div class="curious-media">
+          <img src="img/teste.png" alt="A mania de nomear pontes" style="object-position: 50% 50%;">
+        </div>
+        <span class="curious-badge">Hábito cultural</span>
+        <div class="curious-header">
+          <h4 class="curious-title">A mania de nomear pontes</h4>
+        </div>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <p>
+        Em algumas regiões humanas, pontes recebem nomes com muito mais frequência do que ruas ou mercados.
+        Isso acontece porque a travessia, mais do que o destino, costuma ser a parte lembrada de certas viagens.
+      </p>
+
+      <div class="curious-highlight">
+        Uma ponte nomeada quase sempre carrega alguma história de perda, negociação, juramento ou retorno.
+      </div>
+
+      <div class="curious-footer">Uso comum em registros regionais</div>
+    </div>
+  </details>
+
+  <!-- CARD MAIS DENSO --
+  <details class="curious-card">
+    <summary>
+      <div class="curious-cover">
+        <div class="curious-media">
+          <img src="img/teste.png" alt="Quando um rumor dura demais" style="object-position: 50% 40%;">
+        </div>
+        <span class="curious-badge">Rumor</span>
+        <div class="curious-header">
+          <h4 class="curious-title">Quando um rumor dura demais</h4>
+        </div>
+      </div>
+    </summary>
+
+    <div class="curious-body">
+      <p>
+        Rumores normais mudam de forma a cada cidade. Quando um rumor atravessa muitas regiões mantendo a mesma
+        estrutura, as pessoas mais atentas tendem a desconfiar não do conteúdo, mas da persistência.
+      </p>
+
+      <p>
+        Isso não significa que todo rumor durável seja verdadeiro. Às vezes significa apenas que ele foi útil
+        demais para ser esquecido.
+      </p>
+
+      <div class="curious-note">
+        “Mentira velha não é verdade. Mas também não é qualquer mentira.”
+        <span class="curious-note-author">— anotação marginal encontrada em arquivo religioso</span>
+      </div>
+
+      <div class="curious-meta">
+        <span class="curious-tag">Informação</span>
+        <span class="curious-tag">Memória social</span>
+        <span class="curious-tag">Suspeita</span>
+      </div>
+    </div>
+  </details>
+-->
+</div>
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html">← Voltar</a>
+    <a href="../natureza/index.html">O Mundo Vivo</a>
+	<a href="../artefatos/index.html">Relíquias e Artefatos</a>
+    <a href="../locais/index.html">Locais e Monumentos</a>
+  </div>
+</div>
+</body>
+</html>
