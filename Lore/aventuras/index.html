@@ -107,6 +107,26 @@ body{
   object-position:center 19%;
 }
 
+.found-media2{
+
+
+  margin-bottom: 18px;
+
+
+
+  border: 2px solid #2c4c6b;
+  border-radius: 22px;
+}
+
+.found-media2 img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center 19%;
+    border-radius: 22px;
+}
+
 /* Título */
 .title{
   font-size:34px;
@@ -184,7 +204,22 @@ body{
   text-align:justify;
 }
 
+.image-row{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:12px;
+  margin-top:20px;
+}
 
+.image-row img{
+  width:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:50%;
+  border:2px solid #2c4c6b;
+  background:#162b3f;
+  display:block;
+}
 
 /* Remove marcador padrão */
 .adventure-toggle{
@@ -296,7 +331,18 @@ border-radius:0 0 6px 6px;
   color:#ffffff;
 }
 
+hr{
+  border: none;
+  height: 2px;
+  margin: 24px 0;
 
+  background: linear-gradient(
+    to right,
+    transparent,
+    #2c4c6b,
+    transparent
+  );
+}
 
 /* ================= MOBILE ================= */
 
@@ -361,6 +407,13 @@ border-radius:0 0 6px 6px;
   .lore-illustrated .lore-text p{
     text-indent:18px;
   }
+  @media (max-width: 720px){
+
+  .image-row{
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
 }
 </style>
 </head>
@@ -456,6 +509,84 @@ border-radius:0 0 6px 6px;
     </details>
 
   </section>
+  
+  
+  <section class="found">
+  <details class="found-card" open>
+    <summary class="adventure-toggle">
+      S02 - O Chamado </summary>
+
+<div class="adventure-body">
+      <!-- IMAGEM ENCOSTADA NO CARD -->
+      <div class="found-media">
+        <img src="img/S02.png" alt="S02">
+      </div>
+
+      <!-- GRID 4 COLUNAS (nomes centralizados) 
+      <div class="char-grid">
+        <div class="char">Ekemon <span>O Feitiçeiro Tiefling</span></div>
+        <div class="char">Drusilia <span>A Barda Drow</span></div>
+        <div class="char">Mei An <span>O Paladino Humano</span></div>
+        <div class="char">Althea <span>A Maga Elfa</span></div>
+      </div>-->
+
+      <div class="lore">
+        <div class="image-row">
+  <img src="img/s02/clea.png">
+  <img src="img/s02/vondriss.png">
+  <img src="img/s02/lara.png">
+  <img src="img/s02/raphael.png">
+</div>
+<hr>
+
+<div class="lore-illustrated">
+
+  <a class="lore-illustration" href="../eco/index.html">
+    <img src="img/s02arveco.png" alt="Eco"  >
+    <div class="lore-illustration-title" >
+     A Árvore Mãe
+    </div>
+  </a>
+
+  <div class="lore-text">
+    <p>
+      blábláblábláblábláblá
+    </p>
+  </div>
+
+</div>
+
+      <div class="found-media2">
+        <img src="img/S02puzzle.png" alt="S02">
+      </div>
+
+
+
+<p>
+  bláblábláblábláblá
+  <a href="../aurora/index.html">página</a>
+  blábláblábláblá
+</p>
+
+
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:16px;">
+            blábláblá
+          </h3>
+          <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
+           bláblábláblá <br><br>
+            bláblábláblá
+          </p>
+        </div>
+      </div>
+</div>
+    </details>
+
+  </section>
+
 
   <div class="nav">
     <div class="nav-spacer"></div>

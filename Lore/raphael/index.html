@@ -14,8 +14,13 @@
   --text:#e9f0ff;
   --muted:#b9c7de;
 
+  /* Desktop */
+  --avatar-size: 180px;
+  --overlap: 40px;
+
   --radius:14px;
-  --pad:26px;
+  --pad:18px;
+  --gap:22px;
 }
 
 /* ================= BASE ================= */
@@ -146,7 +151,6 @@ body{
   /*text-indent:32px;            🔥 indentação inicial */
 }
 
-}
 
 /* BLOQUINHOS */
 .blocks{
@@ -174,6 +178,149 @@ body{
   color:var(--muted);
   text-align:justify;
 }
+.fold{
+  margin-top: 10px;
+  border: 2px solid var(--stroke);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--card-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.fold > summary{
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, #132438 0%, #0f1e2e 100%);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.fold > summary:hover{
+  background: linear-gradient(180deg, #1a3148 0%, #132438 100%);
+}
+
+.fold > summary::-webkit-details-marker{
+  display: none;
+}
+
+.fold-summary{
+  text-align: center;
+}
+
+.fold-title{
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.fold-subtitle{
+  font-size: 16px;
+  color: var(--muted);
+  opacity: .95;
+}
+
+.fold > summary::after{
+  content: "▾";
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform .2s ease;
+}
+
+.fold[open] > summary::after{
+  content: "▴";
+}
+
+.fold-body{
+  padding: 22px 20px 20px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  background: rgba(0,0,0,.12);
+}
+
+.prayer-body p{
+  margin: 0;
+  text-align: center;
+  line-height: 1.9;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+
+.dialogue-page .dialogue-log{
+  max-width: 900px;
+  margin: 28px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialogue-page .dialogue{
+  border: 2px solid var(--stroke);
+  border-radius: 16px;
+  padding: 14px 18px;
+  background: rgba(8, 14, 22, 0.88);
+  box-shadow: 0 8px 24px rgba(0,0,0,.20);
+}
+
+.dialogue-page .speaker{
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+
+.dialogue-page .line{
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+/* Narrador */
+.dialogue-page .dialogue.narrator{
+  border-color: #7f8ea3;
+  background: linear-gradient(180deg, rgba(20,27,37,.95), rgba(10,15,22,.95));
+}
+
+.dialogue-page .dialogue.narrator .speaker{
+  color: #b7c4d8;
+}
+
+/* Kisling */
+.dialogue-page .dialogue.kisling{
+  border-color: #aa3333;
+  background: linear-gradient(180deg, rgba(52,14,14,.92), rgba(18,8,8,.94));
+}
+
+.dialogue-page .dialogue.kisling .speaker{
+  color: #ff8f8f;
+}
+
+/* Drow */
+.dialogue-page .dialogue.drow{
+  border-color: #6e6aa8;
+  background: linear-gradient(180deg, rgba(20,18,34,.92), rgba(10,10,18,.94));
+}
+
+.dialogue-page .dialogue.drow .speaker{
+  color: #cfc8ff;
+}
+
+/* Paladino */
+.dialogue-page .dialogue.paladino{
+  border-color: #b08a43;
+  background: linear-gradient(180deg, rgba(39,31,15,.92), rgba(17,14,8,.94));
+}
+
+.dialogue-page .dialogue.paladino .speaker{
+  color: #ffd27a;
+}
+
 
 /* ================= DESKTOP ================= */
 
@@ -222,31 +369,64 @@ body{
     <div class="found-media">
       <img src="rapha2.png" alt="Raphael">
     </div>
+<details class="fold">
+  <summary class="fold-summary">
+    <div class="fold-title">A Reza</div>
+    <div class="fold-subtitle">Escutada antes de enfrentar a Dama de Ferro</div>
+  </summary>
 
-    <div class="found-card">
-      <h1 class="title" style = "text-align:center;">A Reza</h1><h3 style = "text-align:center;"> Escutada antes de enfrentar a Dama de Ferro</h3>
+  <div class="fold-body prayer-body">
+    <p>
+      “Então é isso”<br>
+      “Eu falei sozinho de novo”<br>
+      “Disseram que tu escutava”<br>
+      “Disseram um monte de coisa”<br>
+      “Eu fiquei esperando”<br>
+      “Achei que em algum momento ia fazer diferença”<br>
+      “Eu não tô pedindo sinal”<br>
+      “Nem perdão”<br>
+      “Eu só queria saber se isso tudo não é loucura”<br>
+      “Se eu não tô indo longe demais por alguém que talvez nem queira voltar”<br>
+      “Mas se ainda existir qualquer coisa tua…”<br>
+      “Mesmo que não seja tu…”<br>
+      “Eu vou atravessar”<br>
+      “Vou descer onde ninguém volta inteiro”<br>
+      “E quando eu for”<br>
+      “Protege meus rastros”<br>
+      “Não por mim”<br>
+      “Eu sou a última chance dele”<br>
+    </p>
+  </div>
+</details>
+   
+ 
+
+<details class="fold">
+  <summary class="fold-summary">
+    <div class="fold-title">O Anúncio</div>
+    <div class="fold-subtitle">Batalha contra os Escolhidos de Baruuk e Nira</div>
+  </summary>
+	
+	    <div class="fold-body prayer-body">
 
       <div class="lore">
-        <p style = "text-align:center;">
-		“Então é isso”<br>
-		“Eu falei sozinho de novo”<br>
-		“Disseram que tu escutava”<br>
-		“Disseram um monte de coisa”<br>
-		“Eu fiquei esperando”<br>
-		“Achei que em algum momento ia fazer diferença”<br>
-		“Eu não tô pedindo sinal”<br>
-		“Nem perdão”<br>
-		“Eu só queria saber se isso tudo não é loucura”<br>
-		“Se eu não tô indo longe demais por alguém que talvez nem queira voltar”<br>
-		“Mas se ainda existir qualquer coisa tua…"<br>
-		"Mesmo que não seja tu…”<br>
-		“Eu vou atravessar”<br>
-		“Vou descer onde ninguém volta inteiro”<br>
-		“E quando eu for”<br>
-		“Protege meus rastros”<br>
-		“Não por mim”<br>
-		“Eu sou a última chance dele”<br>
-        </p>
+	  <h2 style = " text-align:center;">Raphael:</h2>
+	  <div class="block">
+          <h3 style = " text-align:center;">“Fui condenado no dia em que respirei<br>
+e ainda conseguem chamar de justiça o que fizeram com nós<br>
+Somos punidos desde que nascemos<br>
+Agora vou responder na mesma língua”
+		</div>
+		<h3 style = " text-align:center;">Clea:</h3>
+		<div class="block">
+		<p style = " text-align:center;">"Quem você pensa que é?"</p>
+		</div>
+		<h2 style = " text-align:center;">Raphael:</h2>
+		<div class="block">
+		<h3 style = " text-align:center;">"Eu sou a promessa que vocês tentaram matar..."
+
+		<h1 style = " text-align:center;">"Eu sou Raphael" </h1>
+		</p>
 
       </div>
 
@@ -254,6 +434,7 @@ body{
  
 
     </div>
+</details>
 
     <div class="nav">
     <div class="nav-spacer"></div>
@@ -321,4 +502,42 @@ body{
     <a class="nav-btn" href="../index.html">Voltar</a>
     <div class="nav-spacer"></div>
   </div>
+	  -->
+	  
+	  
+	  <!---
+	  
+	  .fold-title::before,
+.fold-title::after{
+  content:"";
+  display:inline-block;
+  width:60px;
+  height:2px;
+  background: linear-gradient(to right, transparent, #8aa6c9, transparent);
+  vertical-align: middle;
+  margin: 0 12px;
+}
+
+
+
+
+
+
+
+.fold[open]{
+  box-shadow: 0 12px 30px rgba(0,0,0,.28);
+}
+
+
+.prayer-body{
+  max-width: 760px;
+  margin: 0 auto;
+}
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	  -->
