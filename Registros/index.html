@@ -183,17 +183,30 @@ hr{
   )}
 
 /* 📲 TABLET (2 POR LINHA) */
-@media (min-width: 601px) and (max-width: 1024px) {
+/* 📱 MOBILE (2 POR LINHA) */
+@media (max-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
-    .banner{
-    aspect-ratio: 16 / 7;  /* ajusta se quiser */
-    margin-bottom: 20px;
+
+  .card h2 {
+    font-size: 16px;
   }
-    .header-nav a{
-    font-size:12px;
-    padding:8px 6px;
+
+  .header-nav {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .header-nav a {
+    font-size: 12px;
+    padding: 8px 6px;
+  }
+
+  .banner {
+    aspect-ratio: 16 / 8;
+    margin-bottom: 18px;
   }
 }
 </style>
