@@ -39,8 +39,6 @@ a{
   font-style:italic;
 }
 
-/* ================= BANNER ================= */
-
 .banner{
   width:100%;
   margin:0 0 24px 0;
@@ -79,7 +77,9 @@ a{
   border:1px solid #2c4c6b;
   border-radius:8px;
   color:#fff;
+  text-decoration:none;
   font-size:14px;
+  white-space:nowrap;
   transition:background 0.2s, transform 0.2s;
 }
 
@@ -88,7 +88,7 @@ a{
   transform:translateY(-2px);
 }
 
-/* ================= COMPÊNDIO ================= */
+/* ================= CARD GERAL ================= */
 
 .codex-shell{
   background:#0f1e2e;
@@ -133,8 +133,6 @@ a{
   padding:14px;
 }
 
-/* ================= CATEGORIAS ================= */
-
 .category-block{
   margin-bottom:14px;
   border:1px solid #2c4c6b;
@@ -148,6 +146,11 @@ a{
   cursor:pointer;
   padding:12px 14px;
   background:#11263a;
+  transition:background 0.2s;
+}
+
+.category-block summary:hover{
+  background:#15314a;
 }
 
 .category-block summary::-webkit-details-marker{
@@ -156,11 +159,15 @@ a{
 
 .category-title{
   display:flex;
+  align-items:center;
   justify-content:space-between;
+  gap:10px;
 }
 
 .category-title::after{
   content:"+";
+  font-size:20px;
+  color:#c8d3df;
 }
 
 .category-block[open] .category-title::after{
@@ -171,7 +178,7 @@ a{
   padding:14px;
 }
 
-/* ================= GRID ================= */
+/* ================= GRID DO COMPÊNDIO ================= */
 
 .codex-grid{
   display:grid;
@@ -179,18 +186,17 @@ a{
   gap:14px;
 }
 
-/* ================= ENTRIES ================= */
-
 .entry{
   border:1px solid #2c4c6b;
   border-radius:12px;
   overflow:hidden;
   background:#0f1e2e;
+  scroll-margin-top:20px;
 }
 
 .entry summary{
-  list-style:none;
   cursor:pointer;
+  list-style:none;
 }
 
 .entry summary::-webkit-details-marker{
@@ -199,7 +205,7 @@ a{
 
 .entry-media{
   width:100%;
-  aspect-ratio:1/1;
+  aspect-ratio:1 / 1;
   overflow:hidden;
   background:#162b3f;
 }
@@ -208,6 +214,7 @@ a{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
 .entry-name{
@@ -215,12 +222,16 @@ a{
   padding:10px;
   background:#102235;
   position:relative;
+  font-size:17px;
 }
 
 .entry-name::after{
   content:"+";
   position:absolute;
   right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#c8d3df;
 }
 
 .entry[open] .entry-name::after{
@@ -234,17 +245,19 @@ a{
 
 .entry-body p{
   line-height:1.6;
-  margin-bottom:12px;
+  margin:0 0 12px 0;
+  color:#e4ebf3;
 }
 
 .entry-note{
+  margin-top:10px;
   padding-left:10px;
   border-left:2px solid #2c4c6b;
   font-style:italic;
   color:#c8d3df;
 }
 
-/* ================= REGIÕES ================= */
+/* ================= BANNERS POR REGIÃO ================= */
 
 .region-divider{
   margin:26px 0 14px 0;
@@ -258,6 +271,7 @@ a{
   width:100%;
   aspect-ratio:6 / 1.25;
   overflow:hidden;
+  background:#162b3f;
   border-bottom:1px solid #2c4c6b;
 }
 
@@ -265,6 +279,7 @@ a{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
 .region-divider-body{
@@ -272,10 +287,17 @@ a{
 }
 
 .region-divider-body h2{
-  margin-bottom:8px;
+  margin:0 0 8px 0;
+  font-size:25px;
 }
 
-/* ================= REFERÊNCIAS ================= */
+.region-divider-body p{
+  margin:0;
+  line-height:1.55;
+  color:#dce4ec;
+}
+
+/* ================= REFERÊNCIAS DA REGIÃO ================= */
 
 .reference-shell{
   background:#0f1e2e;
@@ -283,6 +305,17 @@ a{
   border-radius:14px;
   padding:18px;
   margin-bottom:18px;
+}
+
+.reference-title{
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+.reference-subtitle{
+  font-size:14px;
+  color:#c8d3df;
+  margin-bottom:12px;
 }
 
 .reference-pairs{
@@ -300,139 +333,97 @@ a{
 
 .reference-column h3{
   margin:0;
-  padding:12px;
+  padding:12px 14px;
   background:#12304b;
+  border-bottom:1px solid #2c4c6b;
+  font-size:18px;
 }
 
 .reference-grid{
   padding:14px;
   display:grid;
-  grid-template-columns:repeat(4, minmax(0,1fr));
+  grid-template-columns:repeat(4, minmax(0, 1fr));
   gap:12px;
 }
 
+.reference-card{
+  display:block;
+  text-align:center;
+  color:#fff;
+}
+
 .reference-thumb{
-  aspect-ratio:1/1;
+  width:100%;
+  aspect-ratio:1 / 1;
   border-radius:10px;
   overflow:hidden;
   border:1px solid #2c4c6b;
+  background:#162b3f;
+  margin-bottom:6px;
 }
 
 .reference-thumb img{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
-/* ================= LEITURA REGIONAL ================= */
-
-.region-notes{
-  margin-top:18px;
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
+.reference-card span{
+  display:block;
+  font-size:13px;
+  line-height:1.2;
+  color:#d7e1eb;
 }
 
-.note-box{
-  border:1px solid #2c4c6b;
-  border-radius:12px;
-  background:#102235;
-  padding:14px;
-}
-
-.note-label{
-  display:inline-block;
-  margin-bottom:10px;
-  padding:4px 8px;
-  border:1px solid #2c4c6b;
-  border-radius:999px;
-  background:#11263a;
-  font-size:12px;
-}
-
-.note-head{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  margin-bottom:10px;
-}
-
-.note-icon{
-  width:50px;
-  height:50px;
-  border-radius:10px;
-  overflow:hidden;
-  border:1px solid #2c4c6b;
-}
-
-.note-icon img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.note-box h4{
-  margin:0;
-}
-
-/* ================= POI ================= */
-
-.poi-shell{
-  margin-top:18px;
-  border:1px solid #2c4c6b;
-  border-radius:12px;
-  overflow:hidden;
-  background:#102235;
-}
-
-.poi-header{
-  padding:12px;
-  background:#12304b;
-  border-bottom:1px solid #2c4c6b;
-}
-
-.poi-grid{
-  padding:14px;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-}
-
-.poi-thumb{
-  aspect-ratio:1/1;
-  border-radius:10px;
-  overflow:hidden;
-  border:1px solid #2c4c6b;
-}
-
-.poi-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+.reference-card:hover .reference-thumb{
+  border-color:#4b739b;
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width:860px){
+@media (max-width: 1000px){
+  .reference-grid{
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px){
   .codex-columns,
-  .reference-pairs,
-  .region-notes{
+  .reference-pairs{
     grid-template-columns:1fr;
   }
 }
 
-@media (max-width:700px){
+@media (max-width: 700px){
+  body{
+    padding:16px;
+  }
+
+  .banner{
+    aspect-ratio:16 / 7;
+  }
+
   .codex-grid{
     grid-template-columns:1fr;
   }
 
-  .reference-grid,
-  .poi-grid{
-    grid-template-columns:repeat(2,1fr);
+  .reference-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+
+  .header-nav{
+    flex-wrap:wrap;
+  }
+
+  .header-nav a{
+    flex:1 1 calc(50% - 10px);
+    font-size:13px;
   }
 }
 </style>
 </head>
+
 <body>
 
 <h1 class="page-title">O MUNDO VIVO</h1>
@@ -442,13 +433,13 @@ a{
   <img src="img/fundo.png" alt="O Mundo Vivo">
 </div>
 
-<!-- ================= COMPÊNDIO ================= -->
+<!-- ================= COMPÊNDIO GERAL ================= -->
 <section class="codex-shell">
-
   <h2 class="codex-title">Compêndio Geral</h2>
   <p class="codex-text">
-    Este compêndio reúne as formas de vida conhecidas. As regiões abaixo indicam onde
-    certas espécies são encontradas, mas suas descrições completas permanecem aqui.
+    Este compêndio reúne as formas de vida mais conhecidas de Valthric. As regiões abaixo
+    indicam onde certas espécies costumam ser vistas ou reconhecidas, mas a descrição
+    completa de cada uma permanece centralizada aqui.
   </p>
 
   <div class="codex-columns">
@@ -459,38 +450,64 @@ a{
       <div class="codex-column-body">
 
         <details class="category-block" open>
-          <summary><span class="category-title">Plantas</span></summary>
-
+          <summary>
+            <span class="category-title">Plantas Comuns</span>
+          </summary>
           <div class="category-content">
             <div class="codex-grid">
 
               <details class="entry" id="vinhadatrama">
                 <summary>
                   <div class="entry-media">
-                    <img src="img/vinhadatrama.png">
+                    <img src="img/vinhadatrama.png" alt="Vinha da Trama" style="object-position:50% 50%;">
                   </div>
                   <div class="entry-name">Vinha da Trama</div>
                 </summary>
-
                 <div class="entry-body">
-                  <p>Vegetação resistente usada em infusões simples.</p>
-                  <div class="entry-note">Comum em regiões próximas a Astoria.</div>
+                  <p>
+                    Vegetação de caule firme e folhas estreitas, capaz de crescer mesmo em solos menos férteis.
+                    É frequentemente usada por moradores locais como insumo medicinal simples ou para preparo
+                    de infusões amargas.
+                  </p>
+                  <p>
+                    Em regiões diferentes, pode receber outros nomes e interpretações, mas sua aparência
+                    continua relativamente reconhecível.
+                  </p>
+                  <div class="entry-note">
+                    Costuma aparecer também nas margens de Astoria, onde recebe nomes diferentes.
+                  </div>
                 </div>
               </details>
 
               <details class="entry" id="lindore">
                 <summary>
                   <div class="entry-media">
-                    <img src="img/lindore.png">
+                    <img src="img/lindore.png" alt="Lindore" style="object-position:50% 50%;">
                   </div>
                   <div class="entry-name">Lindore</div>
                 </summary>
-
                 <div class="entry-body">
-                  <p>Planta rara ligada à percepção da Trama.</p>
+                  <p>
+                    Planta rara associada à amplificação da percepção da Trama.
+                  </p>
+                  <p>
+                    Seu uso contínuo pode levar a dependência severa, sendo evitada
+                    por praticantes mais disciplinados.
+                  </p>
                 </div>
               </details>
 
+            </div>
+          </div>
+        </details>
+
+        <details class="category-block">
+          <summary>
+            <span class="category-title">Plantas Raras</span>
+          </summary>
+          <div class="category-content">
+            <div class="codex-grid">
+              <!-- futuros cards -->
             </div>
           </div>
         </details>
@@ -504,39 +521,78 @@ a{
       <div class="codex-column-body">
 
         <details class="category-block" open>
-          <summary><span class="category-title">Animais</span></summary>
-
+          <summary>
+            <span class="category-title">Animais Domésticos</span>
+          </summary>
           <div class="category-content">
             <div class="codex-grid">
 
               <details class="entry" id="loelho">
                 <summary>
                   <div class="entry-media">
-                    <img src="img/loelho.png">
+                    <img src="img/loelho.png" alt="Loelho" style="object-position:50% 40%;">
                   </div>
                   <div class="entry-name">Loelho</div>
                 </summary>
-
                 <div class="entry-body">
-                  <p>Criatura dócil adaptada a ambientes variados.</p>
-                  <div class="entry-note">Ficam dóceis com raiz salgada.</div>
+                  <p>
+                    Criatura dócil de pequeno porte, conhecida por sua adaptação a ambientes urbanos e rurais.
+                    Apesar da aparência leve, possui comportamento atento e tende a evitar locais com presença instável.
+                  </p>
+                  <p>
+                    Frequentemente criado em comunidades menores, onde sua presença é vista como sinal
+                    de equilíbrio ambiental.
+                  </p>
+                  <div class="entry-note">
+                    Ficam dóceis quando recebem raiz salgada.
+                  </div>
                 </div>
               </details>
+
+            </div>
+          </div>
+        </details>
+
+        <details class="category-block" open>
+          <summary>
+            <span class="category-title">Animais Selvagens</span>
+          </summary>
+          <div class="category-content">
+            <div class="codex-grid">
 
               <details class="entry" id="gagaio">
                 <summary>
                   <div class="entry-media">
-                    <img src="img/gagaio.png">
+                    <img src="img/gagaio.png" alt="Gagaio" style="object-position:50% 20%;">
                   </div>
                   <div class="entry-name">Gagaio</div>
                 </summary>
-
                 <div class="entry-body">
-                  <p>Ave barulhenta que imita sons.</p>
-                  <div class="entry-note">Nunca confia no primeiro som.</div>
+                  <p>
+                    Ave de canto irritante e persistente, conhecida por repetir ruídos do ambiente de forma quase
+                    debochada.
+                  </p>
+                  <p>
+                    Sua presença costuma indicar áreas com maior atividade natural, embora raramente permaneça
+                    no mesmo local por muito tempo.
+                  </p>
+                  <div class="entry-note">
+                    Nunca confia no primeiro som que ele faz.
+                  </div>
                 </div>
               </details>
 
+            </div>
+          </div>
+        </details>
+
+        <details class="category-block">
+          <summary>
+            <span class="category-title">Animais de Trabalho</span>
+          </summary>
+          <div class="category-content">
+            <div class="codex-grid">
+              <!-- futuros cards -->
             </div>
           </div>
         </details>
@@ -550,25 +606,37 @@ a{
 <!-- ================= AELINDOR ================= -->
 <section class="region-divider">
   <div class="region-divider-media">
-    <img src="img/elindora.png">
+    <img src="img/elindora.png" alt="Aelindor" style="object-position:center;">
   </div>
   <div class="region-divider-body">
     <h2>Aelindor</h2>
-    <p>Florestas densas e vida conectada à Trama.</p>
+    <p>
+      Florestas antigas, umidade constante e formas de vida que parecem manter uma relação mais íntima com a Trama.
+    </p>
   </div>
 </section>
 
 <section class="reference-shell">
+  <h3 class="reference-title">Referências da Região</h3>
+  <div class="reference-subtitle">O que costuma ser encontrado, reconhecido ou associado a Aelindor.</div>
 
   <div class="reference-pairs">
 
     <div class="reference-column">
       <h3>Flora</h3>
       <div class="reference-grid">
-        <a href="#vinhadatrama">
+        <a class="reference-card" href="#vinhadatrama">
           <div class="reference-thumb">
-            <img src="img/vinhadatrama.png">
+            <img src="img/vinhadatrama.png" alt="Vinha da Trama">
           </div>
+          <span>Vinha da Trama</span>
+        </a>
+
+        <a class="reference-card" href="#lindore">
+          <div class="reference-thumb">
+            <img src="img/lindore.png" alt="Lindore">
+          </div>
+          <span>Lindore</span>
         </a>
       </div>
     </div>
@@ -576,174 +644,141 @@ a{
     <div class="reference-column">
       <h3>Fauna</h3>
       <div class="reference-grid">
-        <a href="#loelho">
+        <a class="reference-card" href="#loelho">
           <div class="reference-thumb">
-            <img src="img/loelho.png">
+            <img src="img/loelho.png" alt="Loelho">
           </div>
+          <span>Loelho</span>
+        </a>
+
+        <a class="reference-card" href="#gagaio">
+          <div class="reference-thumb">
+            <img src="img/gagaio.png" alt="Gagaio">
+          </div>
+          <span>Gagaio</span>
         </a>
       </div>
     </div>
 
   </div>
-
-  <!-- LEITURA REGIONAL -->
-  <div class="region-notes">
-
-    <div class="note-box">
-      <span class="note-label">Leitura regional</span>
-
-      <div class="note-head">
-        <div class="note-icon">
-          <img src="img/loelho.png">
-        </div>
-        <h4>Loelho em Aelindor</h4>
-      </div>
-
-      <p>
-        Extremamente dóceis e próximos a áreas úmidas.
-      </p>
-    </div>
-
-  </div>
-
-  <!-- POI -->
-  <div class="poi-shell">
-    <div class="poi-header">Pontos de Interesse</div>
-
-    <div class="poi-grid">
-      <a class="poi-card" href="#">
-        <div class="poi-thumb">
-          <img src="img/arvoremae.png">
-        </div>
-        <span>Árvore-Mãe</span>
-      </a>
-    </div>
-  </div>
-
 </section>
 
 <!-- ================= DRACONATOS ================= -->
 <section class="region-divider">
   <div class="region-divider-media">
-    <img src="img/fundo.png">
+    <img src="img/fundo.png" alt="Reino dos Draconatos" style="object-position:center;">
   </div>
   <div class="region-divider-body">
-    <h2>Draconatos</h2>
-    <p>Terras mais hostis e comportamento mais agressivo.</p>
+    <h2>Reino dos Draconatos</h2>
+    <p>
+      Planícies amplas, campos secos e vegetação resistente. Compartilha muito de seu bioma com Astoria,
+      embora mantenha hábitos e usos próprios.
+    </p>
   </div>
 </section>
 
 <section class="reference-shell">
+  <h3 class="reference-title">Referências da Região</h3>
+  <div class="reference-subtitle">Espécies comuns ou reconhecidas nas terras draconatas.</div>
 
   <div class="reference-pairs">
 
     <div class="reference-column">
+      <h3>Flora</h3>
+      <div class="reference-grid">
+        <a class="reference-card" href="#vinhadatrama">
+          <div class="reference-thumb">
+            <img src="img/vinhadatrama.png" alt="Vinha da Trama">
+          </div>
+          <span>Vinha da Trama</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="reference-column">
       <h3>Fauna</h3>
       <div class="reference-grid">
-        <a href="#loelho">
+        <a class="reference-card" href="#loelho">
           <div class="reference-thumb">
-            <img src="img/loelho.png">
+            <img src="img/loelho.png" alt="Loelho">
           </div>
+          <span>Loelho</span>
+        </a>
+
+        <a class="reference-card" href="#gagaio">
+          <div class="reference-thumb">
+            <img src="img/gagaio.png" alt="Gagaio">
+          </div>
+          <span>Gagaio</span>
         </a>
       </div>
     </div>
 
   </div>
-
-  <div class="region-notes">
-
-    <div class="note-box">
-      <span class="note-label">Leitura regional</span>
-
-      <div class="note-head">
-        <div class="note-icon">
-          <img src="img/loelho.png">
-        </div>
-        <h4>Loelho nos Draconatos</h4>
-      </div>
-
-      <p>
-        Mais ariscos e agressivos, evitam contato direto.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="poi-shell">
-    <div class="poi-header">Pontos de Interesse</div>
-
-    <div class="poi-grid">
-      <a class="poi-card" href="#">
-        <div class="poi-thumb">
-          <img src="img/terracodecinzas.png">
-        </div>
-        <span>Terraço de Cinzas</span>
-      </a>
-    </div>
-  </div>
-
 </section>
 
 <!-- ================= ASTORIA ================= -->
 <section class="region-divider">
   <div class="region-divider-media">
-    <img src="img/fundo.png">
+    <img src="img/fundo.png" alt="Astoria" style="object-position:center;">
   </div>
   <div class="region-divider-body">
     <h2>Astoria</h2>
-    <p>Região que compartilha o mesmo bioma dos Draconatos.</p>
+    <p>
+      Região próxima aos Draconatos, compartilhando muito do mesmo ecossistema, mas com suas próprias rotas,
+      leituras culturais e pontos de passagem.
+    </p>
   </div>
 </section>
 
 <section class="reference-shell">
+  <h3 class="reference-title">Referências da Região</h3>
+  <div class="reference-subtitle">Fauna e flora associadas ao mesmo bioma compartilhado com os Draconatos.</div>
 
   <div class="reference-pairs">
 
     <div class="reference-column">
+      <h3>Flora</h3>
+      <div class="reference-grid">
+        <a class="reference-card" href="#vinhadatrama">
+          <div class="reference-thumb">
+            <img src="img/vinhadatrama.png" alt="Vinha da Trama">
+          </div>
+          <span>Vinha da Trama</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="reference-column">
       <h3>Fauna</h3>
       <div class="reference-grid">
-        <a href="#loelho">
+        <a class="reference-card" href="#loelho">
           <div class="reference-thumb">
-            <img src="img/loelho.png">
+            <img src="img/loelho.png" alt="Loelho">
           </div>
+          <span>Loelho</span>
+        </a>
+
+        <a class="reference-card" href="#gagaio">
+          <div class="reference-thumb">
+            <img src="img/gagaio.png" alt="Gagaio">
+          </div>
+          <span>Gagaio</span>
         </a>
       </div>
     </div>
 
   </div>
-
-  <div class="region-notes">
-
-    <div class="note-box">+9+999++
-
-      <div class="note-head">
-        <div class="note-icon">
-          <img src="img/loelho.png">
-        </div>
-        <h4>Loelho em Astoria</h4>
-      </div>
-
-      <p>
-        Intermediários: nem tão dóceis quanto Aelindor, nem tão agressivos quanto Draconatos.
-      </p>
-    </div>
-
-  </div>
-
-  <div class="poi-shell">
-    <div class="poi-header">Pontos de Interesse</div>
-
-    <div class="poi-grid">
-      <a class="poi-card" href="#">
-        <div class="poi-thumb">
-          <img src="img/pontedepedra.png">
-        </div>
-        <span>Ponte de Pedra</span>
-      </a>
-    </div>
-  </div>
-
 </section>
+
+<div class="header">
+  <div class="header-nav">
+    <a href="../artefatos/index.html">Relíquias e Artefatos</a>
+    <a href="../curious/index.html">Curiosidades</a>
+    <a href="../locais/index.html">Locais e Monumentos</a>
+    <a href="../index.html">← Voltar</a>
+  </div>
+</div>
 
 </body>
 </html>
