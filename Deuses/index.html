@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baruuk</title>
+
+<style>
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  padding:16px;
+  font-family: serif;
+  background:#0b1520;
+  color:#fff;
+  line-height:1.4;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.page{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* =========================
+   CARD DO DEUS
+========================= */
+.god-card{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:18px;
+  overflow:hidden;
+    transition:transform 0.2s ease;
+}
+.god-card:hover{
+  transform:translateY(-2px);
+}
+
+/* header fechado */
+.god-summary{
+  list-style:none;
+  cursor:pointer;
+  display:block;
+}
+
+.god-summary::-webkit-details-marker{
+  display:none;
+}
+
+.god-head{
+  display:grid;
+  grid-template-columns: 35% 1fr;
+  gap:12px;
+  align-items:center;
+}
+
+/* ícone */
+.god-icon-wrap{
+  width:100%;
+  aspect-ratio:1 / 1;
+  justify-self:start;
+
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px;
+  overflow:hidden;
+}
+
+/* AQUI É O SEGREDO */
+.god-icon-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* bloco da direita */
+.god-main{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-self:stretch;
+}
+
+.god-name{
+  background:#1f3a56;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  flex:3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 14px;
+  text-align:center;
+  font-size:clamp(1.7rem, 3vw, 2.5rem);
+  font-weight:bold;
+  letter-spacing:0.5px;
+  word-break:break-word;
+}
+
+.god-title{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  flex:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:10px 12px;
+  text-align:center;
+  font-size:clamp(1.15rem, 2.2vw, 1.6rem);
+  font-weight:bold;
+  word-break:break-word;
+}
+
+/* conteúdo aberto */
+.god-content{
+  margin-top:12px;
+  display:grid;
+  gap:12px;
+}
+
+.info-box{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+}
+
+.info-box strong{
+  display:inline;
+  margin:0;
+  font-size:1.02rem;
+}
+
+.domain-text{
+  margin-top:2px;
+}
+
+.dogma-box{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  padding:18px 16px;
+  text-align:center;
+}
+
+.dogma-label{
+  display:block;
+  font-style:italic;
+    font-size:0.85rem;
+  font-weight:normal;
+  margin-bottom:6px;
+  opacity:0.9;
+  letter-spacing:0.5px
+}
+
+.dogma-text{
+  margin:0;
+  font-size:clamp(1.4rem, 2vw, 2.3rem);
+  line-height:1.2;
+  font-weight:bold;
+}
+
+/* retrátil interno */
+.inner-details{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.inner-summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 44px;
+  text-align:center;
+  font-weight:bold;
+  font-size:1rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  background:#1f3a56;
+  position:relative;
+}
+
+.inner-summary::-webkit-details-marker{
+  display:none;
+}
+
+.inner-summary::before,
+.inner-summary::after{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:0.95rem;
+  opacity:0.85;
+}
+
+.inner-summary::before{
+  content:"▾";
+  left:16px;
+}
+
+.inner-summary::after{
+  content:"▾";
+  right:16px;
+}
+
+.inner-details[open] .inner-summary::before,
+.inner-details[open] .inner-summary::after{
+  content:"▴";
+}
+
+.inner-content{
+  padding:14px 16px;
+  text-align:center;
+}
+
+.inner-content p{
+  margin:0;
+}
+
+/* imagem opcional se quiser recolocar depois */
+.god-image{
+  width:100%;
+  max-width:600px;
+  margin:0 auto;
+
+  aspect-ratio:3 / 4;
+
+  overflow:hidden;
+
+  /* REMOVE ISSO 👇 */
+  border:none;
+  background:none;
+  padding:0;
+}
+
+/* IMAGEM */
+.god-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* 👈 PREENCHE SEM DEIXAR BORDA */
+  display:block;
+  object-position:center center;
+}
+
+.inner-content:has(.god-image){
+  padding:0;
+}
+
+.inline-info{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-align:left;
+}
+
+.inline-info div{
+  width:100%;
+  text-align:center;
+}
+
+.inline-info div + div{
+  position:relative;
+  padding-top:10px;
+  margin-top:6px;
+}
+
+.inline-info div + div::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+.lore-content{
+  text-align:center;
+}
+
+.lore-content div + div{
+  position:relative;
+  margin-top:10px;
+  padding-top:10px;
+}
+
+.lore-content div + div::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+.soft-divider{
+  position:relative;
+  margin-top:10px;
+  padding-top:10px;
+}
+
+.soft-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{
+  background:#1f3a56;
+}
+
+.nav-spacer{
+  height:1px;
+}
+
+
+
+.gods-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+
+.banner-scroll{
+  max-width:1100px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.banner{
+  width:100%;
+  height:clamp(180px, 25vh, 320px);
+  overflow:hidden;
+
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+
+
+
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width:1024px){
+  .page{
+    max-width:900px;
+  }
+    .gods-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width:768px){
+
+  body{
+    padding:12px;
+  }
+
+  .god-card{
+    padding:15px;
+    border-radius:12px;
+  }
+
+ .god-head{
+  grid-template-columns: 32% 1fr;
+  gap:10px;
+  align-items:center;
+}
+
+.god-icon-wrap{
+  padding:10px;
+}
+
+.god-icon-wrap img{
+  width:100%;
+  height:100%;
+  max-width:none;
+}
+
+.god-name{
+  font-size:clamp(1.35rem, 6vw, 1.9rem);
+}
+
+.god-title{
+  font-size:clamp(1rem, 4.4vw, 1.25rem);
+}
+
+  .info-box,
+  .dogma-box{
+    padding:12px;
+  }
+
+  .nav{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .nav-spacer{
+    display:none;
+  }
+    .gods-grid{
+    grid-template-columns:1fr;
+}
+
+  .banner-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .banner{
+    width:max-content;
+    height:220px;
+  }
+
+  .banner img{
+    width:auto;
+    height:220px;
+    max-width:none;
+    display:block;
+  }
+
+}
+</style>
+</head>
+
+<body>
+<div class="banner-scroll">
+  <div class="banner">
+    <img src="t2.png" alt="Chuparinos">
+  </div>
+</div>
+<br>
+
+<div class="page">
+
+<div class="gods-grid">
+
+<!-- ALDEBARAN -->
+<details class="god-card" id="aldebaran">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icaldebaran.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">ALDEBARAN</div>
+        <div class="god-title">O GUARDIÃO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Escudo Sagrado</div>
+      <div><strong>Domínio:</strong> • Defesa
+• Guardiões
+• Resiliência</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Ao proteger quem precisar, nenhum mal há de te derrubar</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Foi o primeiro a erguer muralhas contra o caos primordial<br>
+• Seu escudo foi fundamental para evitar o massacre que Kalymos planejava</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/aldebaran.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- BARUUK -->
+<details class="god-card" id="baruuk">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icbaruuk.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">BARUUK</div>
+        <div class="god-title">O JUIZ</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Balança Ancestral</div>
+      <div><strong>Domínio:</strong> • Leis
+• Juramentos
+• Verdadeo</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Justiça e Honra acima de tudo</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Foi quem baniu Kalymos, junto com sua irmã mais velha, Mirella, e seu irmão gêmeo Mordekaiser para o plano além</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/baruuk.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- ELEANOR -->
+<details class="god-card" id="eleanor">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/iceleanor.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">ELEANOR</div>
+        <div class="god-title">A MÃE DA CRIAÇÃO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Sol Adornado</div>
+      <div><strong>Domínio:</strong> • Nascimento
+• Fertilidade
+• Crescimento</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Honrar o presente, florescendo o futuro</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• A Deusa primordial, mãe de todos os Deuses<br>
+• Mesmo considerada a Deusa mais forte, seu único poder rege entorno do nascimento da vida<br>
+• Nenhum Deus se opõe a Eleanor - seus discípulos tendem a receber misericórdia dos outros Deuses e seus discípulos</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/eleanor.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- ENTRATI -->
+<details class="god-card" id="entrati">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icentrati.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">ENTRATI</div>
+        <div class="god-title">O IMPIEDOSO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> A Coroa de Entrati</div>
+      <div><strong>Domínio:</strong> • Dominação
+• Ordem opressora
+• Alienamento</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">A ordem vale mais que qualquer necessidade</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Todo rei tirano que já existiu foi influenciado por Entrati<br>
+• Um Deus que instiga poucos para controlar muitos<br>
+• Ûlfred, Deus da Coragem e Baruuk, o Deus da Justiça estão sempre em conflito com Entrati</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/entrati.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- ILYANA -->
+<details class="god-card" id="ilyana">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icilyana.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">ILYANA</div>
+        <div class="god-title">A MISERICORDIOSA<div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> A Oferta Benevolente</div>
+      <div><strong>Domínio:</strong> • Cura
+• Compaixão
+• Saúde</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">A benevolência é a maior dádiva restauradora</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• A Deusa que mais concede milagres<br>
+• Interfere no destino dos que estão à beira do fim</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/ilyana.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+<!-- JIMIN -->
+<details class="god-card" id="jimin">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icjimin.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">JIMIN</div>
+        <div class="god-title">O CUPIDO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Coração Ardente</div>
+      <div><strong>Domínio:</strong> • Desejo
+• Afeto
+• Paixão</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Todo coração pode ser tocado</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>•Acreditam que ele acha engraçado fazer mulheres nobres casadas se apaixonarem por seus serviçais</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/jimin.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+
+<!-- MINERVA -->
+<details class="god-card" id="minerva">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icminerva.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">MINERVA</div>
+        <div class="god-title">A PROTETORA SELVAGEM</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> A Pegada Primordial</div>
+      <div><strong>Domínio:</strong> • Feras
+• Florestas
+• Preservação</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">A natureza não pede permissão</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Conhecida por pregar peças nos viajantes perdidos<br>
+• Guia quem se perde para longe do perigo</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/minerva.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- MIRELLA -->
+<details class="god-card" id="mirella">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icmirella.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">MIRELLA</div>
+        <div class="god-title">A TECELÃ</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> O Cinzel de Fios</div>
+      <div><strong>Domínio:</strong> • Destino
+• Equilíbrio
+• Magia</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Cada fio pertence à Trama. Todos sustentam o tecido</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• A terceira filha de Eleanor, busca o equilíbrio entre o divino e o não divino<br>
+• Abomina a necromancia<br>
+• Ao permitir que mortais acessassem a trama, acabou perdendo parte do controle sobre ela<br>
+• Desvendou a farsa de Kalymos, unindo os Deuses na batalha contra seus arcanjos<br>
+• Dizem que é capaz de controlar quem vive e quem morre</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/mirella.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- MORDEKAISER -->
+<details class="god-card" id="mordekaiser">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icmord.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">MORDEKAISER</div>
+        <div class="god-title">O CARCEREIRO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Corrente Perpétua</div>
+      <div><strong>Domínio:</strong> • Execução
+• Consequência
+• Vínculo</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Nada permanece em aberto</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Ele e Baruuk nasceram da mesma centelha<br>
+• O que Baruuk julga, Mordekaiser executa<br>
+• O banimento de Kalymos só teve efeito graças a ele</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/mord.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+<!-- NIRA -->
+<details class="god-card" id="nira">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icnira.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">NIRA</div>
+        <div class="god-title">A PROFANA</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> A Forma do Grito</div>
+      <div><strong>Domínio:</strong> • Dor
+• Renúncia
+• Sacrifício</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">O sacrifício define o valor do desejo</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Acredita que devia estar no lugar da Nyx, a Deusa da Morte, por conta de sua sede insaciável<br>
+• Prefere quando os sacrifícios que lhe são oferecidos sejam de pessoas amadas, de preferência de maneira bem tortuosa</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/nira.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+<!-- NYX -->
+<details class="god-card" id="nyx">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icnyx.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">NYX</div>
+        <div class="god-title">A ÚLTIMA TESTEMUNHA</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Chave de Mor’Kareth</div>
+      <div><strong>Domínio:</strong> • Fim
+• Passagem
+• Vazio</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Toda vida merece seu tempo - toda morte seu momento</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• A primeira filha de Eleanor<br>
+• Foi enganada por Kalymos, concedendo imortalidade a um homem. Por conta disso, deixou de confiar em homens, permitindo apenas que mulheres subam na hierarquia</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/nyx.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+<!-- ÛLFRED -->
+<details class="god-card" id="ulfred">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/iculfred.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">ÛLFRED</div>
+        <div class="god-title">O BRAVO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> O Leão da Vanguarda</div>
+      <div><strong>Domínio:</strong> • Bravura
+• Auto-Sacrifício
+• Heroísmo</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Não existe medo que não possa ser domado</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• Mobilizou a linha de frente para enfrentar os arcanjos de Kalymos, sua bravura foi peça chave para a vitória do panteão</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/ulfred.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+<!-- UMBRA -->
+<details class="god-card" id="luna">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icluna.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">UMBRA</div>
+        <div class="god-title">O ENTRELAÇO ETERNO</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> A Lua Crescente</div>
+      <div><strong>Domínio:</strong> • Noite
+• Descanso
+• Refúgio</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">Entre o que foi e o que será, ela apenas é</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>•Ninguém sabe como é a aparência dela</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+
+<!-- URIEL -->
+<details class="god-card" id="uriel">
+  <summary class="god-summary">
+    <div class="god-head">
+      <div class="god-icon-wrap">
+        <img src="icons/icuriel.png">
+      </div>
+      <div class="god-main">
+        <div class="god-name">URIEL</div>
+        <div class="god-title">O INEVITÁVEL</div>
+      </div>
+    </div>
+  </summary>
+
+  <div class="god-content">
+    <div class="info-box inline-info">
+      <div><strong>Símbolo:</strong> Foice Quebrada</div>
+      <div><strong>Domínio:</strong> • Entropia
+• Colapso
+• Ruína</div>
+    </div>
+
+    <div class="dogma-box">
+      <span class="dogma-label">Dogma Central</span>
+      <h1 class="dogma-text">É só uma questão de tempo</h1>
+    </div>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Lore</summary>
+      <div class="inner-content">
+        <div class="lore-content">
+          <div><p>• De certa forma, Uriel foi responsável pela queda de todos os impérios já existentes - de tudo que já existiu<br>
+• A deidade mais antiga - não se sabe quem veio antes, Uriel ou Nyx. A quem diz que um é tão primordial quanto o outro<br>
+• Dizem que o único irmão que Uriel tem algum apreço é Nyx</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="inner-details">
+      <summary class="inner-summary">Retrato</summary>
+      <div class="inner-content">
+        <div class="god-image">
+          <img src="retratos/uriel.png">
+        </div>
+      </div>
+    </details>
+  </div>
+</details>
+
+
+
+</div>
+
+
+
+
+<div class="nav">
+    <a class="nav-btn" href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a class="nav-btn" href="../Lore/index.html">Lore</a>
+    <a class="nav-btn" href="../Registros/index.html">Registros de Valthric</a>
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
+</div>
+
+
+  <script>
+    window.addEventListener('load', () => {
+      const el = document.querySelector('.banner-scroll');
+      if (window.innerWidth <= 768 && el) {
+        el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+      }
+    });
+  </script>
+
+</body>
+</html>
