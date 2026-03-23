@@ -19,7 +19,9 @@ body {
 
 h1 {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 4px;
+  font-size: 84px;
+  
 }
 
 .banner{
@@ -90,11 +92,64 @@ h1 {
   font-weight: normal;
 }
 
+
+.main-title{
+  text-align:center;
+  font-size:56px;
+  letter-spacing:2px;
+  color:#f2f5f8;
+  text-shadow:0 0 12px rgba(200, 211, 223, 0.15);
+}
+
+.main-subtitle{
+  text-align:center;
+  font-size:14px;
+  color:#8fa3b8;
+  font-style:italic;
+  margin-bottom:20px;
+  opacity:0.7;
+  letter-spacing:0.5px;
+}
+
+
+.main-subtitle{
+  text-align:center;
+  font-size:45px;
+  color:#8fa3b8;
+  font-style:italic;
+  margin-bottom:20px;
+  opacity:0.7;
+  letter-spacing:0.5px;
+  display:inline-block;
+}
+
+.main-subtitle:hover{
+  animation:subtitleShake 0.18s linear infinite;
+}
+
+@keyframes subtitleShake{
+  0%   { transform:translate(0, 0); }
+  25%  { transform:translate(-0.5px, 0.5px); }
+  50%  { transform:translate(0.5px, -0.5px); }
+  75%  { transform:translate(-0.5px, -0.5px); }
+  100% { transform:translate(0, 0); }
+}
+
+.subtitle-wrap{
+  text-align:center;
+}
+
 /* 📱 CELULAR (1 POR LINHA) */
 @media (max-width: 600px) {
   body {
     padding: 16px;
   }
+  h1 {
+  text-align: center;
+  margin-bottom: 4px;
+  font-size: 36px;
+  
+}
 
   .grid {
     grid-template-columns: 1fr;
@@ -106,6 +161,14 @@ h1 {
   }
 }
 
+.main-title{
+  font-size:28px;
+}
+
+.main-subtitle{
+  font-size:14px;
+}
+
 /* 📲 TABLET (2 POR LINHA) */
 @media (min-width: 601px) and (max-width: 1024px) {
   .grid {
@@ -115,6 +178,18 @@ h1 {
     aspect-ratio: 16 / 7;  /* ajusta se quiser */
     margin-bottom: 20px;
   }
+  
+  h1 {
+  text-align: center;
+  margin-bottom: 4px;
+  font-size: 54px;
+  
+}
+
+.main-subtitle{
+  font-size:14px;
+}
+  
 }
 </style>
 </head>
@@ -123,7 +198,12 @@ h1 {
 
 
 
-<h1 style="text-align: center;">RPGZÃO</h1>
+<h1>
+  Ecos de Valthric
+</h1>
+<div class="subtitle-wrap">
+  <p class="main-subtitle">O que foi dito ainda permanece...</p>
+</div>
 <!--
 <h2 style="text-align: center;">Valthric</h2>
 
@@ -132,8 +212,14 @@ h1 {
 
 <div class="banner">
   <img src="iconesgeral/aventureiros.png" alt="Chuparinos">
-</div>
-
+</div><!---
+<div class="banner" style="aspect-ratio:auto;">
+  <img 
+    src="iconesgeral/t2.png" 
+    alt="Chuparinos"
+    style="height:auto; object-fit:contain;"
+  >
+</div> -->
 
 <div class="grid">
 
