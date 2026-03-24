@@ -195,6 +195,33 @@ hr{
     font-size:12px;
     padding:8px 6px;
   }
+  
+}
+
+/* 📱 MOBILE (2 POR LINHA) */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .card h2 {
+    font-size: 16px;
+  }
+
+  .header-nav {
+    flex-wrap: wrap;
+  }
+
+  .header-nav a {
+    flex: 1 1 calc(50% - 10px);
+    white-space: normal;
+  }
+
+  .banner {
+    aspect-ratio: 16 / 8;
+    margin-bottom: 16px;
+  }
 }
 </style>
 </head>
