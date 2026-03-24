@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<title>Aventuras</title>
 <style>
 *{ box-sizing:border-box; }
 
@@ -320,6 +320,87 @@ border-radius:0 0 6px 6px;
   
 }
 
+.fala{
+  position: relative;
+
+  margin: 18px 0 18px 52px;
+  padding-left: 14px;
+
+  font-style: italic;
+  color: rgba(255,255,255,0.9);
+}
+
+.fala p{
+  text-indent: 0;
+  margin: 0 0 6px 0;
+}
+
+/* nome */
+.fala::before{
+  content: attr(data-autor);
+
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-100%, -50%);
+
+  font-size: 12px;
+  letter-spacing: 0.15em;
+
+  color: rgba(255,255,255,0.6);
+
+  white-space: nowrap;
+}
+
+.fala::after{
+  content: "";
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+
+  width: 2px;
+
+  background: rgba(255,255,255,0.9);
+}
+
+.ponte{
+  text-align: center;
+
+  margin: 24px 0;
+
+  font-size: 15px;
+  letter-spacing: 0.08em;
+
+  color: rgba(255,255,255,0.5);
+}
+
+.frase{
+  text-indent: 0;
+  margin: 8px 0;
+  font-style: italic;
+  color: rgba(255,255,255,0.85);
+}
+
+.frase-inline{
+  position: relative;
+  font-style: italic;
+  color: rgba(255,255,255,0.92);
+  margin: 0 4px;
+  padding: 0 2px;
+}
+
+.frase-inline::after{
+  content: "";
+  position: absolute;
+  left: 2%;
+  right: 2%; /* controla o comprimento aqui */
+  bottom: 0;
+
+  height: 1px;
+  background: rgba(255,255,255,0.4);
+}
 
 .lore a{
   color:#d7e4ff;
@@ -329,6 +410,70 @@ border-radius:0 0 6px 6px;
 
 .lore a:hover{
   color:#ffffff;
+}
+.memory-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.memory-box {
+  width: 100%;
+  max-width: 1000px;
+  cursor: pointer;
+}
+
+.memory-box img {
+  width: 100%;
+  display: block;
+  border-radius: 12px;
+  object-fit: cover;
+  object-position: center 30%;
+  max-height: 220px;
+  transition: max-height 0.35s ease;
+}
+
+.memory-notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+.memory-box.open img {
+  max-height: 900px;
+}
+
+.memory-box.open .memory-notes {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.note {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  background: rgba(255,255,255,0.04);
+  border-left: 4px solid white;
+  color: rgba(255,255,255,0.9);
+}
+
+/* cores */
+.note.drusilia {
+  border-left-color: #9b59ff;
+}
+
+.note.meiyan {
+  border-left-color: #f1c40f;
+}
+
+.note.equemon {
+  border-left-color: #e74c3c;
 }
 
 hr{
@@ -373,7 +518,9 @@ hr{
   .found-media{
     aspect-ratio: 16 / 9;
   }
-
+  .memory-box img {
+    max-height: 140px; /* ajusta aqui se quiser */
+  }
   .found-media img{
     object-position:center 17%;
   }
@@ -430,7 +577,7 @@ hr{
 <div class="adventure-body">
       <!-- IMAGEM ENCOSTADA NO CARD -->
       <div class="found-media">
-        <img src="img/S01.png" alt="S01">
+        <img src="img/s01/S01.png" alt="S01">
       </div>
 
       <!-- GRID 4 COLUNAS (nomes centralizados) -->
@@ -461,7 +608,7 @@ hr{
 <div class="lore-illustrated">
 
   <a class="lore-illustration" href="../eco/index.html">
-    <img src="img/eco2.png" alt="Eco"  >
+    <img src="img/s01/eco2.png" alt="Eco"  >
     <div class="lore-illustration-title" >
      Desenho de Tikka
     </div>
@@ -511,81 +658,363 @@ hr{
   </section>
   
   
-  <section class="found">
+<section class="found">
   <details class="found-card" open>
     <summary class="adventure-toggle">
-      S02 - O Chamado </summary>
+      S02 - O Chamado
+    </summary>
 
-<div class="adventure-body">
-      <!-- IMAGEM ENCOSTADA NO CARD -->
+    <div class="adventure-body">
       <div class="found-media">
-        <img src="img/S02.png" alt="S02">
+        <img src="img/s02/S02.png" alt="S02">
       </div>
-
-      <!-- GRID 4 COLUNAS (nomes centralizados) 
-      <div class="char-grid">
-        <div class="char">Ekemon <span>O Feitiçeiro Tiefling</span></div>
-        <div class="char">Drusilia <span>A Barda Drow</span></div>
-        <div class="char">Mei An <span>O Paladino Humano</span></div>
-        <div class="char">Althea <span>A Maga Elfa</span></div>
-      </div>-->
 
       <div class="lore">
         <div class="image-row">
-  <img src="img/s02/clea.png">
-  <img src="img/s02/vondriss.png">
-  <img src="img/s02/lara.png">
-  <img src="img/s02/raphael.png">
-</div>
-<hr>
+          <img src="img/s02/clea.png">
+          <img src="img/s02/vondriss.png">
+          <img src="img/s02/lara.png">
+          <img src="img/s02/raphael.png">
+        </div>
 
-<div class="lore-illustrated">
+        <hr>
+<!--
+<p>O grupo retornou à taverna...</p>
 
-  <a class="lore-illustration" href="../eco/index.html">
-    <img src="img/s02arveco.png" alt="Eco"  >
-    <div class="lore-illustration-title" >
-     A Árvore Mãe
-    </div>
-  </a>
-
-  <div class="lore-text">
-    <p>
-      blábláblábláblábláblá
-    </p>
-  </div>
-
-</div>
-
-      <div class="found-media2">
-        <img src="img/S02puzzle.png" alt="S02">
-      </div>
-
-
-
-<p>
-  bláblábláblábláblá
-  <a href="../aurora/index.html">página</a>
-  blábláblábláblá
+<p class="frase">
+  “Vocês estão bem?”
 </p>
 
+<p>
+  O grupo hesitou — 
+  <span class="frase-inline">“São eles?”</span>
+  — e então mostrou a runa.
+</p>
+-->
+<p>O grupo retornou à taverna da Guilda ainda carregando o peso do que havia acontecido.</p>
 
-      </div>
-
-      <div class="blocks">
-        <div class="block">
-          <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:16px;">
-            blábláblá
-          </h3>
-          <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
-           bláblábláblá <br><br>
-            bláblábláblá
-          </p>
-        </div>
-      </div>
+<p>Uruk não pediu um relatório completo. Ele não tinha tempo para isso. Apenas olhou para eles, um por um.</p>
+<div class="fala" data-autor="Uruk">
+<p>“Vocês estão bem?”</p>
 </div>
+<p>Antes que a conversa pudesse avançar, a porta se abriu. Clea entrou primeiro, seguida por Vondriss. Lara permaneceu próxima da entrada, observando o lado de fora com atenção incomum.</p>
+
+<p><span class="frase-inline">“São eles?”</span> - Sem perder tempo, Clea exigiu que explicassem o que havia acontecido. O grupo hesitou - até que a runa foi apresentada. Quando Clea tocou a pedra, sua reação foi imediata. A mão recuou como se tivesse sido queimada. <span class="frase-inline">“Entendi…”</span> A postura dela mudou. Aquilo não era mais uma investigação comum.</p>
+
+<div class="fala" data-autor="Clea">
+<p>“O panteão está convocando vocês. Não por mérito - por necessidade.”</p>
+</div>
+
+<p>Foi nesse momento que algo começou a dar errado. Lara ficou inquieta. O ar pareceu pesar. E um dos membros do grupo percebeu, tarde demais, o mesmo padrão surgindo na parede - como umidade tomando forma.</p>
+
+<p>Então a voz veio. Não de fora. Não de dentro. Mas atravessando tudo ao mesmo tempo.</p>
+
+<div class="fala" data-autor="Rafael">
+<p>“Então era aqui”</p>
+</div>
+
+<p>Lara se move primeiro. Sem hesitar, atravessa a porta. Clea vai logo atrás.</p>
+
+<div class="fala" data-autor="Clea">
+<p class="frase">“Vondriss. Nenhum passo além da porta.”</p>
+</div>
+
+<p>Ele não responde. Só se posiciona. O corpo inteiro projetado à frente do grupo, braços abertos, ocupando espaço demais para ser ignorado. Os olhos fixos na porta - não nos jogadores.</p>
+
+<div class="ponte">
+A madeira balança levemente. Dá para ver o lado de fora. Mas não o suficiente.
+</div>
+
+<!---
+<div class="ponte">
+  O som some primeiro.<br>
+  Depois o sino.<br>
+  Depois o ar.
+</div>-->
+<p>A voz vem de novo. Mais clara.</p>
+
+<div class="fala" data-autor="Rafael">
+<p>“Passamos trezentos anos aprendendo a ser culpados…”</p>
+<p>“Deixa eu te ensinar um pouco”</p>
+</div>
+
+<p>Clea não recua.</p>
+
+<div class="fala" data-autor="Clea">
+<p>“Quem você pensa que é?”</p>
+</div>
+
+
+<div class="fala" data-autor="Rafael">
+<p>“Eu sou a promessa que vocês tentaram matar.”</p><p>...</p>
+<p>“Eu sou Rafael.”</p>
+</div>
+
+<p>Não há impacto visível. Só um intervalo estranho, como se o mundo tivesse piscado - e perdido um quadro.</p>
+<p>Quando volta, Clea já está no chão.</p>
+
+<div class="fala" data-autor="Lara">
+<p>“Vocês não são punidos - são o erro que exige sacrifício.”</p>
+</div>
+
+<p>Lara avança.</p>
+
+<p>Não há tempo para acompanhar o movimento.</p>
+
+<p>Um estalo seco - sem origem, sem percurso.</p>
+
+<p>Do lado de dentro, só a silhueta. O corpo interrompido no meio do gesto.</p>
+
+<div class="fala" data-autor="Rafael">
+<p>Sacrifício verdadeiro ecoa.</p>
+<p>O seu mal vai passar pela parede.</p>
+</div>
+
+<p>O impacto não é visto. É sentido. A estrutura cede como se fosse fina demais para existir.</p>
+
+<hr>
+<p>Rafael entra. Não olha para o grupo.</p>
+<p>O chão parece aceitar seus passos. Como se ele já pertencesse ali.</p>
+<p>E no meio disso tudo, uma criança, parada, olhando, sem entender. Ao ver o Arcanjo, começa a chorar desesperadamente</p>
+<p>Rafael se aproxima. Se ajoelha.</p>
+
+<div class="fala" data-autor="Rafael">
+<p>“Não tenha medo.”</p>
+<p>“Eu não mato crianças.”</p>
+<p>“Isso é trabalho dos Escolhidos.”</p>
+</div>
+
+<p>Ele caminha até Lara. Sem pressa. Sem tensão. Como quem termina algo que já estava decidido. O gesto é preciso. Quase cuidadoso. E então...</p>
+
+<p>Está concluído</p>
+
+<hr>
+
+<p>Rafael se volta. Não para o grupo. Para Vondriss.</p>
+<p>A barreira surge. Ele toca. E começa a abrir, como um fio de seda sendo rasgado, deslizando suas mãos na barreira sagrada.</p>
+<p>Vondriss respira fundo.</p>
+
+<div class="fala" data-autor="Vondriss">
+<p>“Que Aldebaran me perdoe…”</p>
+<p>“Mas eu suplico a Nyx…”</p>
+</div>
+
+<p>A marca some do pescoço. Por um instante - silêncio.</p>
+<p>Então volta. Diferente. Não brilhando. Afundando.</p>
+<p>A luz atravessa as escamas como se não fossem matéria. E continua. Para dentro. Profundo demais. Como se não tivesse fundo. O ar pesa. Algo puxa em todas as direções.</p>
+<p>O chão começa a brilhar - a luz muda, estranha, fora do lugar. Uma das companheiras dá um passo.</p>
+
+<p class="frase">“Pai…?”</p>
+
+<p>O clarão engole tudo.</p>
+
+<p>Quando o mundo volta, vocês estão de pé. À frente, o templo de Nyx. E vindo na direção de vocês - uma sacerdotisa.</p>
+
+<p>Velha demais. Como se já devesse estar morta há muito tempo.</p>
+
+<p>Ela não se apressa. Não parece surpresa. E comenta - <span class="frase-inline">“Se algo foi escondido da Trama… Mirella já sentiu.”</span></p>        
+		
+		
+		
+		<div class="block">
+  <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:6px;">
+    Yara
+  </h3>
+  <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
+    “Vocês sobreviveram porque algo foi pago.” <br>
+    “Não esqueçam o preço.”
+  </p>
+</div>
+
+
+
     </details>
 
   </section>
+  
+  
+<section class="found">
+  <details class="found-card" open>
+    <summary class="adventure-toggle">
+      S02 - O Caminho
+    </summary>
+
+    <div class="adventure-body">
+      <div class="found-media">
+        <img src="img/s02/pjfloresta.png" alt="S02">
+      </div>
+	  <div class="lore">
+	  <p>Depois de deixarem o templo de Nyx, o grupo seguiu em direção à floresta. Quanto mais avançavam, mais estranha ela parecia. Não havia caos — tudo parecia ajustado demais, como se obedecesse a um padrão rígido.</p>
+
+<p>Foi nesse caminho que surgiram dois guardiões da floresta, já tomados por aquela lógica distorcida. Eles não trataram o grupo como visitantes, mas como falhas.</p>
+
+<div class="fala" data-autor="Guardiões">
+  <p>“Vocês não pertencem ao padrão. Correção necessária.”</p>
+</div>
+
+<p>A luta começou ali. Já era difícil contra dois - e piorou quando outros apareceram. O grupo recuou, mas a perseguição só terminou quando Arthos interveio, interrompendo o combate.</p>
+
+<p>Foi ele quem os acolheu. Ao ouvir a história do grupo, mencionou algo que vinha lhe incomodando.</p>
+
+<div class="fala" data-autor="Arthos">
+  <p>“Minerva às vezes fala pelas coisas pequenas.”</p>
+  <p>“Três sementes apareceram no meu altar.”</p>
+  <p>“Achei que fosse apenas um capricho da natureza… mas talvez não seja coincidência.”</p>
+</div>
+
+<p>Apesar do estranhamento inicial, o grupo aceitou ficar. A hospitalidade de Arthos acabou vencendo a desconfiança. À noite, ele ofereceu abrigo - e um cogumelo que ninguém quis aceitar, até que Ekemon, sem graça, acabou pegando. O problema foi depois: ele não conseguiu mastigar nem descobrir onde largar aquilo.</p>
+
+
+<hr>
+
+
+   <div class="lore-illustrated">
+          <a class="lore-illustration" href="../eco/index.html">
+            <img src="img/s02/s02arveco.png" alt="Árvore Mãe">
+            <div class="lore-illustration-title">
+              A Árvore Mãe
+            </div>
+          </a>
+
+          <div class="lore-text">
+<p>Na manhã seguinte, Arthos levou o grupo até o centro do problema. Foi então que encontraram o símbolo do Eco marcado na Árvore Mãe. Ele explicou que já tinham tentado de tudo — mas sempre que alguém ameaçava romper o padrão, a floresta reagia.</p>
+          </div>
+        </div>
+
+
+
+
+
+<p>O grupo tentou investigar, mas tudo se embaralhou. Feitiços eram lançados na hora errada, possíveis aliados se assustavam e cada tentativa parecia piorar a situação. Ainda assim, perceberam uma energia roxa atravessando o ambiente, como se algo pulsasse sob aquela falsa ordem. Foi nesse momento que encontraram o enigma deixado por Minerva.</p>
+
+<hr>
+
+<h2 style = "text-Align:center">O Puzzle da Floresta</h2>
+<div class="memory-card">
+  <div class="memory-box" onclick="this.classList.toggle('open')">
+    <img src="img/s02/S02puzzle.png" alt="S02 Puzzle">
+    
+    <div class="memory-notes">
+	      <div class="note drusilia">“Mas da onde vocês tiraram que é pra colocar a runa?”</div>
+	<div class="note equemon">“Aí meu deus e se o tronco prender a runa”</div>
+
+      
+      <div class="note meiyan">“Tá escrito P-R-E-S-E-N-T-E, é obvio que é a runa”</div>
+    </div>
+  </div>
+</div>
+		
+
+
+<p>A partir dali, começaram a entender que não precisavam destruir o lugar - precisavam perturbar o padrão. E foi exatamente o que fizeram. Só que exageraram.</p>
+
+<p>O vilarejo reagiu, e por um momento tudo pareceu sair do controle. Foi quando Drusilia interveio com música, acalmando parte das pessoas, enquanto Mei-An circulava entre elas com uma leveza quase deslocada, puxando conversa e tentando normalizar a situação.</p>
+
+<p>Ekemon, por outro lado, já estava abalado. Depois de tantas tentativas fracassadas, acabou cedendo às vozes e ficou preso por um instante à influência do Eco. Mei-An precisou dar uma bela chacoalhada para que sua consciência fosse recobrada.</p>
+
+<p>No fim, funcionou. Quando o padrão começou a ceder, todos sentiram o Eco pulsar pela floresta - não como um som, mas como uma reação violenta.</p>
+
+<p>Arthos retornou. Não com uma solução, mas com tempo suficiente para salvar o que restava. Com o padrão quebrado, ele poderia ao menos retirar seu povo dali.</p>
+<div class="ponte">
+O grupo seguiu viagem.</div>
+
+<hr>
+<p>Foi no caminho até o templo de Mirella que os corvos começaram a aparecer. E quando perceberam, já havia alguém esperando. Uma mulher de beleza impossível, serena demais para aquele caminho, observando como se a demora já fosse esperada.</p>
+
+<div class="fala" data-autor="Serena">
+  <p>“Vocês demoraram.”</p>
+</div>
+
+<p>Dali em diante, o resto da travessia aconteceu em silêncio. As tentativas de conversa foram curtas - e logo abandonadas.</p>
+
+<p>Até que chegaram ao templo.</p>
+	  </div>
+     
+
+
+<div class="lore">
+<p>Ao se posicionarem no centro do templo, num mosaíco circular, a luz irradiou ao redor do peculiar grupo de aventureiros. Por um instante, tudo desaparece. Quando a visão volta, vocês não estão mais no templo.</p>
+
+<p>Sob seus pés não existe chão -e ainda assim, vocês estão de pé. Como se algo invisível sustentasse cada passo. Ao redor de vocês, fios. Milhares deles. Alguns grossos como cordas, outros finos como cabelo, todos se cruzando e desaparecendo no vazio.</p>
+
+<p>Quando erguem o olhar, ela está lá.</p>
+
+<hr>
+
+<h3 style = "text-Align:center">Eleanor</h3>
+<p style = "text-Align:center">No centro. Maior que todos.</p> <p style = "text-Align:center">Quatro vezes o tamanho de um humano<p><p style = "text-Align:center">E então vocês percebem... </p><p style = "text-Align:center">Ela não está sozinha</p>
+
+<h3 style = "text-Align:center">À direita:</h3> <p style = "text-Align:center">Nyx - Baruuk - Mordekaiser - Ûlfred</p>
+<h3 style = "text-Align:center">À esquerda:</h3> <p style = "text-Align:center">Uriel - Entrati - Ilyana - Aldebaran</p>
+
+<hr>
+
+<p>Uma cadeira permanece vazia. Ao ver Baruuk, Meian e Ekemon se inclinam ao mesmo tempo. Instintivo. Nenhum dos dois percebe que o outro fez o mesmo.</p>
+
+<div class="ponte">O silêncio não dura</div>
+
+<div class="fala" data-autor="Entrati">
+<p>“Ora...”</p>
+<p>“Não sabia que podíamos trazer mascotes”</p>
+<p>“Ou isso é privilégio seu?”</p>
+<p>“Primeiro pegam os de Aldebaran… agora trazem os próprios”</p>
+</div>
+
+<p>Os fios ao redor começam a se mover. Um, depois outro. Depois vários. E então ela surge.</p>
+
+<p>De dentro da própria Trama, Mirella se forma.</p>
+
+        <div class="found-media2">
+          <img src="img/s02/mirella.png" alt="mirella">
+        </div>
+
+<div class="fala" data-autor="Mirella">
+<p>“Chega, Entrati”</p>
+</div>
+
+<p>Ela olha para o escolhido - <span class="frase-inline">“Você não pertence a este lugar”</span> - Os fios se apertam ao redor dele. E ele desaparece. E então todos os olhares se voltam para vocês.</p>
+
+<p>Mirella observa em silêncio.</p>
+
+
+<div class="fala" data-autor="Mirella">
+<p>“Desde antes que os primeiros mortais respirassem, desde antes que reinos existissem, eu sustento os fios que mantêm a realidade”</p>
+
+<p>“Eu vejo cada mudança, cada ruptura, cada vida que nasce e cada vida que se perde”</p>
+
+<p>“E mesmo assim...”</p>
+
+<p>“Três mortais”</p>
+
+<p>“E a Trama se moveu”</p>
+<p>...</p>
+<p>“Curioso. Na última vez, o mundo ainda não entendia o que havia nascido”</p>
+<p>...</p>
+
+<p>“E desde então… todos nós carregamos essa cicatriz”</p>
+</div>
+
+<p>Nesse momento, ela vira levemente o rosto para Nyx.</p>
+
+<p>E quando os olhares se cruzam, Nyx abaixa a cabeça.</p>
+
+<p>Mirella volta a atenção para vocês.</p>
+
+<div class="block">
+  <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:px;">
+    Mirella
+  </h3>
+  <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
+    “Então digam-me...”<br>
+    “O que eu não estou vendo?”
+  </p>
+</div>
+      </div>
+
+
+    </div>
+  </details>
+</section>
 
 
   <div class="nav">
