@@ -1,1107 +1,257 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aventuras</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lore</title>
 <style>
-*{ box-sizing:border-box; }
+/* ================= HEADER ================= */
 
-:root{
-  --page-bg:#0b1520;
-  --card-bg:#0f1e2e;
-  --stroke:#2c4c6b;
-  --text:#e9f0ff;
-  --muted:#b9c7de;
-
-  --radius:14px;
-  --pad:26px;
+.header{
+  margin-bottom:32px;
 }
 
-/* ================= BASE ================= */
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+
+
 
 body{
   margin:0;
-  padding:24px;
-  background:var(--page-bg);
+  padding:20px;
+  background:#0b1520;
   font-family:serif;
-  color:var(--text);
-}
-
-.wrap{
-  max-width:1100px;
-  margin:auto;
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-
-/* =========================
-   NAVEGAÇÃO
-========================= */
-.nav{
-  display:grid;
-  grid-template-columns: 1fr 5fr 1fr;
-  gap:12px;
-  margin-top:20px;
-  align-items:center;
-}
-
-.nav-btn{
-  text-align:center;
-  text-decoration:none;
   color:#fff;
-  background:#162b3f;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+  margin-bottom:32px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
   border:1px solid #2c4c6b;
   border-radius:8px;
-  padding:10px 12px;
-  display:block;
-}
-
-.nav-btn:hover{ background:#1f3a56; }
-.nav-spacer{ height:1px; }
-
-/* ================= TRECHO ================= */
-
-.found{
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  margin-top:20px;
-}
-
-/* ================= CARD TEXTO ================= */
-
-.found-card{
-  width:100%;
-  background:var(--card-bg);
-  border-radius:14px;
-  padding: 12px var(--pad) var(--pad) var(--pad);
-  border: 2px solid #2c4c6b;
-  position: relative;
-  z-index: 1;
-  overflow: hidden; /* importante pro recorte */
-}
-
-/* IMAGEM “FULL-BLEED” DENTRO DO CARD */
-.found-media{
-  width: calc(100% + (var(--pad) * 2) + 40px);
-  margin-left: calc((var(--pad) * -1) - 20px);
-  margin-right: calc((var(--pad) * -1) - 10px);
-
-  margin-bottom: 18px;
-
-  aspect-ratio: 16 / 8;
-  overflow: hidden;
-  background: #162b3f;
-
-  border: 2px solid #2c4c6b;
-  border-radius: 14px;
-}
-
-.found-media img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center 19%;
-}
-
-.found-media2{
-
-
-  margin-bottom: 18px;
-
-
-
-  border: 2px solid #2c4c6b;
-  border-radius: 22px;
-}
-
-.found-media2 img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center 19%;
-    border-radius: 22px;
-}
-
-/* Título */
-.title{
-  font-size:34px;
-  margin:0 0 18px 0;
-  margin-bottom: 40px;
-  margin-top: 4px;
-}
-
-
-/* GRID 4 COLUNAS (nomes) */
-.char-grid{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:12px;
-  margin: 0 0 22px 0;
-}
-
-.char-grid .char{
-  text-align:center;
-  color: var(--text);
-  font-size:18px;
-  line-height:1.2;
-  padding:10px 8px;
-  border: 2px solid #2c4c6b;
-  border-radius:12px;
-  background:rgba(0,0,0,.18);
-}
-
-.char-grid .char span{
-  display:block;
-  margin-top:6px;
-  color: var(--muted);
-  font-size:15px;
-}
-
-/* TEXTO ESTILO LIVRO */
-.lore{
-  font-size:19px;
-  line-height:1.75;
-  color:var(--muted);
-
-  text-align:justify;
-  text-justify:inter-word;
-}
-
-.lore p{
-  margin:0 0 8px 0;
-  text-indent:32px;
-}
-
-/* BLOQUINHOS */
-.blocks{
-  margin-top:24px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-.block{
-  border: 2px solid #2c4c6b;
-  border-radius:12px;
-  padding:16px;
-  background:rgba(0,0,0,.18);
-}
-
-.block h3{
-  margin:0 0 8px 0;
-  font-size:18px;
-}
-
-.block p{
-  margin:0;
-  font-size:16px;
-  color:var(--muted);
-  text-align:justify;
-}
-
-.image-row{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:12px;
-  margin-top:20px;
-}
-
-.image-row img{
-  width:100%;
-  aspect-ratio:1 / 1;
-  object-fit:cover;
-  border-radius:50%;
-  border:2px solid #2c4c6b;
-  background:#162b3f;
-  display:block;
-}
-
-/* Remove marcador padrão */
-.adventure-toggle{
-  list-style:none;
-  cursor:pointer;
-  text-align:center;
-  font-size:32px;
-  font-weight:bold;
-
-  padding: 12px var(--pad); /* controla a altura do título */
-  margin-top: 4px;
-  margin-bottom: 8px;                /* evita empurrões estranhos */
-}
-.adventure-body{
-  padding: 12px var(--pad) var(--pad) var(--pad);
-}
-
-
-/* seta custom */
-.adventure-toggle::-webkit-details-marker{ display:none; }
-
-.adventure-toggle::before{
-  content:"▸ ";
-  display:inline-block;
-  transition: transform .2s ease;
-}
-
-details[open] .adventure-toggle::before{ transform: rotate(90deg); }
-
-/* Remove padding duplicado do summary */
-details:not([open]) > summary {
-  border-bottom: 2px solid #2c4c6b;
-}
-
-/* Espaço interno abaixo do summary */
-details > *:not(summary){
-  padding: 12px var(--pad) var(--pad) var(--pad);
-}
-
-
-.lore-illustrated{
-  display:grid;
-  grid-template-columns: 1fr 5fr;
-  gap:18px;
-  align-items:center;
-  margin-bottom:8px;
-}
-
-/* QUADRADO DA IMAGEM */
-.lore-illustration{
-  position:relative;
-  aspect-ratio:1 / 1;
-  overflow:hidden;
-  border:2px solid #2c4c6b;
-  border-radius:12px;
-    display:block;
-  text-decoration:none;
-  color:inherit;
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* IMAGEM */
-.lore-illustration img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
-/* TÍTULO SOBRE A IMAGEM */
-.lore-illustration-title{
-  position:absolute;
-  bottom:0px;          /* distância da borda inferior */
-  left:0px;
-  right:0px;
-
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.75) 10%,
-    rgba(0,0,0,0.55) 65%,
-    rgba(0,0,0,0.25) 85%,
-    rgba(0,0,0,0) 100%
-  );
-
-padding:14px 8px 2px 8px;  /* ↑ aumenta o topo */
-
-border-radius:0 0 6px 6px;
-
-  text-align:center;
-  font-size:16px;
   color:#fff;
-  font-weight:bold;
-}
-/* TEXTO */
-.lore-illustrated .lore-text p{
-  margin:0;
-  text-indent:32px;
-  
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
 }
 
-.fala{
-  position: relative;
-
-  margin: 18px 0 18px 52px;
-  padding-left: 14px;
-
-  font-style: italic;
-  color: rgba(255,255,255,0.9);
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
 }
 
-.fala p{
-  text-indent: 0;
-  margin: 0 0 6px 0;
+/* ================= TÍTULO ================= */
+
+h1{
+  text-align:center;
+  margin-bottom:24px;
 }
 
-/* nome */
-.fala::before{
-  content: attr(data-autor);
+/* ================= GRID ================= */
 
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translate(-100%, -50%);
-
-  font-size: 12px;
-  letter-spacing: 0.15em;
-
-  color: rgba(255,255,255,0.6);
-
-  white-space: nowrap;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr); /* mantém desktop */
+  gap:24px;
+  max-width:1100px;
+  margin:auto;
 }
 
-.fala::after{
-  content: "";
+/* ================= REGIÃO ================= */
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 5px;
-
-  width: 2px;
-
-  background: rgba(255,255,255,0.9);
+.region{
+  text-align:center;
 }
 
-.ponte{
-  text-align: center;
-
-  margin: 24px 0;
-
-  font-size: 15px;
-  letter-spacing: 0.08em;
-
-  color: rgba(255,255,255,0.5);
+/* FOTO */
+.region .photo{
+  aspect-ratio:1/1;
+  background:#162b3f;
+  border:2px solid #2c4c6b; /* borda de 2px */
+  border-radius:16px;
+  overflow:hidden;
+  transition:transform 0.2s, box-shadow 0.2s;
 }
 
-.frase{
-  text-indent: 0;
-  margin: 8px 0;
-  font-style: italic;
-  color: rgba(255,255,255,0.85);
+.region .photo:hover{
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
-.frase-inline{
-  position: relative;
-  font-style: italic;
-  color: rgba(255,255,255,0.92);
-  margin: 0 4px;
-  padding: 0 2px;
+.region .photo a{
+  display:block;
+  width:100%;
+  height:100%;
 }
 
-.frase-inline::after{
-  content: "";
-  position: absolute;
-  left: 2%;
-  right: 2%; /* controla o comprimento aqui */
-  bottom: 0;
-
-  height: 1px;
-  background: rgba(255,255,255,0.4);
+.region .photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
-.lore a{
-  color:#d7e4ff;
-  text-decoration:underline;
-  text-underline-offset:3px;
-}
-
-.lore a:hover{
-  color:#ffffff;
-}
-.memory-card {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.memory-box {
-  width: 100%;
-  max-width: 1000px;
-  cursor: pointer;
-}
-
-.memory-box img {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-  object-fit: cover;
-  object-position: center 30%;
-  max-height: 220px;
-  transition: max-height 0.35s ease;
-}
-
-.memory-notes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 12px;
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: all 0.35s ease;
-}
-
-.memory-box.open img {
-  max-height: 900px;
-}
-
-.memory-box.open .memory-notes {
-  max-height: 500px;
-  opacity: 1;
-}
-
-.note {
-  padding: 10px 12px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  background: rgba(255,255,255,0.04);
-  border-left: 4px solid white;
-  color: rgba(255,255,255,0.9);
-}
-
-/* cores */
-.note.drusilia {
-  border-left-color: #9b59ff;
-}
-
-.note.meiyan {
-  border-left-color: #f1c40f;
-}
-
-.note.equemon {
-  border-left-color: #e74c3c;
-}
-
-hr{
-  border: none;
-  height: 2px;
-  margin: 24px 0;
-
-  background: linear-gradient(
-    to right,
-    transparent,
-    #2c4c6b,
-    transparent
-  );
+/* NOME DA REGIÃO */
+.region h2{
+  margin-top:10px;
+  font-size:20px;
+  font-weight:normal;
 }
 
 /* ================= MOBILE ================= */
 
-@media (max-width: 720px){
+@media (max-width: 768px){
 
-  body{ padding:16px; }
-  
-    .adventure-body{
-    padding-left: 6px;
-    padding-right: 6px;
+  .grid{
+    grid-template-columns:1fr; /* uma por linha */
+    gap:20px;
   }
-  .found-media{
-  width: calc(100% + (var(--pad) * 2) + 20px);
-  margin-left: calc((var(--pad) * -1) - 10px);
-  margin-right: calc((var(--pad) * -1) - 10px);
+
+  .header-nav a{
+    font-size:12px;
+    padding:8px 6px;
+  }
+
+  .region h2{
+    font-size:22px;
+  }
 }
 
-  .title{
-    font-size:24px;
-    text-align:center;
-    margin-bottom: 36px;
-  }
-
-  .lore{ font-size:17px;  }
-  
-  .lore p {text-indent:18px;}
-
-  .found-media{
-    aspect-ratio: 16 / 9;
-  }
-  .memory-box img {
-    max-height: 140px; /* ajusta aqui se quiser */
-  }
-  .found-media img{
-    object-position:center 17%;
-  }
-
-  .char-grid{
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .char-grid .char{
-    font-size:16px;
-  }
-  .char-grid .char span{
-    font-size:14px;
-  }
-  
-  .lore-illustrated{
-    grid-template-columns:1fr;
-    gap:12px;
-	  display:flex;
-  flex-direction:column;
-  }
-
-  .lore-illustration{
-    aspect-ratio:16 / 16;
-	order:2;
-  }
-  .lore-text{
-  order:1;
-}
-
-  .lore-illustrated .lore-text p{
-    text-indent:18px;
-  }
-  @media (max-width: 720px){
-
-  .image-row{
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-}
-}
 </style>
 </head>
-
 <body>
 
-<div class="wrap">
 
-<section class="found">
-  <details class="found-card" open>
-    <summary class="adventure-toggle">
-      S01 - O Começo </summary>
 
-<div class="adventure-body">
-      <!-- IMAGEM ENCOSTADA NO CARD -->
-      <div class="found-media">
-        <img src="img/s01/S01.png" alt="S01">
-      </div>
+<h1>Lore</h1>
 
-      <!-- GRID 4 COLUNAS (nomes centralizados) -->
-      <div class="char-grid">
-        <div class="char">Ekemon <span>O Feitiçeiro Tiefling</span></div>
-        <div class="char">Drusilia <span>A Barda Drow</span></div>
-        <div class="char">Mei An <span>O Paladino Humano</span></div>
-        <div class="char">Althea <span>A Maga Elfa</span></div>
-      </div>
+<div class="grid">
 
-      <div class="lore">
-        <p>
-          O grupo se conheceu ao se inscrever na Guilda dos Aventureiros. Uruk, líder da Guilda, tinha o hábito de unir recém-chegados em equipes, acreditando que aventureiros em grupo sobreviviam mais tempo.
-        </p>
-
-        <p>
-          O primeiro contrato levou-os ao templo de Ûlfred, o Bravo. Durante a missão, enfrentaram indivíduos sob influência de algo que não sabiam nomear. Ao final, não levaram todos os corpos - o que resultou no pagamento parcial da recompensa.
-        </p>
-
-        <p>
-          Ao retornarem à Guilda, ouviram uma discussão entre Aya e Zack. Em seguida, Uruk ofereceu um novo contrato: investigar desaparecimentos na vila Tiefling - uma oportunidade de se estabelecerem na Guilda.
-        </p>
-
-        <p>
-          Na vila, encontraram Trudd, Escolhido de Mirella, que já investigava os acontecimentos, sem sucesso. Na mesma noite, Aya pediu ajuda: Tikka havia desaparecido.
-        </p>
-
-<div class="lore-illustrated">
-
-  <a class="lore-illustration" href="../eco/index.html">
-    <img src="img/s01/eco2.png" alt="Eco"  >
-    <div class="lore-illustration-title" >
-     Desenho de Tikka
+  <div class="region">
+    <div class="photo">
+      <a href="aventuras/index.html">
+        <img src="zzicones/avent.png" alt="Aventuras">
+      </a>
     </div>
-  </a>
-
-  <div class="lore-text">
-    <p>
-      O grupo impediu o pior, mas o sussurro permaneceu. Aya revelou que sabia do risco por causa de um desenho de três bocas - associado ao chamado “alinhamento forçado”, que viu no templo de Alberon. Ao observarem o desenho, os sussurros se intensificaram, como se exigissem que alguém cedesse. Num impulso, rasgaram o papel, e a influência cessou.
-    </p>
+    <h2><b>Aventuras</b></h2>
   </div>
 
-</div>
 
-        <p>
-          Trudd, ao ver o símbolo, declarou ter compreendido o que estava acontecendo e partiu para o templo de Alberon. O grupo o seguiu em seguida.
-        </p>
-
-<p>
-  No templo, encontraram registros sobre o Eco e 
-  <a href="../aurora/index.html">Aurora - mãe de Kalymos</a>
-  e desceram às ruínas inferiores. Na arena subterrânea, localizaram o corpo de Trudd.
-</p>
-
-        <p>
-          Ao encarar a Dama de Ferro, a realidade se rompeu. Houve apenas um vazio atravessado por uma reza distante. Quando o mundo retornou, a entidade estava viva. Após derrotá-la, encontraram uma runa.
-        </p>
-
-        <p>
-          Ao voltarem à vila, não havia ninguém. Seguiram para Leindell. A cidade os recebeu com olhares desconfiados. A Taverna da Guilda estava vazia. No mural, apenas um contrato rasgado ao meio, preso por uma adaga.
-        </p>
-      </div>
-
-      <div class="blocks">
-        <div class="block">
-          <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:16px;">
-            Uruk os aguardava:
-          </h3>
-          <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
-            “Vocês sabem o que fizeram? Vocês perturbaram uma coisa antiga” <br><br>
-            “E agora tem gente perguntando quem deu autorização”
-          </p>
-        </div>
-      </div>
-</div>
-    </details>
-
-  </section>
+  <div class="region">
+    <div class="photo">
+      <a href="eco/index.html">
+        <img src="zzicones/eco.png" alt="O Eco">
+      </a>
+    </div>
+    <h2><b>O Eco</b></h2>
+  </div>
   
-  
-<section class="found">
-  <details class="found-card" open>
-    <summary class="adventure-toggle">
-      S02 - O Chamado
-    </summary>
-
-    <div class="adventure-body">
-      <div class="found-media">
-        <img src="img/s02/S02.png" alt="S02">
-      </div>
-
-      <div class="lore">
-        <div class="image-row">
-          <img src="img/s02/clea.png">
-          <img src="img/s02/vondriss.png">
-          <img src="img/s02/lara.png">
-          <img src="img/s02/raphael.png">
-        </div>
-
-        <hr>
-<!--
-<p>O grupo retornou à taverna...</p>
-
-<p class="frase">
-  “Vocês estão bem?”
-</p>
-
-<p>
-  O grupo hesitou — 
-  <span class="frase-inline">“São eles?”</span>
-  — e então mostrou a runa.
-</p>
+    <!--
+    <div class="region">
+    <div class="photo">
+      <a href="escolhidos/index.html">
+        <img src="zzicones/escolhidos.png" alt="Escolhidos">
+      </a>
+    </div>
+    <h2><b>Os Escolhidos</b></h2>
+  </div>
 -->
-<p>O grupo retornou à taverna da Guilda ainda carregando o peso do que havia acontecido.</p>
 
-<p>Uruk não pediu um relatório completo. Ele não tinha tempo para isso. Apenas olhou para eles, um por um.</p>
-<div class="fala" data-autor="Uruk">
-<p>“Vocês estão bem?”</p>
-</div>
-<p>Antes que a conversa pudesse avançar, a porta se abriu. Clea entrou primeiro, seguida por Vondriss. Lara permaneceu próxima da entrada, observando o lado de fora com atenção incomum.</p>
+      <div class="region">
+    <div class="photo">
+      <a href="raphael/index.html">
+        <img src="zzicones/raphael.png" alt="Raphael">
+      </a>
+    </div>
+    <h2><b>Raphael</b></h2>
+  </div>
 
-<p><span class="frase-inline">“São eles?”</span> - Sem perder tempo, Clea exigiu que explicassem o que havia acontecido. O grupo hesitou - até que a runa foi apresentada. Quando Clea tocou a pedra, sua reação foi imediata. A mão recuou como se tivesse sido queimada. <span class="frase-inline">“Entendi…”</span> A postura dela mudou. Aquilo não era mais uma investigação comum.</p>
+    <div class="region">
+    <div class="photo">
+      <a href="kalymos/index.html">
+        <img src="zzicones/kalymos.jpg" alt="kalymos">
+      </a>
+    </div>
+    <h2><b>Kalymos</b></h2>
+  </div>
 
-<div class="fala" data-autor="Clea">
-<p>“O panteão está convocando vocês. Não por mérito - por necessidade.”</p>
-</div>
-
-<p>Foi nesse momento que algo começou a dar errado. Lara ficou inquieta. O ar pareceu pesar. E um dos membros do grupo percebeu, tarde demais, o mesmo padrão surgindo na parede - como umidade tomando forma.</p>
-
-<p>Então a voz veio. Não de fora. Não de dentro. Mas atravessando tudo ao mesmo tempo.</p>
-
-<div class="fala" data-autor="Rafael">
-<p>“Então era aqui”</p><p>“Parece que encontrei o que eu buscava...”</p>
-
-<p>“Tantos mantos no mesmo teto... Tem como chamar isso de acaso?”</p>
-</div>
-
-<p>Lara se move primeiro. Sem hesitar, atravessa a porta. Clea vai logo atrás.</p>
-
-<div class="fala" data-autor="Clea">
-<p class="frase">“Vondriss. Nenhum passo além da porta.”</p>
-</div>
-
-<p>Ele não responde. Só se posiciona. O corpo inteiro projetado à frente do grupo, braços abertos, ocupando espaço demais para ser ignorado. Os olhos fixos na porta - não nos jogadores.</p>
-
-<div class="ponte">
-A madeira balança levemente. Dá para ver o lado de fora. Mas não o suficiente.
-</div>
-
-<!---
-<div class="ponte">
-  O som some primeiro.<br>
-  Depois o sino.<br>
-  Depois o ar.
-</div>-->
-<p>A voz vem de novo. Mais clara.</p>
-
-<div class="fala" data-autor="Rafael">
-<p>“Passamos trezentos anos aprendendo a ser culpados…”</p>
-<p>“Deixa eu te ensinar um pouco”</p>
-</div>
-
-<p>Clea não recua.</p>
-
-<div class="fala" data-autor="Clea">
-<p>“Quem você pensa que é?”</p>
-</div>
-
-
-<div class="fala" data-autor="Rafael">
-<p>“Eu sou a promessa que vocês tentaram matar.”</p><p>...</p>
-<p>“Eu sou Rafael.”</p>
-</div>
-
-<p>Não há impacto visível. Só um intervalo estranho, como se o mundo tivesse piscado - e perdido um quadro.</p>
-<p>Quando volta, Clea já está no chão.</p>
-
-<div class="fala" data-autor="Lara">
-<p>“Vocês não são punidos - são o erro que exige sacrifício.”</p>
-</div>
-
-<p>Lara avança.</p>
-
-<p>Não há tempo para acompanhar o movimento.</p>
-
-<p>Um estalo seco - sem origem, sem percurso.</p>
-
-<p>Do lado de dentro, só a silhueta. O corpo interrompido no meio do gesto.</p>
-
-<div class="fala" data-autor="Rafael">
-<p>Sacrifício verdadeiro ecoa.</p>
-<p>O seu mal vai passar pela parede.</p>
-</div>
-
-<p>O impacto não é visto. É sentido. A estrutura cede como se fosse fina demais para existir.</p>
-
-<hr>
-<p>Rafael entra. Não olha para o grupo.</p>
-
-<p>O chão parece aceitar seus passos. Como se ele já pertencesse ali.</p>
-
-      <div class="found-media">
-        <img src="img/s02/rapha.png" alt="S02">
-      </div>
-
-<p>E no meio disso tudo, uma criança, parada, olhando, sem entender. Ao ver o Arcanjo, começa a chorar desesperadamente</p>
-<p>Rafael se aproxima. Se ajoelha.</p>
-
-<div class="fala" data-autor="Rafael">
-<p>“Não tenha medo.”</p>
-<p>“Eu não mato crianças.”</p>
-<p>“Isso é trabalho dos Escolhidos.”</p>
-</div>
-
-<p>Ele caminha até Lara. Sem pressa. Sem tensão. Como quem termina algo que já estava decidido. O gesto é preciso. Quase cuidadoso. E então...</p>
-
-<p>Está concluído</p>
-
-<hr>
-
-<p>Rafael se volta. Não para o grupo. Para Vondriss.</p>
-<p>A barreira surge. Ele toca. E começa a abrir, como um fio de seda sendo rasgado, deslizando suas mãos na barreira sagrada.</p>
-<p>Vondriss respira fundo.</p>
-
-<div class="fala" data-autor="Vondriss">
-<p>“Que Aldebaran me perdoe…”</p>
-<p>“Mas eu suplico a Nyx…”</p>
-</div>
-
-<p>A marca some do pescoço. Por um instante - silêncio.</p>
-<p>Então volta. Diferente. Não brilhando. Afundando.</p>
-<p>A luz atravessa as escamas como se não fossem matéria. E continua. Para dentro. Profundo demais. Como se não tivesse fundo. O ar pesa. Algo puxa em todas as direções.</p>
-<p>O chão começa a brilhar - a luz muda, estranha, fora do lugar. Uma das companheiras dá um passo.</p>
-
-<p class="frase">“Pai…?”</p>
-
-<p>O clarão engole tudo.</p>
-
-<p>Quando o mundo volta, vocês estão de pé. À frente, o templo de Nyx. E vindo na direção de vocês - uma sacerdotisa.</p>
-
-<p>Velha demais. Como se já devesse estar morta há muito tempo.</p>
-
-<p>Ela não se apressa. Não parece surpresa. E comenta - <span class="frase-inline">“Se algo foi escondido da Trama… Mirella já sentiu.”</span></p>        
-		
-		
-		
-		<div class="block">
-  <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:6px;">
-    Yara
-  </h3>
-  <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
-    “Vocês sobreviveram porque algo foi pago.” <br>
-    “Não esqueçam o preço.”
-  </p>
-</div>
-
-
-
-    </details>
-
-  </section>
   
+    <div class="region">
+    <div class="photo">
+      <a href="aurora/index.html">
+        <img src="zzicones/auroraestatua.png" alt="Aurora">
+      </a>
+    </div>
+    <h2><b>Aurora</b></h2>
+  </div>
   
-<section class="found">
-  <details class="found-card" open>
-    <summary class="adventure-toggle">
-      S02 - O Caminho
-    </summary>
 
-    <div class="adventure-body">
-      <div class="found-media">
-        <img src="img/s02/pjfloresta.png" alt="S02">
-      </div>
-	  <div class="lore">
-	  <p>Depois de deixarem o templo de Nyx, o grupo seguiu em direção à floresta. Quanto mais avançavam, mais estranha ela parecia. Não havia caos — tudo parecia ajustado demais, como se obedecesse a um padrão rígido.</p>
 
-<p>Foi nesse caminho que surgiram dois guardiões da floresta, já tomados por aquela lógica distorcida. Eles não trataram o grupo como visitantes, mas como falhas.</p>
-
-<div class="fala" data-autor="Guardiões">
-  <p>“Vocês não pertencem ao padrão. Correção necessária.”</p>
+<!--
+      <div class="region">
+    <div class="photo">
+      <a href="Arcanjos/arcanjos.html">
+        <img src="zzicones/Arcanjos.png" alt="Arcanjos">
+      </a>
+    </div>
+    <h2><b>Arcanjos</b></h2>
+  </div>
+-->
 </div>
 
-<p>A luta começou ali. Já era difícil contra dois - e piorou quando outros apareceram. O grupo recuou, mas a perseguição só terminou quando Arthos interveio, interrompendo o combate.</p>
-
-<p>Foi ele quem os acolheu. Ao ouvir a história do grupo, mencionou algo que vinha lhe incomodando.</p>
-
-<div class="fala" data-autor="Arthos">
-  <p>“Minerva às vezes fala pelas coisas pequenas.”</p>
-  <p>“Três sementes apareceram no meu altar.”</p>
-  <p>“Achei que fosse apenas um capricho da natureza… mas talvez não seja coincidência.”</p>
-</div>
-
-<p>Apesar do estranhamento inicial, o grupo aceitou ficar. A hospitalidade de Arthos acabou vencendo a desconfiança. À noite, ele ofereceu abrigo - e um cogumelo que ninguém quis aceitar, até que Ekemon, sem graça, acabou pegando. O problema foi depois: ele não conseguiu mastigar nem descobrir onde largar aquilo.</p>
-
-
-<hr>
-
-
-   <div class="lore-illustrated">
-          <a class="lore-illustration" href="../eco/index.html">
-            <img src="img/s02/s02arveco.png" alt="Árvore Mãe">
-            <div class="lore-illustration-title">
-              A Árvore Mãe
-            </div>
-          </a>
-
-          <div class="lore-text">
-<p>Na manhã seguinte, Arthos levou o grupo até o centro do problema. Foi então que encontraram o símbolo do Eco marcado na Árvore Mãe. Ele explicou que já tinham tentado de tudo — mas sempre que alguém ameaçava romper o padrão, a floresta reagia.</p>
-          </div>
-        </div>
-
-
-
-
-
-<p>O grupo tentou investigar, mas tudo se embaralhou. Feitiços eram lançados na hora errada, possíveis aliados se assustavam e cada tentativa parecia piorar a situação. Ainda assim, perceberam uma energia roxa atravessando o ambiente, como se algo pulsasse sob aquela falsa ordem. Foi nesse momento que encontraram o enigma deixado por Minerva.</p>
-
-<hr>
-
-<h2 style = "text-Align:center">O Puzzle da Floresta</h2>
-<div class="memory-card">
-  <div class="memory-box" onclick="this.classList.toggle('open')">
-    <img src="img/s02/S02puzzle.png" alt="S02 Puzzle">
+<br><br>
+<!-- HEADER -->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html"style="padding-left: 5px;">← Voltar</a>
+    <a href="../Deuses/index.html">Deuses</a>
+    <a href="../Registros/index.html">Registros de Valthric</a>
+	<a class="nav-btn" href="../Npc/index.html">Npcs</a>
     
-    <div class="memory-notes">
-	<div class="note meiyan">“Tá escrito P-R-E-S-E-N-T-E, é obvio que é a runa”</div>
-	      <div class="note drusilia">“Mas da onde vocês tiraram que é pra colocar a runa?”</div>
-	<div class="note equemon">“Aí meu deus e se o tronco prender a runa”</div>
-
-      
-      
-    </div>
+	<!--
+	<a href="../Organizaçoes/index.html">Organizações</a>
+  -->
   </div>
-</div>
-		
-
-
-<p>A partir dali, começaram a entender que não precisavam destruir o lugar - precisavam perturbar o padrão. E foi exatamente o que fizeram. Só que exageraram.</p>
-
-<p>O vilarejo reagiu, e por um momento tudo pareceu sair do controle. Foi quando Drusilia interveio com música, acalmando parte das pessoas, enquanto Mei-An circulava entre elas com uma leveza quase deslocada, puxando conversa e tentando normalizar a situação.</p>
-
-<p>Ekemon, por outro lado, já estava abalado. Depois de tantas tentativas fracassadas, acabou cedendo às vozes e ficou preso por um instante à influência do Eco. Mei-An precisou dar uma bela chacoalhada para que sua consciência fosse recobrada.</p>
-
-<p>No fim, funcionou. Quando o padrão começou a ceder, todos sentiram o Eco pulsar pela floresta - não como um som, mas como uma reação violenta.</p>
-
-<p>Arthos retornou. Não com uma solução, mas com tempo suficiente para salvar o que restava. Com o padrão quebrado, ele poderia ao menos retirar seu povo dali.</p>
-<div class="ponte">
-O grupo seguiu viagem.</div>
-
-<hr>
-<p>Foi no caminho até o templo de Mirella que os corvos começaram a aparecer. E quando perceberam, já havia alguém esperando. Uma mulher de beleza impossível, serena demais para aquele caminho, observando como se a demora já fosse esperada.</p>
-
-<div class="fala" data-autor="Serena">
-  <p>“Vocês demoraram.”</p>
-</div>
-
-<p>Dali em diante, o resto da travessia aconteceu em silêncio. As tentativas de conversa foram curtas - e logo abandonadas.</p>
-
-<p>Até que chegaram ao templo.</p>
-	  </div>
-     
-
-
-<div class="lore">
-<p>Ao se posicionarem no centro do templo, num mosaíco circular, a luz irradiou ao redor do peculiar grupo de aventureiros. Por um instante, tudo desaparece. Quando a visão volta, vocês não estão mais no templo.</p>
-
-<p>Sob seus pés não existe chão -e ainda assim, vocês estão de pé. Como se algo invisível sustentasse cada passo. Ao redor de vocês, fios. Milhares deles. Alguns grossos como cordas, outros finos como cabelo, todos se cruzando e desaparecendo no vazio.</p>
-
-<p>Quando erguem o olhar, ela está lá.</p>
-
-<hr>
-<h2 style = "text-Align:center; margin-bottom:6px">Eleanor</h2>
-<p style = "text-Align:center ;text-indent:0px;">No centro. Maior que todos.</p> <p style = "text-Align:center;text-indent:0px">Quatro vezes o tamanho de um humano<p><p style = "text-Align:center;text-indent:0px">E então vocês percebem... </p><p style = "text-Align:center;text-indent:0px">Ela não está sozinha</p>
-
-<h3 style = "text-Align:center; margin-bottom:6px">À direita:</h3> <p style = "text-Align:center;text-indent:0px">Nyx - Baruuk - Mordekaiser - Ûlfred</p>
-<h3 style = "text-Align:center; margin-bottom:6px">À esquerda:</h3> <p style = "text-Align:center;text-indent:0px">Uriel - Entrati - Ilyana - Aldebaran</p>
-
-<hr>
-
-<p>Uma cadeira permanece vazia. Ao ver Baruuk, Meian e Ekemon se inclinam ao mesmo tempo. Instintivo. Nenhum dos dois percebe que o outro fez o mesmo.</p>
-
-<div class="ponte">O silêncio não dura</div>
-
-<div class="fala" data-autor="Entrati">
-<p>“Ora...”</p>
-<p>“Não sabia que podíamos trazer mascotes”</p>
-<p>“Ou isso é privilégio seu?”</p>
-<p>“Primeiro pegam os de Aldebaran… agora trazem os próprios”</p>
-</div>
-
-<p>Os fios ao redor começam a se mover. Um, depois outro. Depois vários. E então ela surge.</p>
-
-<p>De dentro da própria Trama, Mirella se forma.</p>
-
-        <div class="found-media2">
-          <img src="img/s02/mirella.png" alt="mirella">
-        </div>
-
-<div class="fala" data-autor="Mirella">
-<p>“Chega, Entrati”</p>
-</div>
-
-<p>Ela olha para o escolhido - <span class="frase-inline">“Você não pertence a este lugar”</span> - Os fios se apertam ao redor dele. E ele desaparece. E então todos os olhares se voltam para vocês.</p>
-
-<p>Mirella observa em silêncio.</p>
-
-
-<div class="fala" data-autor="Mirella">
-<p>“Desde antes que os primeiros mortais respirassem, desde antes que reinos existissem, eu sustento os fios que mantêm a realidade”</p>
-
-<p>“Eu vejo cada mudança, cada ruptura, cada vida que nasce e cada vida que se perde”</p>
-
-<p>“E mesmo assim...”</p>
-
-<p>“Três mortais”</p>
-
-<p>“E a Trama se moveu”</p>
-<p>...</p>
-<p>“Curioso. Na última vez, o mundo ainda não entendia o que havia nascido”</p>
-<p>...</p>
-
-<p>“E desde então… todos nós carregamos essa cicatriz”</p>
-</div>
-
-<p>Nesse momento, ela vira levemente o rosto para Nyx.</p>
-
-<p>E quando os olhares se cruzam, Nyx abaixa a cabeça.</p>
-
-<p>Mirella volta a atenção para vocês.</p>
-
-<div class="block">
-  <h3 style="text-align:center; text-decoration: underline; text-underline-offset: 4px; margin-bottom:px;">
-    Mirella
-  </h3>
-  <p style="text-align:center; color:#ffffff; font-size:18px; font-style: italic;">
-    “Então digam-me...”<br>
-    “O que eu não estou vendo?”
-  </p>
-</div>
-      </div>
-
-
-    </div>
-  </details>
-</section>
-
-
-  <div class="nav">
-    <div class="nav-spacer"></div>
-    <a class="nav-btn" href="../index.html">Voltar</a>
-    <div class="nav-spacer"></div>
-  </div>
-
 </div>
 
 </body>
 </html>
 
-
-	<!---
-
-<div class="banner">
-  <img src="img/S02.png" style ="object-position:center 05%;" alt="S02">
-</div>
-
-<div class="found-card">
-      <h2 class="title" style = "text-align:center;">S02 - O Chamado</h2>
-
-      <div class="lore">
-        <p>
-        Este é um trecho encontrado pelos aventureiros. 
-        O texto agora se comporta como um livro real: ocupa toda a largura,
-        fica justificado, e apenas a última linha permanece menor.
-        </p>
-
-        <p>
-        Você pode escrever longos relatos aqui. Quanto maior o texto,
-        mais forte fica o efeito de manuscrito antigo ou registro histórico.
-        </p>
-      </div>
-
-      <div class="blocks">
-        <div class="block">
-          <h3>Margem Anotada</h3>
-          <p>Pequena observação escrita ao lado do texto principal.</p>
-        </div>
-      </div>
-	  
-     
-
-    </div>
--->
-
-
-
-
-
-<!--
-/* ======================
-   BASE
-====================== */
-
-
-<div class="found-card">
-      <h2 class="title">Trecho encontrado</h2>
-
-      <div class="lore">
-        <p>
-        Este é um trecho encontrado pelos aventureiros. 
-        O texto agora se comporta como um livro real: ocupa toda a largura,
-        fica justificado, e apenas a última linha permanece menor.
-        </p>
-
-        <p>
-        Você pode escrever longos relatos aqui. Quanto maior o texto,
-        mais forte fica o efeito de manuscrito antigo ou registro histórico.
-        </p>
-      </div>
-
-      <div class="blocks">
-        <div class="block">
-          <h3>Margem Anotada</h3>
-          <p>Pequena observação escrita ao lado do texto principal.</p>
-        </div>
-      </div>
-	  
-	  -->
