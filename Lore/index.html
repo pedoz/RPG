@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lore</title>
+
+<style>
+*{ box-sizing:border-box; }
+
+:root{
+  --page-bg:#0b1520;
+  --card-bg:#0f1e2e;
+  --stroke:#2c4c6b;
+  --text:#ffffff;
+  --muted:#b9c7de;
+
+  --radius:14px;
+  --pad:26px;
+}
+
+/* ================= BASE ================= */
+
+body{
+  margin:0;
+  padding:24px;
+  background:var(--page-bg);
+  font-family:serif;
+  color:var(--text);
+}
+
+.wrap{
+  max-width:1100px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* ================= TRECHO ================= */
+
+.found{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+/* TÍTULO FORA DA CAIXA */
+.found-title{
+  font-size:34px;
+  margin:0;
+  text-align:center;
+}
+
+/* LINHA (IMAGEM + CARD) */
+.found-row{
+  display:flex;
+  flex-direction:column; /* mobile: imagem acima */
+  gap:16px;
+}
+
+/* Opção: sem imagem */
+.found-row.no-media .found-media{ display:none; }
+
+
+
+
+.fold{
+  margin-top: -30px;
+  border: 2px solid var(--stroke);
+  border-radius: 14px;
+  overflow: hidden;
+
+  background: var(--card-bg);
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+.fold > summary{
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  padding: 18px 20px;
+  background: linear-gradient(180deg, #132438 0%, #0f1e2e 100%);
+  transition: background .2s ease, transform .2s ease;
+}
+
+.fold > summary:hover{
+  background: linear-gradient(180deg, #1a3148 0%, #132438 100%);
+}
+
+.fold > summary::-webkit-details-marker{
+  display: none;
+}
+
+.fold-summary{
+  text-align: center;
+}
+
+.fold-title{
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.fold-subtitle{
+  font-size: 16px;
+  color: var(--muted);
+  opacity: .95;
+}
+
+.fold > summary::after{
+  content: "▾";
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  transition: transform .2s ease;
+}
+
+.fold[open] > summary::after{
+  content: "▴";
+}
+
+
+
+
+.found-row.has-media.media-50 .found-media{
+  width: 50% !important;
+  max-height: 75vh;
+}
+
+.found-row.has-media.media-50 .found-card{
+  width: 50% !important;
+}
+
+
+/* ================= IMAGEM ================= */
+/* Mobile: quadrada e cheia (via 100vw abaixo) */
+.found-media{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  overflow:hidden;
+  border-radius:var(--radius);
+  border:1px solid var(--stroke);
+  background:#000;
+  border: 2px solid #2c4c6b;
+}
+
+.found-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+hr{
+  border: none;
+  height: 2px;
+  background: #2c4c6b;
+  margin: 20px 0;
+}
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{ background:#1f3a56; }
+.nav-spacer{ height:1px; }
+
+
+/* ================= CARD TEXTO ================= */
+
+.found-card{
+  width:100%;
+  background:var(--card-bg);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:var(--pad);
+  border: 2px solid #2c4c6b;
+}
+
+.ilegivel{
+  font-style: italic;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+
+/* TEXTO ESTILO LIVRO */
+.lore{
+  font-size:19px;
+  line-height:1.75;
+  color:#ffffff;
+
+  text-align:justify;
+  text-justify:inter-word;
+  hyphens:none; /* impede sabe- doria */
+  margin:0;
+}
+
+.lore p{
+  margin:0 0 16px 0;
+}
+
+.lore p:last-child{ margin-bottom:0; }
+
+/* ================= DESKTOP ================= */
+/* ================= DESKTOP ================= */
+@media (min-width: 721px){
+
+  /* imagem + card lado a lado */
+  .found-row.has-media{
+    flex-direction:row;
+    align-items:stretch;
+  }
+
+  /* imagem acompanha altura do card */
+  .found-row.has-media .found-media{
+    flex:0 0 auto;
+    width: min(320px, 35%);
+    min-height: 220px;
+    align-self:stretch;
+  }
+
+  .found-row.has-media .found-card{
+    flex:1;
+    min-height: 220px;
+
+  }
+
+  .found-row.has-media .found-media img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* Variante: quadro grande (metade da tela) */
+  .found-row.has-media.big-media .found-media{
+    width: 50%;
+    min-height: 55vh;
+  }
+
+  .found-row.has-media.big-media .found-card{
+    width: 50%;
+    min-height: 55vh;
+  }
+
+  /* Cards SEM imagem: centraliza e limita largura */
+  .found-row.no-media{
+    display:flex;
+    justify-content:center;
+  }
+
+  .found-row.no-media .found-card{
+    flex: 1;
+	margin:0 auto;
+    max-width: calc(100% - min(320px, 35%) - 16px);
+  }
+  .found-row.has-media.horizontal{
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .found-row.has-media.horizontal .found-media{
+    width: 45% !important;      /* 42% se quiser “+20%” exato em cima de 35% */
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: 0;
+    align-self: stretch;
+  }
+
+  .found-row.has-media.horizontal .found-card{
+    width: 55% !important;
+  }
+
+  .found-row.has-media.horizontal .found-media img{
+    width: 100%;
+    height: 100%;
+    transform: scale(1.2); /* 1.05 = leve | 1.1 = médio */
+    display: block;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 720px){
+
+  body{ padding:16px; }
+
+  .found-title{
+    font-size:32px;
+    text-align:center;
+  }
+
+  .found-media{
+    width:auto;
+    border-left:0;
+    border-right:0;
+    margin:0 auto;
+    border:2px solid #2c4c6b;
+  }
+
+  /* 🔥 REMOVE O QUADRADO PARA HORIZONTAL */
+  .found-row.horizontal .found-media{
+    aspect-ratio: auto;
+  }
+
+  .found-row.horizontal .found-media img{
+    width:100%;
+    height:auto;
+    object-fit: cover;
+  }
+
+  .lore{
+    font-size:17px;
+    line-height:1.8;
+    text-align:center;
+  }
+
+}
+</style>
+<body>
+
+<div class="wrap">
+
+  <!-- RAFAEL -->
+  <section class="found">
+  <h1 class="found-title">Raphael</h1><br>
+    <div class="found-row has-media media-50">
+      <div class="found-media">
+        <img src="rapha2.png" alt="Raphael">
+      </div>
+
+      <div class="found-card">
+        <h1 class="found-title">A Reza</h1>
+
+        <div class="lore" >
+          <p>
+            “Então é isso”<br>
+            “Eu falei sozinho de novo”<br>
+            “Disseram que tu escutava”<br>
+            “Disseram um monte de coisa”<br>
+            “Eu fiquei esperando”<br>
+            “Achei que em algum momento ia fazer diferença”<br>
+            “Eu não tô pedindo sinal”<br>
+            “Nem perdão”<br>
+            “Eu só queria saber se isso tudo não é loucura”<br>
+            “Se eu não tô indo longe demais por alguém que talvez nem queira voltar”<br>
+            “Mas se ainda existir qualquer coisa tua…”<br>
+            “Mesmo que não seja tu…”<br>
+            “Eu vou atravessar”<br>
+            “Vou descer onde ninguém volta inteiro”<br>
+            “E quando eu for”<br>
+            “Protege meus rastros”<br>
+            “Não por mim”<br>
+            “Eu sou a última chance dele”
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<hr>
+
+  <!-- ECO -->
+  <section class="found">
+    <h1 class="found-title">O Eco</h1>
+
+    <div class="found-row has-media">
+      <div class="found-media">
+        <img src="t2.png">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+
+          <h3 style="text-align:center;">Aya:</h3>
+          <p style="text-align:center;">
+            <i>“Um texto no templo de Alberon chamava isso de <b>alinhamento forçado</b> com esse mesmo símbolo”<br>
+            “Não era um ritual. Era uma… condição”</i>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ECO 2 -->
+    <div class="found-row has-media horizontal">
+      <div class="found-media">
+        <img src="parede.png">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+          <h3 style="text-align:center;">Templo de Alberon, na parede:</h3>
+          <p style="text-align:center;">"O Eco revelará a verdade a todos nós"</p>
+
+          <hr>
+
+          <h4 style="text-align:center;">Abaixo, num tomo antigo:</h4>
+          <p>
+            <i>"Onde <span class="ilegivel"><b>RABISCADO - ECO POR CIMA</b></span> passou,
+            não houve ruína imediata.
+            Houve clareza excessiva.
+            Homens deixaram de duvidar —
+            e nisso selaram seu fim"</i>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÁRVORE -->
+  <section class="found">
+    <div class="found-row has-media">
+      <div class="found-media">
+        <img src="arvoreeco.png">
+      </div>
+
+      <div class="found-card">
+        <h1 class="found-title">A Árvore Mãe</h1>
+        <hr>
+
+        <div class="lore">
+          <p style="text-align:center;">
+            O símbolo não reage mais<br>
+            Mas a sensação permanece<br>
+            como se, por um instante,<br>
+            tudo ali tivesse pensado junto…<br>
+            e depois esquecido
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<br>
+<hr>
+
+<h1 class="found-title">Kalymos</h1><br>
+<div class="wrap">
+<section class="found">
+
+  <div class="found-row has-media media-50">
+    <div class="found-media">
+      <img src="kalymos.jpg" alt="Kalymos" style="object-position: center 30%;">
+    </div>
+
+    <div class="found-card">
+<br><br>
+      <div class="lore">
+        <p>
+Kalymos foi um mortal que ascendeu à divindade como o Deus da Palavra. Prometeu união, justiça e paz. Criou os Anjos como protetores dos justos, mas foi descoberto tentando dominar o panteão.
+        </p>
+
+        <p>
+Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher campeões — os Escolhidos — para erradicar o que restou de sua influência.
+        </p>
+
+        <hr>
+        <p>
+"Para garantir a paz, Kalymos apresentou os Anjos: seres de luz destinados a proteger os justos. Contudo, a revelação de um plano oculto levou o panteão à guerra."
+        </p>
+
+        <p>
+"Com grande sacrifício, Kalymos foi derrotado e banido por Baruuk, passando a ser lembrado como o Deus da Manipulação."
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+</div>
+
+
+<br><hr><br>
+<h1 class="found-title">Aurora</h1><br>
+<div class="wrap">
+
+  <!-- BLOCO 1 (COM IMAGEM AO LADO) -->
+  <section class="found">
+    <div class="found-row has-media">
+
+      <div class="found-media">
+        <img src="auroraestatua.png" alt="Aurora" style="object-position: center 20%;">
+      </div>
+
+      <div class="found-card">
+        <h2 class="title" style="text-align:center;">
+          Escrito na Estátua de Aurora na entrada do templo de Alberon
+        </h2>
+
+        <div class="lore">
+          <p>
+"O nascimento de Kalymos é lembrado como um dos maiores sinais já concedidos por Alberon. Aurora, escolhida entre todas as donzelas, tinha sua pureza prometida ao sumo sacerdote Valerius, voz viva do Deus da Sabedoria. Tal escolha era considerada a maior honra possível, e seu destino parecia selado pela vontade divina. Quando Aurora surgiu grávida, não houve escândalo, mas reverência: pois somente um milagre poderia explicar tal acontecimento. Assim, ela foi elevada ao posto de Prometida, símbolo vivo da pureza e da graça dos deuses entre os mortais"
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BLOCO 2 (SÓ TEXTO) -->
+  <section class="found">
+
+    <div class="found-card">
+      <h2 class="title" style="text-align:center;">
+        Escrito no pergaminho encontrado após derrotar a Dama de Ferro
+      </h2>
+
+      <div class="lore">
+        <p>
+"Aurora não foi escolhida pelos deuses, mas empurrada para um altar que jamais desejou. Diante da promessa feita a Valerius, viu-se encurralada entre a perda do amor que escolhera e uma submissão que não aceitava. Optou pelo primeiro, acreditando que o ato não teria consequências. Quando a gravidez veio, não foi milagre algum que a salvou, mas palavras bem colocadas, mentiras ditas com doçura e a fé cega de homens que preferiam acreditar."
+        </p>
+      </div>
+
+      <div class="blocks">
+        <div class="block">
+          <h3 style="text-align:center;">
+            "Foi ali que a manipulação mostrou, pela primeira vez, o poder que teria naquele mundo"
+          </h3>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+
+
+
+</body>
+</html>
+
+
+<!--
+/* ======================
+   BASE
+====================== */
+
+
+<div class="wrap">
+
+  <!-- TRECHO 1 (COM IMAGEM) --
+  
+  
+  <section class="found">
+
+    <h1 class="found-title">Fragmento de Influência Angelical</h1>
+
+    <div class="found-row has-media">
+      <div class="found-media">
+        <img src="eco.png" alt="Trecho encontrado">
+      </div>
+
+      <div class="found-card">
+        <div class="lore">
+          <p>Algo incompleto, instável e perigoso.</p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- TRECHO 2 (SEM IMAGEM) --
+  
+  
+  <section class="found">
+
+    <h1 class="found-title">Sacerdote de Ûlfred dando aula</h1>
+
+    <div class="found-row no-media">
+	
+	
+      <!-- sem imagem aqui --
+	  
+	  
+
+      <div class="found-card">
+        <div class="lore">
+          <p>
+            “Para garantir a paz, Kalymos apresentou os Anjos: seres de luz destinados a proteger os justos.
+            Contudo, a revelação de um plano oculto levou o panteão à guerra. Com grande sacrifício, Kalymos foi
+            derrotado e banido por Baruuk, passando a ser lembrado como o Deus da Manipulação. Um pacto foi selado,
+            e campeões divinos passaram a ser escolhidos para erradicar seus remanescentes.”
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+	  
+	  -->
