@@ -243,6 +243,31 @@ font-size:18px;
 .fold-body{
   margin-top:2px;
 }
+.comment {
+  position: relative;
+  margin-left: 60px;
+
+  font-family: serif;
+  font-style: italic;
+letter-spacing: 0.5px;
+  opacity: 0.85;
+  color: var(--muted);
+}
+
+.comment::before {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: -20px;
+
+  width: 3px;
+  height: 100%;
+
+  background-color: var(--muted);
+}
+
+
 
 /* ======================
    MOBILE
@@ -312,53 +337,47 @@ font-size:18px;
 
 <div class="wrap">
 
-  <section class="chosen">
-    <div class="avatar">
-      <a href="">
-        <img src="eicons/trudd.png" alt="Trudd">
-      </a>
-    </div>
-
-    <div class="card">
-<h2 class="title" style="text-align:center;">Trudd - O Escolhido de Mirella</h2>
-
-<details class="fold">
-  <summary>
-    <i>“Então não era acaso... Nunca é quando escolhem a gente”</i>
-    <status>
-      Primeira aparição: S01<br>
-      Status: Morto (S01)
-    </status>
-  </summary>
-
-  <div class="fold-body">
-
-    <div class="blocks">
-      <h2>Escrituras do Tomo de Trudd:</h2>
-
-      <div class="block">
-        <p>
-          Kalymos cresceu sob a proteção direta de Valerius, afastado do povo para preservar sua segurança.
-          Desde cedo demonstrava inteligência incomum e presença marcante, sinais claros de que os deuses
-          o observavam com atenção. Sua educação foi cuidadosamente guiada dentro dos templos, longe das
-          distrações do mundo.
-        </p>
-		<h3 style="text-align:center;"><i><u>Anotação de Trudd no Tomo:</u></i></h3>
-		<div class="block">
-
-        
-        <p>
-          <span class="ilegivel">ilegível</span>&nbsp;não herdou o cargo - tomou-o e, sem oposição, moldou a fé ao próprio redor.
-          Alberon tornou-se distante, quase abstrato, enquanto o olhar de Kalymos passou a ser o verdadeiro objeto
-          de devoção. O culto à sabedoria foi substituído pelo culto à presença.
-        </p>
-		</div>
-      </div>
-	  
-    </div>
+ <section class="chosen">
+  <div class="avatar">
+    <a href="">
+      <img src="eicons/trudd.png" alt="Trudd">
+    </a>
   </div>
-</details>
-    </div>
+
+  <div class="card">
+    <h2 class="title" style="text-align:center;">Trudd - O Escolhido de Mirella</h2>
+
+    <details class="fold" open>
+      <summary>
+        <i>“Então não era acaso... Nunca é quando escolhem a gente”</i>
+        <status>
+          Primeira aparição: S01<br>
+          Status: Morto (S01)
+        </status>
+      </summary>
+
+      <div class="fold-body">
+        <div class="blocks">
+
+          <h2>Escrituras do Tomo de Trudd:</h2>
+
+          <div class="block">
+                      <p>
+              Kalymos não herdou o cargo - tomou-o e, sem oposição, moldou a fé ao próprio redor.
+              Alberon tornou-se distante, quase abstrato, enquanto o olhar de Kalymos passou a ser o verdadeiro objeto
+              de devoção. O culto à sabedoria foi substituído pelo culto à presença.
+            </p>
+          </div>
+
+          <p class="comment">
+            A essa altura, Trudd já havia compreendido. Não havia honra na escolha, nem acaso - apenas adequação. Mirella não o chamou por quem ele era, mas por aquilo que já não precisava preservar. O desenho não revelou seu destino; ao fim, confirmou apenas o que ele já sabia.<br><br> Parece que ele realmente não foi escolhido para voltar - mas para ver até onde ia
+          </p>
+
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
   </section>
     <section class="chosen">
       <div class="avatar">
