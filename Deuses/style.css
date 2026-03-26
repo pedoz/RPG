@@ -1,0 +1,493 @@
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  padding:16px;
+  font-family: serif;
+  background:#0b1520;
+  color:#fff;
+  line-height:1.4;
+}
+
+/* =========================
+   CONTAINER PRINCIPAL
+========================= */
+.page{
+  max-width:1100px;
+  margin:0 auto;
+}
+
+/* =========================
+   CARD DO DEUS
+========================= */
+.god-card{
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  padding:12px;
+  margin-bottom:18px;
+  overflow:hidden;
+    transition:transform 0.2s ease;
+}
+.god-card:hover{
+  transform:translateY(-2px);
+}
+
+/* header fechado */
+.god-summary{
+  list-style:none;
+  cursor:pointer;
+  display:block;
+}
+
+.god-summary::-webkit-details-marker{
+  display:none;
+}
+
+.god-head{
+  display:grid;
+  grid-template-columns: 35% 1fr;
+  gap:12px;
+  align-items:center;
+}
+
+/* ícone */
+.god-icon-wrap{
+  width:100%;
+  aspect-ratio:1 / 1;
+  justify-self:start;
+
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:14px;
+  overflow:hidden;
+}
+
+/* AQUI É O SEGREDO */
+.god-icon-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* bloco da direita */
+.god-main{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-self:stretch;
+}
+
+.god-name{
+  background:#1f3a56;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  flex:3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 14px;
+  text-align:center;
+  font-size:clamp(1.7rem, 3vw, 2.5rem);
+  font-weight:bold;
+  letter-spacing:0.5px;
+  word-break:break-word;
+}
+
+.god-title{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+
+  flex:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:10px 12px;
+  text-align:center;
+  font-size:clamp(1.15rem, 2.2vw, 1.6rem);
+  font-weight:bold;
+  word-break:break-word;
+}
+
+/* conteúdo aberto */
+.god-content{
+  margin-top:12px;
+  display:grid;
+  gap:12px;
+}
+
+.info-box{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+}
+
+.info-box strong{
+  display:inline;
+  margin:0;
+  font-size:1.02rem;
+}
+
+.domain-text{
+  margin-top:2px;
+}
+
+.dogma-box{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  padding:18px 16px;
+  text-align:center;
+}
+
+.dogma-label{
+  display:block;
+  font-style:italic;
+    font-size:0.85rem;
+  font-weight:normal;
+  margin-bottom:6px;
+  opacity:0.9;
+  letter-spacing:0.5px
+}
+
+.dogma-text{
+  margin:0;
+  font-size:clamp(1.4rem, 2vw, 2.3rem);
+  line-height:1.2;
+  font-weight:bold;
+}
+
+/* retrátil interno */
+.inner-details{
+  background:#0b1520;
+  border:1px solid #2c4c6b;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+.inner-summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 44px;
+  text-align:center;
+  font-weight:bold;
+  font-size:1rem;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  background:#1f3a56;
+  position:relative;
+}
+
+.inner-summary::-webkit-details-marker{
+  display:none;
+}
+
+.inner-summary::before,
+.inner-summary::after{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:0.95rem;
+  opacity:0.85;
+}
+
+.inner-summary::before{
+  content:"▾";
+  left:16px;
+}
+
+.inner-summary::after{
+  content:"▾";
+  right:16px;
+}
+
+.inner-details[open] .inner-summary::before,
+.inner-details[open] .inner-summary::after{
+  content:"▴";
+}
+
+.inner-content{
+  padding:14px 16px;
+  text-align:center;
+}
+
+.inner-content p{
+  margin:0;
+}
+
+/* imagem opcional se quiser recolocar depois */
+.god-image{
+  width:100%;
+  max-width:600px;
+  margin:0 auto;
+
+  aspect-ratio:3 / 4;
+
+  overflow:hidden;
+
+  /* REMOVE ISSO 👇 */
+  border:none;
+  background:none;
+  padding:0;
+}
+
+/* IMAGEM */
+.god-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover; /* 👈 PREENCHE SEM DEIXAR BORDA */
+  display:block;
+  object-position:center center;
+}
+
+.inner-content:has(.god-image){
+  padding:0;
+}
+
+.inline-info{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-align:left;
+}
+
+.inline-info div{
+  width:100%;
+  text-align:center;
+}
+
+.inline-info div + div{
+  position:relative;
+  padding-top:10px;
+  margin-top:6px;
+}
+
+.inline-info div + div::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+.lore-content{
+  text-align:center;
+}
+
+.lore-content div + div{
+  position:relative;
+  margin-top:10px;
+  padding-top:10px;
+}
+
+.lore-content div + div::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+.soft-divider{
+  position:relative;
+  margin-top:10px;
+  padding-top:10px;
+}
+
+.soft-divider::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:82%;
+  height:1px;
+  background:linear-gradient(
+    to right,
+    rgba(44,76,107,0),
+    rgba(44,76,107,0.65),
+    rgba(44,76,107,0)
+  );
+}
+
+/* =========================
+   NAVEGAÇÃO
+========================= */
+.nav{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:12px;
+  margin-top:20px;
+  align-items:center;
+}
+
+.nav-btn{
+  text-align:center;
+  text-decoration:none;
+  color:#fff;
+  background:#162b3f;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  padding:10px 12px;
+  display:block;
+}
+
+.nav-btn:hover{
+  background:#1f3a56;
+}
+
+.nav-spacer{
+  height:1px;
+}
+
+
+
+.gods-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:16px;
+}
+
+.banner-scroll{
+  max-width:1100px;
+  margin:0 auto;
+  overflow:hidden;
+}
+
+.banner{
+  width:100%;
+  height:clamp(180px, 25vh, 320px);
+  overflow:hidden;
+
+  background:#0f1e2e;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+}
+
+.banner img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+}
+
+
+
+
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width:1024px){
+  .page{
+    max-width:900px;
+  }
+    .gods-grid{
+    grid-template-columns:repeat(2, 1fr);
+  }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width:768px){
+
+  body{
+    padding:12px;
+  }
+
+  .god-card{
+    padding:15px;
+    border-radius:12px;
+  }
+
+ .god-head{
+  grid-template-columns: 32% 1fr;
+  gap:10px;
+  align-items:center;
+}
+
+.god-icon-wrap{
+  padding:10px;
+}
+
+.god-icon-wrap img{
+  width:100%;
+  height:100%;
+  max-width:none;
+}
+
+.god-name{
+  font-size:clamp(1.35rem, 6vw, 1.9rem);
+}
+
+.god-title{
+  font-size:clamp(1rem, 4.4vw, 1.25rem);
+}
+
+  .info-box,
+  .dogma-box{
+    padding:12px;
+  }
+
+  .nav{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .nav-spacer{
+    display:none;
+  }
+    .gods-grid{
+    grid-template-columns:1fr;
+}
+
+  .banner-scroll{
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .banner{
+    width:max-content;
+    height:220px;
+  }
+
+  .banner img{
+    width:auto;
+    height:220px;
+    max-width:none;
+    display:block;
+  }
+
+}
