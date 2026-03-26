@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artefatos e Relíquias</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1520;
+  font-family:serif;
+  color:#fff;
+}
+
+h1,h2,h3,h4,p{
+  margin-top:0;
+}
+
+.page-title{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#cfd8e3;
+  margin-bottom:24px;
+  font-style:italic;
+}
+
+.artifact-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  align-items:start;
+}
+
+.artifact-card{
+  border:1px solid #2c4c6b;
+  border-radius:28px;
+  overflow:hidden;
+  background:#0f1e2e;
+}
+
+.artifact-card summary{
+  list-style:none;
+  cursor:pointer;
+  display:block;
+  background:#102235;
+  transition:background 0.2s;
+}
+
+.artifact-card summary:hover{
+  background:#13283d;
+}
+
+.artifact-card summary::-webkit-details-marker{
+  display:none;
+}
+
+.artifact-media{
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#162b3f;
+  border-bottom:1px solid #2c4c6b;
+}
+
+.artifact-media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.artifact-name{
+  padding:12px 14px;
+  text-align:center;
+  font-size:19px;
+  background:#102235;
+  position:relative;
+}
+
+.artifact-name::after{
+  content:"+";
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:20px;
+  color:#c8d3df;
+}
+
+.artifact-card[open] .artifact-name::after{
+  content:"–";
+}
+
+.artifact-body{
+  padding:14px;
+  border-top:1px solid #2c4c6b;
+}
+
+.artifact-body p{
+  margin:0 auto 12px auto;
+  max-width:95%;
+}
+
+.artifact-body p:last-child{
+  margin-bottom:0;
+}
+
+.artifact-meta{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.artifact-tag{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid #2c4c6b;
+  background:#11263a;
+  font-size:13px;
+  color:#d7e1eb;
+}
+
+.artifact-note{
+  margin-top:14px;
+  padding-left:12px;
+  border-left:2px solid #2c4c6b;
+  font-style:italic;
+  font-size:16px;
+  line-height:1.55;
+  color:#c8d3df;
+}
+
+.artifact-note-author{
+  display:block;
+  margin-top:6px;
+  margin-botton:6px;
+  font-size:13px;
+  color:#8fa3b8;
+}
+
+.header{
+  margin-top:36px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+@media (max-width: 900px){
+  .artifact-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px){
+  body{
+    padding:16px;
+  }
+
+  .artifact-grid{
+    grid-template-columns:1fr;
+  }
+
+  .artifact-media{
+    aspect-ratio:1 / 1;
+  }
+
+  .artifact-name{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">ARTEFATOS E RELÍQUIAS</h1>
+<h3 class="page-subtitle"><!--“Há objetos que apenas existem. E há outros que permanecem observando.”--></h3>
+
+<div class="artifact-grid">
+<!--
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Chave de Mor’Kareth" style="object-position: 50% 50%;">
+      </div>
+      <div class="artifact-name">Chave de Mor’Kareth</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Uma adaga-relíquia associada à passagem, ao fim e àquilo que deveria permanecer do outro lado.
+        Sua presença não impõe violência imediata, mas um tipo de certeza desconfortável, como se toda
+        matéria ao redor se lembrasse que foi feita para terminar.
+      </p>
+
+      <p>
+        Há quem a descreva menos como uma arma e mais como um limite — algo capaz de separar, abrir
+        ou encerrar o que insiste em permanecer além de seu tempo.
+      </p>
+
+      <div class="artifact-meta">
+        <span class="artifact-tag">Relíquia</span>
+        <span class="artifact-tag">Nyx</span>
+        <span class="artifact-tag">Passagem</span>
+      </div>
+
+      <div class="artifact-note">
+        “Nenhuma porta teme uma chave. Mas algumas sabem exatamente o que ela veio cobrar.”
+        <span class="artifact-note-author">— fragmento preservado</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Cinzel de Mirella" style="object-position: 50% 45%;">
+      </div>
+      <div class="artifact-name">Cinzel de Mirella</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Instrumento antigo ligado ao corte, à precisão e à remoção daquilo que foi acrescentado ao real.
+        Não carrega ostentação; sua estranheza vem justamente da sensação de que foi feito para agir onde
+        os olhos comuns não alcançam.
+      </p>
+
+      <div class="artifact-meta">
+        <span class="artifact-tag">Relíquia</span>
+        <span class="artifact-tag">Mirella</span>
+        <span class="artifact-tag">Trama</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Coroa de Entrati" style="object-position: 50% 35%;">
+      </div>
+      <div class="artifact-name">Coroa de Entrati</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Símbolo de autoridade opressiva, presença social e domínio. Não parece feita para convencer;
+        parece feita para tornar desnecessária qualquer discussão.
+      </p>
+
+      <p>
+        Em ambientes onde hierarquia, medo ou formalidade já existem, sua simples aparição parece
+        reorganizar o ar ao redor.
+      </p>
+
+      <div class="artifact-note">
+        “Alguns homens mandam. Outros apenas entram na sala e fazem parecer que sempre mandaram.”
+        <span class="artifact-note-author">— anotação atribuída a um cortesão</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Foice Quebrada" style="object-position: 50% 50%;">
+      </div>
+      <div class="artifact-name">Foice Quebrada</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Fragmento de destruição transformado em relíquia. Há algo nela que parece incompleto, mas não
+        diminuído — como se a ruptura fosse parte essencial de sua identidade.
+      </p>
+
+      <div class="artifact-meta">
+        <span class="artifact-tag">Uriel</span>
+        <span class="artifact-tag">Ruína</span>
+      </div>
+    </div>
+  </details>
+
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Amuleto do Sol" style="object-position: 50% 40%;">
+      </div>
+      <div class="artifact-name">Amuleto do Sol</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Ornamento de aparência serena, ligado à presença de Eleanor e à persistência da vida. Sua luz,
+        quando percebida, nunca parece violenta — apenas inevitável.
+      </p>
+    </div>
+  </details>
+
+  <details class="artifact-card">
+    <summary>
+      <div class="artifact-media">
+        <img src="img/teste.png" alt="Pergaminho de Alberon" style="object-position: 50% 50%;">
+      </div>
+      <div class="artifact-name">Pergaminho de Alberon</div>
+    </summary>
+
+    <div class="artifact-body">
+      <p>
+        Um registro que parece conter mais do que escrita. Alguns o descrevem como um objeto de estudo;
+        outros, como um lembrete de que compreender algo e sobreviver a isso nem sempre são a mesma coisa.
+      </p>
+
+      <div class="artifact-note">
+        “Toda língua promete acesso. Poucas avisam o preço de realmente entender.”
+        <span class="artifact-note-author">— margem de manuscrito anônimo</span>
+      </div>
+    </div>
+  </details>
+-->
+</div>
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html">← Voltar</a>
+    <a href="../natureza/index.html">O Mundo Vivo</a>
+    <a href="../curious/index.html">Curiosidades</a>
+    <a href="../locais/index.html">Locais e Monumentos</a>
+  </div>
+</div>
+</body>
+</html>

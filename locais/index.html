@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locais</title>
+
+<style>
+body{
+  margin:0;
+  padding:20px;
+  background:#0b1520;
+  font-family:serif;
+  color:#fff;
+}
+
+h1,h2,h3,h4,p{
+  margin-top:0;
+}
+
+.page-title{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.page-subtitle{
+  text-align:center;
+  color:#cfd8e3;
+  margin-bottom:24px;
+  font-style:italic;
+}
+/* ================= HEADER NAV ================= */
+
+.header{
+  margin-top:36px;
+}
+
+.header-nav{
+  display:flex;
+  gap:10px;
+  width:100%;
+}
+
+.header-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px 8px;
+  background:#0f2a44;
+  border:1px solid #2c4c6b;
+  border-radius:8px;
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+  white-space:nowrap;
+  transition:background 0.2s, transform 0.2s;
+}
+
+.header-nav a:hover{
+  background:#163b5c;
+  transform:translateY(-2px);
+}
+
+/* REGIÃO */
+
+.region-block{
+  margin-bottom:16px;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  overflow:hidden;
+  background:#102235;
+}
+
+.region-block summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px 16px;
+  background:#12304b;
+  font-size:20px;
+  transition:background 0.2s;
+}
+
+.region-block summary:hover{
+  background:#163b5c;
+}
+
+.region-block summary::-webkit-details-marker{
+  display:none;
+}
+
+.region-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.region-title::after{
+  content:"+";
+  font-size:24px;
+  color:#c8d3df;
+}
+
+.region-block[open] .region-title::after{
+  content:"–";
+}
+
+.region-content{
+  padding:16px;
+}
+
+
+
+/* GRID */
+
+.local-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0, 1fr));
+  gap:16px;
+  align-items:start;
+}
+
+/* CARD */
+
+.local-block{
+  position:relative;
+  border:1px solid #2c4c6b;
+  border-radius:14px;
+  overflow:hidden;
+  background:#0f1e2e;
+}
+
+.local-block summary{
+  list-style:none;
+  cursor:pointer;
+  position:relative;
+  display:block;
+}
+
+.local-block summary::-webkit-details-marker{
+  display:none;
+}
+
+.local-card{
+  position:relative;
+  width:100%;
+  aspect-ratio:1 / 1;
+  overflow:hidden;
+  background:#162b3f;
+}
+
+.local-card img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+/* nome sempre visível embaixo */
+.local-name{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:2;
+  padding:12px 14px;
+  text-align:center;
+  font-size:19px;
+  color:#fff;
+  background:linear-gradient(to top, rgba(0,0,0,0.82), rgba(0,0,0,0.32), transparent);
+}
+
+/* camada escura ao passar o mouse */
+.local-cover-hover{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.12);
+  transition:background 0.2s;
+  z-index:1;
+}
+
+.local-block summary:hover .local-cover-hover{
+  background:rgba(0,0,0,0.2);
+}
+
+/* CONTEÚDO SOBREPOSTO */
+.local-overlay{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  display:none;
+  background:rgba(0,0,0,0.72);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  overflow:auto;
+  padding:16px;
+  box-sizing:border-box;
+
+  pointer-events:none;
+}
+
+.local-block[open] .local-overlay{
+  display:block;
+}
+
+.local-overlay-inner{
+  pointer-events:auto;
+}
+
+/* título dentro do overlay */
+.local-overlay h4{
+  margin:0 0 10px 0;
+  font-size:22px;
+  font-weight:normal;
+  color:#fff;
+}
+
+.local-overlay p{
+  margin:0 0 10px 0;
+  line-height:1.55;
+  color:#eef3f8;
+}
+
+.local-overlay p:last-child{
+  margin-bottom:0;
+}
+
+/* tags */
+.local-meta{
+  margin-top:10px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.local-tag{
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(176,206,235,0.3);
+  background:rgba(17,38,58,0.75);
+  font-size:13px;
+  color:#d7e1eb;
+}
+
+/* nota */
+.local-note{
+  margin-top:14px;
+  padding-left:12px;
+  border-left:2px solid rgba(200,211,223,0.55);
+  font-style:italic;
+  font-size:16px;
+  line-height:1.55;
+  color:#d9e2eb;
+}
+
+.local-note-author{
+  display:block;
+  margin-top:6px;
+  font-size:13px;
+  color:#a8bacd;
+}
+
+/* botãozinho visual de fechar/abrir */
+.local-open-indicator{
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:4;
+  width:28px;
+  height:28px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.55);
+  color:#fff;
+  font-size:18px;
+  line-height:1;
+  pointer-events:none;
+}
+
+.local-block .local-open-indicator::before{
+  content:"+";
+}
+
+.local-block[open] .local-open-indicator::before{
+  content:"–";
+}
+
+/* scrollbar do overlay */
+.local-overlay::-webkit-scrollbar{
+  width:8px;
+}
+
+.local-overlay::-webkit-scrollbar-track{
+  background:rgba(255,255,255,0.06);
+}
+
+.local-overlay::-webkit-scrollbar-thumb{
+  background:rgba(200,211,223,0.35);
+  border-radius:999px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width: 900px){
+  .local-grid{
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px){
+  body{
+    padding:16px;
+  }
+
+  .local-grid{
+    grid-template-columns:1fr;
+  }
+
+  .local-card{
+    aspect-ratio:1 / 1;
+  }
+
+  .local-name{
+    font-size:18px;
+  }
+
+  .local-overlay{
+    padding:14px;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1 class="page-title">LOCAIS</h1>
+<h3 class="page-subtitle"><!--“Alguns lugares permanecem. Outros apenas demoram a desaparecer.”--></h3>
+
+<!-- AELINDOR --
+<details class="region-block" open>
+  <summary>
+    <span class="region-title">Aelindor</span>
+  </summary>
+
+  <div class="region-content">
+    <div class="local-grid">
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Árvore-Mãe" style="object-position: 50% 30%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Árvore-Mãe</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay"><div class="local-overlay-inner">
+          <h4>Árvore-Mãe</h4>
+
+          <p>
+            Uma árvore ancestral de proporções absurdas, antiga o bastante para parecer
+            anterior à própria cidade. Seu tronco é largo como uma construção, e suas
+            raízes deformam o solo ao redor como se ainda tentassem alcançar algo enterrado
+            muito fundo.
+          </p>
+
+          <p>
+            Mesmo viva, sua presença passa uma estranha sensação de afastamento — como se
+            parte de seu significado tivesse se apagado com o tempo, restando apenas a impressão
+            de algo sagrado que já foi mais compreendido do que é hoje.
+          </p></div>
+
+          <div class="local-meta">
+            <span class="local-tag">Marco antigo</span>
+            <span class="local-tag">Memória apagando</span>
+            <span class="local-tag">Ponto de referência</span>
+          </div>
+
+          <div class="local-note">
+            “Os mais velhos juram que ela já foi mais verde. Não porque secou… mas porque o mundo esqueceu como olhar pra ela.”
+            <span class="local-note-author">— registro local</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Clareira Silenciosa" style="object-position: 50% 60%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Clareira Silenciosa</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Clareira Silenciosa</h4>
+
+          <p>
+            Um trecho aberto da floresta onde o som parece sempre chegar abafado. Animais evitam
+            permanecer ali por muito tempo, e até o vento parece atravessar o espaço com cautela.
+          </p>
+
+          <div class="local-note">
+            “Não é que seja perigoso. É só que ninguém fica muito tempo sem começar a sentir que está sendo lembrado por alguma coisa.”
+            <span class="local-note-author">— caçador élfico</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Ponte Antiga" style="object-position: center;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Ponte Antiga</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Ponte Antiga</h4>
+
+          <p>
+            Ponte de pedra coberta por musgo e fissuras finas, ainda firme o bastante para ser
+            atravessada, embora ninguém consiga dizer ao certo quem a construiu.
+          </p>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Ruína sem Nome" style="object-position: 40% 50%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Ruína sem Nome</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Ruína sem Nome</h4>
+
+          <p>
+            Restos de uma construção consumida pela vegetação, quase indistinguível da floresta ao redor.
+            Só o alinhamento artificial das pedras denuncia que ali já houve intenção humana — ou algo próximo disso.
+          </p>
+
+          <div class="local-meta">
+            <span class="local-tag">Ruína</span>
+            <span class="local-tag">Pouco explorada</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Lago das Raízes" style="object-position: 50% 40%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Lago das Raízes</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Lago das Raízes</h4>
+
+          <p>
+            Um lago escuro cercado por raízes expostas que mergulham na água como dedos imóveis.
+            Durante certas horas do dia, a superfície parece refletir mais sombras do que luz.
+          </p>
+
+          <p>
+            Alguns dizem que o lago preserva ecos de passos antigos; outros afirmam que ele apenas
+            repete, em silêncio, o peso de quem olha demais para dentro dele.
+          </p>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Trilha das Lanternas" style="object-position: 50% 50%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Trilha das Lanternas</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Trilha das Lanternas</h4>
+
+          <p>
+            Caminho antigo marcado por suportes de pedra onde lanternas já não queimam há muito tempo.
+            Ainda assim, viajantes juram ver luzes fracas em noites silenciosas.
+          </p>
+
+          <div class="local-note">
+            “Quem segue a trilha depressa demais sempre jura que chegou antes do que devia.”
+            <span class="local-note-author">— viajante</span>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</details>
+
+<!-- KHAZ-GRUDUL --
+<details class="region-block">
+  <summary>
+    <span class="region-title">Khaz-Grudul</span>
+  </summary>
+
+  <div class="region-content">
+    <div class="local-grid">
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Entrada da Mina Velha" style="object-position: 50% 45%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Entrada da Mina Velha</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Entrada da Mina Velha</h4>
+
+          <p>
+            Uma abertura larga na pedra, parcialmente escorada por vigas antigas e marcada por fuligem.
+            O ar dali sopra frio mesmo durante o dia.
+          </p>
+
+          <div class="local-note">
+            “Os anões dizem que a mina foi fechada por instabilidade. Quem mora perto diz outra coisa.”
+            <span class="local-note-author">— mercador de passagem</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Escadaria de Ferrovel" style="object-position: 50% 20%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Escadaria de Ferrovel</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Escadaria de Ferrovel</h4>
+
+          <p>
+            Uma longa sequência de degraus entalhados na rocha, estreitos demais para grandes grupos e
+            íngremes o suficiente para cansar até quem está acostumado às montanhas.
+          </p>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Pátio das Correntes" style="object-position: 50% 50%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Pátio das Correntes</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Pátio das Correntes</h4>
+
+          <p>
+            Um espaço amplo de pedra negra e marcas de uso constante, cercado por pilares gastos e ferro oxidado.
+            Mesmo vazio, mantém uma sensação pesada de disciplina e vigilância.
+          </p>
+
+          <div class="local-meta">
+            <span class="local-tag">Centro antigo</span>
+            <span class="local-tag">Uso severo</span>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</details>
+
+<!-- DRACONATOS --
+<details class="region-block">
+  <summary>
+    <span class="region-title">Reino dos Draconatos</span>
+  </summary>
+
+  <div class="region-content">
+    <div class="local-grid">
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Campo de Estandartes" style="object-position: 50% 35%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Campo de Estandartes</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Campo de Estandartes</h4>
+
+          <p>
+            Uma extensão aberta onde mastros e tecidos de guerra tremem ao vento com um som seco,
+            como se o próprio campo respirasse disciplina.
+          </p>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Terraço de Cinzas" style="object-position: 50% 60%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Terraço de Cinzas</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Terraço de Cinzas</h4>
+
+          <p>
+            Plataforma de pedra elevada, usada tanto como ponto de vigia quanto de cerimônias locais.
+            O chão sempre parece guardar uma camada fina de pó escuro, mesmo depois da chuva.
+          </p>
+
+          <div class="local-note">
+            “Ninguém limpa. Dizem que toda vez que tentam, no outro dia as cinzas voltam.”
+            <span class="local-note-author">— guarda local</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="local-block">
+        <summary>
+          <div class="local-card">
+            <img src="img/teste.png" alt="Estrada Vermelha" style="object-position: 50% 50%;">
+            <div class="local-cover-hover"></div>
+            <div class="local-open-indicator"></div>
+            <div class="local-name">Estrada Vermelha</div>
+          </div>
+        </summary>
+
+        <div class="local-overlay">
+          <h4>Estrada Vermelha</h4>
+
+          <p>
+            Um caminho largo de terra compacta e tons avermelhados, cercado por vegetação baixa e pedras quentes.
+            Caravanas passam por ali com frequência, levando bens, rumores e, às vezes, coisas menos oficiais.
+          </p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</details>
+-->
+<div class="header">
+  <div class="header-nav">
+    <a href="../index.html">← Voltar</a>
+    <a href="../natureza/index.html">O Mundo Vivo</a>
+	<a href="../artefatos/index.html">Relíquias e Artefatos</a>
+    <a href="../curious/index.html">Curiosidades</a>
+  </div>
+</div>
+</body>
+</html>
