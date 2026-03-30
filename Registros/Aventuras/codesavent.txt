@@ -1,0 +1,69 @@
+<!-- ================= PONTE ================= -->
+<div class="ponte">
+  <!-- transição de cena / tempo / foco -->
+  Algo mudou
+</div>
+
+
+<!-- ================= FALA ================= -->
+<div class="fala" data-autor="Nome do personagem">
+  <p>
+    <!-- personagem falando -->
+    Isso não deveria estar aqui…
+  </p>
+</div>
+
+
+<!-- ================= FRASE ================= -->
+<p class="frase">
+  <!-- destaque narrativo (sem personagem) -->
+  O mundo não respondeu.
+</p>
+
+
+<!-- ================= FRASE INLINE ================= -->
+<p>
+  Texto normal —
+  <span class="frase-inline">isso não fazia sentido</span>
+  — continua aqui.
+</p>
+
+
+<!-- ================= BLOCO DE TEXTO ================= -->
+<div class="lore">
+  <p>
+    <!-- texto principal -->
+    Parágrafo da história aqui.
+  </p>
+</div>
+
+
+<!-- ================= IMAGEM FORTE (cena) ================= -->
+<div class="found-media">
+  <img src="img.jpg" alt="">
+</div>
+
+
+<!-- ================= IMAGEM VÍRGULA (detalhe) ================= -->
+<div class="found-media2">
+  <img src="img.jpg" alt="">
+</div>
+
+
+<!-- ================= PERSONAGENS ================= -->
+<div class="char-grid">
+  <div class="char">
+    Nome
+    <span>Classe</span>
+  </div>
+</div>
+
+
+<!-- ================= CARD PRINCIPAL ================= -->
+<div class="found-card">
+  <!-- container da sessão -->
+</div>
+
+
+<!-- ================= SEPARADOR VISUAL (USAR POUCO) ================= -->
+<hr>

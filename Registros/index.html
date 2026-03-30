@@ -161,11 +161,14 @@ h1 {
     padding: 16px;
   }
 
-  .grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-  }
-
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
   .card h2 {
     font-size: 20px;
   }
@@ -252,6 +255,13 @@ Mas algumas coisas foram… registradas”</h3><br>
 <!--    <a class="card" href="artefatos/index.html">-->
 	
 
+<a class="card" href="Aventuras/index.html">
+  <div class="icon-box">
+    <img src="img/avent.png" alt="Aventuras">
+  </div>
+  <h2>Aventuras</h2>
+</a>
+
 
   <a class="card" href="escolhidos/index.html">
     <div class="icon-box">
@@ -262,21 +272,16 @@ Mas algumas coisas foram… registradas”</h3><br>
 
  <!-- <a class="card" href="curious/index.html">  -->
   
-<a class="card" href="Aventuras/index.html">
-  <div class="icon-box">
-    <img src="img/avent.png" alt="Aventuras">
-  </div>
-  <h2>Aventuras</h2>
-</a>
 
- 
+
+ <!--
  <a class="card" href="#" onclick="alert('🚧 Segura que não tá pronto 🚧')">
     <div class="icon-box">
       <img src="img/equip.png" alt="Lore">
     </div>
     <h2>Artefatos e Relíquias</h2>
   </a>
-  
+  -->
  
  
 <!---
