@@ -339,6 +339,25 @@ hr{
 
 }
 </style>
+<script>
+function abrirEnigmaKalymos(){
+  const resposta = prompt("Aquilo que convenceu o mundo… e elevou um homem a deus:");
+
+  if(!resposta) return;
+
+  const normalizado = resposta
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+
+  if(normalizado === "palavra"){
+    window.location.href = "../Secrets/kalymos/index.html";
+  } else {
+    alert("Nada responde.");
+  }
+}
+</script>
 <body>
 
 <div class="wrap">
@@ -487,7 +506,11 @@ Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher 
 "Com grande sacrifício, Kalymos foi derrotado e banido por Baruuk, passando a ser lembrado como o Deus da Manipulação."
         </p>
       </div>
-
+<div style="text-align:center; margin-top:20px;">
+  <button class="nav-btn" onclick="abrirEnigmaKalymos()">
+    …
+  </button>
+</div>
     </div>
   </div>
 
