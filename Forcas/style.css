@@ -897,6 +897,14 @@ a{
   text-align: center;
 }
 
+.lore-illustrated-double .lore-illustration:first-child {
+  margin-left: 55px;
+}
+
+.lore-illustrated-double .lore-illustration:last-child {
+  margin-right: 55px;
+}
+
 
 /* separador */
 .lore-separator{
