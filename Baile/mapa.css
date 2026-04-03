@@ -2,7 +2,7 @@
 body{
   margin:0;
   padding:20px;
-  background:#cab498;
+  background:#d8c1a3;
   font-family:serif;
   color:#fff;
   overflow-x:hidden;
@@ -58,11 +58,12 @@ body{
   border: 2px solid rgba(0,0,0,0.7);
   box-shadow: 0 0 6px rgba(0,0,0,0.5);
 
+  transform: translate(50%, 50%);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .poi:hover {
-  transform: scale(1.4);
+  transform: translate(50%, 50%) scale(1.4);
   box-shadow: 0 0 10px rgba(255,255,255,0.6);
 }
 
@@ -150,7 +151,7 @@ body{
 
 /* descrição */
 .mapa-info{
-  background :url("img/papel2.jpg");
+  background:url("img/papel2.jpg");
 
   border-radius: 10px;
   padding: 16px;
@@ -233,11 +234,51 @@ body{
     max-width: 90%;
     font-size: 18px; /* 🔥 diminui */
   }
-    .mapa-viewport{
-    height: 175px; /* 🔥 menor no celular */
+
+.mapa-viewport{
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+
+}
+.mapa-track {
+  height: 50%;
+}
+  .poi.anoes{
+	  position:sticky;
+    transform: translate(2000%, -250%) scale(1);
+  } 
+
+  .poi.termopilas{
+	  position:sticky;
+    transform: translate(2000%, -250%) scale(1);
   }
-    .poi{
-    width: 18px;
-    height: 18px;
+
+  .poi:hover{
+    transform: translate(50%, -50%) scale(1.5);
   }
+  .mapa {
+  position: relative;
+  height:100%;
+  width: 100%;
+}
+.mapa-img {
+	display: block;
+  width: 100%;
+  height: 100%;
+}
+  .mapa-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 20px auto;
+}
+.mapa {
+  position: relative;
+  outline: 2px solid red;
+  height:100%;
+}
+.poi {
+  outline: 2px solid blue;
+}
 }
