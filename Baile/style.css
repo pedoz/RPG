@@ -818,16 +818,13 @@ letter-spacing: 0.5px;
   border:0;
   border-radius:12px;
 
+  background: url("img/papel2.jpg");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* 🔥 fade nas bordas */
-  -webkit-mask-image: radial-gradient(farthest-corner, black 70%, transparent 100%);
-  mask-image: radial-gradient(farthest-corner, black 70%, transparent 100%);
-}
-
+  /* mantém o fade se quiser */
 
 
 
