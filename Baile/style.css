@@ -818,9 +818,6 @@ letter-spacing: 0.5px;
   border:0;
   border-radius:12px;
 
-  background: 
-    linear-gradient(rgba(216,193,163,0.5), rgba(216,193,163,0.5)),
-    url("img/papel2.jpg");
 
   background-size: cover;
   background-position: center;
