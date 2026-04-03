@@ -19,7 +19,6 @@ body{
 .mapa-img {
   width: 100%;
   display: block;
-  border-radius: 16px;
 }
 
 /* cada mapa (norte/meio/sul) */
