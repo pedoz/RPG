@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Mapa Teste</title>
+
+<style>
+  body {
+    background: #111;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+  }
+
+  .map-container {
+    position: relative;
+    width: 600px;
+    margin: auto;
+  }
+
+  .map {
+    display: none;
+    position: relative;
+  }
+
+  .map.active {
+    display: block;
+  }
+
+  .map img {
+    width: 100%;
+  }
+
+  /* POIs */
+  .poi {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid black;
+    cursor: pointer;
+  }
+
+  .rumor { background: red; }
+  .explored { background: blue; }
+
+  /* posição exemplo */
+  .p1 { top: 40%; left: 30%; }
+  .p2 { top: 60%; left: 70%; }
+
+  .controls {
+    margin: 10px;
+  }
+
+  #info {
+    margin-top: 10px;
+    min-height: 40px;
+  }
+</style>
+</head>
+
+<body>
+
+<h2>Mapa</h2>
+
+<div class="controls">
+  <button onclick="changeMap(-1)">↑</button>
+  <button onclick="changeMap(1)">↓</button>
+</div>
+
+<div class="map-container">
+
+  <!-- MAPA 1 -->
+  <div class="map active">
+    <img src="c1.png">
+    <div class="poi rumor p1" onclick="showInfo('Termópilas - rumor')"></div>
+  </div>
+
+  <!-- MAPA 2 -->
+  <div class="map">
+    <img src="c2.png">
+    <div class="poi explored p2" onclick="showInfo('Ruínas dos Magos')"></div>
+  </div>
+
+  <!-- MAPA 3 -->
+  <div class="map">
+    <img src="c3.png">
+    <div class="poi rumor p1" onclick="showInfo('Entrada dos Anões')"></div>
+  </div>
+
+</div>
+
+<div id="info">Clique em um ponto</div>
+
+<script>
+  let currentMap = 0;
+  const maps = document.querySelectorAll(".map");
+
+  function changeMap(direction) {
+    maps[currentMap].classList.remove("active");
+
+    currentMap += direction;
+
+    if (currentMap < 0) currentMap = 0;
+    if (currentMap >= maps.length) currentMap = maps.length - 1;
+
+    maps[currentMap].classList.add("active");
+  }
+
+  function showInfo(text) {
+    document.getElementById("info").innerText = text;
+  }
+</script>
+
+</body>
+</html>

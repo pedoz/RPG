@@ -1,0 +1,246 @@
+
+body{
+  margin:0;
+  padding:20px;
+  background:#cab498;
+  font-family:serif;
+  color:#fff;
+  overflow-x:hidden;
+}
+/* container do mapa */
+.mapa-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* imagem base */
+.mapa-img {
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+/* cada mapa (norte/meio/sul) */
+.mapa-viewport {
+  overflow: hidden;
+  width: 100%;
+  height: 400px; /* 🔥 define altura REAL */
+  position: relative;
+  border-radius: 16px;
+}
+.mapa-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.4s ease;
+  border-radius: 16px;
+}
+
+.mapa {
+  flex: 0 0 100%; /* 🔥 cada mapa ocupa exatamente a tela */
+  height: 100%;
+  position: relative;
+  border-radius: 16px;
+}
+.mapa.ativo {
+  display: block;
+}
+
+/* pontos (POI) */
+.poi {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  border: 2px solid rgba(0,0,0,0.7);
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.poi:hover {
+  transform: scale(1.4);
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* estados */
+.poi.rumor      { background: #c0392b; }
+.poi.misterio   { background: #8e44ad; }
+.poi.explorado  { background: #27ae60; }
+.poi.local      { background: #2980b9; }
+.poi.quest      { background: #f1c40f; }
+
+
+.poi.quest {
+  box-shadow: 0 0 8px rgba(241,196,15,0.9);
+}
+
+.poi.misterio {
+  box-shadow: 0 0 8px rgba(142,68,173,0.8);
+}
+
+.poi.rumor {
+  opacity: 0.7;
+}
+
+
+
+/* botões */
+.mapa-controles {
+	margin-top:6px;
+  width: 100%;
+  display: flex;
+  gap:12px;
+}
+
+.mapa-controles button {
+  flex: 1; /* cada um ocupa metade */
+
+  background: #d8c1a3;
+  color: #000000;
+  
+
+  border: 4px solid #000000;
+  padding: 10px 0;
+
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+
+  transition: 0.2s;
+}
+
+/* separação entre eles */
+
+
+/* hover */
+.mapa-controles button:hover {
+  background: #1c2f45;
+}
+
+/* hover */
+.mapa-controles button:hover {
+  background: #c2b199;
+  border-color: #000000;
+  transform: translateY(-1px);
+}
+
+/* clique */
+.mapa-controles button:active {
+  transform: scale(0.95);
+}
+
+.mapa-layout{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 20px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  align-items: center;
+}
+
+.mapa-layout > div{
+  width: 100%;
+}
+
+/* descrição */
+.mapa-info{
+  background:
+    radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 100%),
+    linear-gradient(145deg, #c2b199, #a4937c 40%, #7e6d57);
+
+  border-radius: 10px;
+  padding: 16px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza vertical */
+  align-items: center; 
+
+  text-align: center;
+
+
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+  
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.info-titulo {
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.info-descricao {
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  color: #ffffff;font-family: "Georgia", "Times New Roman", serif;
+}
+
+.info-comentario {
+  font-size: 13px;
+  font-style: italic;
+  color: #ffffff;
+  border-left: 2px solid #ffffff;
+  padding-left: 18px;font-family: "Georgia", "Times New Roman", serif;
+}
+
+
+.info-separator{
+  border: none;
+  height: 2px;
+  width: 60%;
+
+  margin: 12px auto;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    #ffffff,
+    transparent
+  );
+}
+
+.info-animar {
+  animation: fadeSlide 0.3s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (max-width: 720px){
+  .mapa-layout{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .mapa-info{
+    max-width: 90%;
+    font-size: 18px; /* 🔥 diminui */
+  }
+    .mapa-viewport{
+    height: 175px; /* 🔥 menor no celular */
+  }
+    .poi{
+    width: 18px;
+    height: 18px;
+  }
+}
