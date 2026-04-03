@@ -448,20 +448,20 @@ font-size:18px;
   opacity:.8;
   font-size:20px;
   text-align:center;
-  transform:translateX(-55px);
+  transform:translateX(-5px);
 }
 
 .fold[open] > summary::after{
   content:"▴";
-  transform: translateX(-55px);
+  transform: translateX(-5px);
 }
 
 .fold-body{
   margin-top:2px;
   color:#000000;
     position:relative;
-  left:-180px;
-  width:calc(100% + 180px);
+  left:-140px;
+  width:calc(100% + 200px);
   padding-left:36px;
 }
 
@@ -818,13 +818,19 @@ letter-spacing: 0.5px;
   border:0;
   border-radius:12px;
 
-  background: url("img/papel2.jpg");
+  background: 
+    linear-gradient(rgba(216,193,163,0.5), rgba(216,193,163,0.5)),
+    url("img/papel2.jpg");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  /* mantém o fade se quiser */
+  /* 🔥 fade nas bordas */
+  -webkit-mask-image: radial-gradient(farthest-corner, black 70%, transparent 100%);
+  mask-image: radial-gradient(farthest-corner, black 70%, transparent 100%);
+}
+
 
 
 
@@ -1081,7 +1087,9 @@ letter-spacing: 0.5px;
 .region-separator{
   height:1px;
   margin:26px auto 30px auto;
-  width:min(92%, 980px);}
+  width:min(92%, 980px);
+  background:linear-gradient(90deg, rgba(44,76,107,0), rgba(44,76,107,0.95), rgba(44,76,107,0));
+}
 
 
 /* ================= LORE / REGISTROS ================= */
