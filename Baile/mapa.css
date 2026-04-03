@@ -151,9 +151,7 @@ body{
 
 /* descrição */
 .mapa-info{
-  background:
-    radial-gradient(circle at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.15) 100%),
-    linear-gradient(145deg, #c2b199, #a4937c 40%, #7e6d57);
+
 
   border-radius: 10px;
   padding: 16px;
