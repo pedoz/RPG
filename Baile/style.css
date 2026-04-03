@@ -1081,9 +1081,7 @@ letter-spacing: 0.5px;
 .region-separator{
   height:1px;
   margin:26px auto 30px auto;
-  width:min(92%, 980px);
-  background:linear-gradient(90deg, rgba(44,76,107,0), rgba(44,76,107,0.95), rgba(44,76,107,0));
-}
+  width:min(92%, 980px);}
 
 
 /* ================= LORE / REGISTROS ================= */
