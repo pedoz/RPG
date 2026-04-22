@@ -165,26 +165,29 @@ hr{
    NAVEGAÇÃO
 ========================= */
 .nav{
-  display:grid;
-  grid-template-columns: 1fr 5fr 1fr;
+  display:flex;
+  justify-content:center;
   gap:12px;
-  margin-top:20px;
-  align-items:center;
+  margin-top:8px;
 }
 
 .nav-btn{
+  flex:1; /* 🔥 faz ocupar toda largura */
   text-align:center;
   text-decoration:none;
   color:#fff;
   background:#162b3f;
-  border:1px solid #2c4c6b;
+  border:2px solid #2c4c6b;
   border-radius:8px;
-  padding:10px 12px;
-  display:block;
+  padding:14px 18px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.2s;
 }
 
-.nav-btn:hover{ background:#1f3a56; }
-.nav-spacer{ height:1px; }
+.nav-btn:hover{
+  background:#1f3a56;
+}
 
 
 /* ================= CARD TEXTO ================= */
@@ -362,7 +365,9 @@ function abrirEnigmaKalymos(){
 
 <div class="wrap">
 
-  <!-- RAFAEL -->
+  <!-- RAFAEL 
+  
+  
   <section class="found">
   <h1 class="found-title">Raphael</h1><br>
     <div class="found-row has-media">
@@ -402,7 +407,9 @@ function abrirEnigmaKalymos(){
 
 <hr>
 
-  <!-- ECO -->
+  <!-- ECO 
+  
+  
   <section class="found">
     <h1 class="found-title">O Eco</h1>
 
@@ -422,8 +429,12 @@ function abrirEnigmaKalymos(){
         </div>
       </div>
     </div>
+	
 
-    <!-- ECO 2 -->
+    <!-- ECO 2 
+	
+	
+	
     <div class="found-row has-media horizontal">
       <div class="found-media">
         <img src="parede.png">
@@ -441,37 +452,14 @@ function abrirEnigmaKalymos(){
             <i>"Onde <span class="ilegivel"><b>RABISCADO - ECO POR CIMA</b></span> passou,
             não houve ruína imediata.
             Houve clareza excessiva.
-            Homens deixaram de duvidar -
+            Homens deixaram de duvidar —
             e nisso selaram seu fim"</i>
           </p>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- ÁRVORE -->
-  <section class="found">
-    <div class="found-row has-media">
-      <div class="found-media">
-        <img src="arvoreeco.png">
-      </div>
-
-      <div class="found-card">
-        <h1 class="found-title">A Árvore Mãe</h1>
-        <hr>
-
-        <div class="lore">
-          <p style="text-align:center;">
-            O símbolo não reage mais<br>
-            Mas a sensação permanece<br>
-            como se, por um instante,<br>
-            tudo ali tivesse pensado junto…<br>
-            e depois esquecido
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+-->
 </div>
 
 <br>
@@ -494,7 +482,7 @@ Kalymos foi um mortal que ascendeu à divindade como o Deus da Palavra. Prometeu
         </p>
 
         <p>
-Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher campeões - os Escolhidos - para erradicar o que restou de sua influência.
+Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher campeões — os Escolhidos — para erradicar o que restou de sua influência.
         </p>
 
         <hr>
@@ -519,10 +507,13 @@ Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher 
 
 
 <br><hr><br>
+
+
+<!--
 <h1 class="found-title">Aurora</h1><br>
 <div class="wrap">
 
-  <!-- BLOCO 1 (COM IMAGEM AO LADO) -->
+  <!-- BLOCO 1 (COM IMAGEM AO LADO) --
   <section class="found">
     <div class="found-row has-media">
 
@@ -545,7 +536,7 @@ Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher 
     </div>
   </section>
 
-  <!-- BLOCO 2 (SÓ TEXTO) -->
+  <!-- BLOCO 2 (SÓ TEXTO) --
   <section class="found">
 
     <div class="found-card">
@@ -572,8 +563,10 @@ Baruuk o baniu para o plano além, e desde então os deuses passaram a escolher 
   </section>
 
 </div>
-
-
+-->
+<div class="nav">
+  <a class="nav-btn" href="../index.html">← Voltar</a>
+</div>
 
 
 </body>
